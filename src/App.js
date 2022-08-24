@@ -1,21 +1,25 @@
 import { ProductsList } from "./components/productslist.styled";
 import "./components/reset.css";
-import "./App.css";
+import "./App.scss";
 
 import Card from "./components/card.js";
+import BasketShop from "./components/basket.js";
 
 function App() {
   return (
     <ProductsList>
       <div className="container">
-        <header className="header">наша продукция</header>
+        <header className="header">
+          <h1 className="header__title">наша продукция</h1>
+          <BasketShop url={"images/basket.svg"} counter={3} sum={3500} />
+        </header>
         <div className="menu">
           <Card
             url={"images/1.png"}
             title={"Устрицы по рокфеллеровски"}
             description={"Значимость этих проблем настолько очевидна, что укрепление и развитие структуры"}
             price={2700}
-            wight={500}
+            weight={500}
             unit={"г."}
           />
           <Card
@@ -23,7 +27,7 @@ function App() {
             title={"Свиные ребрышки на гриле с зеленью"}
             description={"Не следует, однако забывать, что реализация намеченных плановых"}
             price={1600}
-            wight={750}
+            weight={750}
             unit={"г."}
           />
           <Card
@@ -41,7 +45,7 @@ function App() {
             title={"Устрицы по рокфеллеровски"}
             description={"Значимость этих проблем настолько очевидна, что укрепление и развитие структуры"}
             price={2700}
-            wight={500}
+            weight={500}
             unit={"г."}
           />
           <Card
@@ -49,7 +53,7 @@ function App() {
             title={"Устрицы по рокфеллеровски"}
             description={"Значимость этих проблем настолько очевидна, что укрепление и развитие структуры"}
             price={2700}
-            wight={500}
+            weight={500}
             unit={"г."}
           />
           <Card
@@ -57,7 +61,7 @@ function App() {
             title={"Свиные ребрышки на гриле с зеленью"}
             description={"Не следует, однако забывать, что реализация намеченных плановых"}
             price={1600}
-            wight={750}
+            weight={750}
             unit={"г."}
           />
           <Card
@@ -75,7 +79,7 @@ function App() {
             title={"Устрицы по рокфеллеровски"}
             description={"Значимость этих проблем настолько очевидна, что укрепление и развитие структуры"}
             price={2700}
-            wight={500}
+            weight={500}
             unit={"г."}
           />
         </div>

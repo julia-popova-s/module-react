@@ -11,8 +11,10 @@ export const ProductsList = styled.div`
     .menu {
       display: flex;
       flex-wrap: wrap;
-      height: 100vh;
+      justify-content:space-between;
+      height:calc(100vh - 173px);
       gap: 35px 14px;
+      overflow-x: auto;
     }
   }
 `;
