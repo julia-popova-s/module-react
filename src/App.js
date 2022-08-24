@@ -1,13 +1,12 @@
-import { ProductsList } from "./components/productslist.styled";
 import "./components/reset.css";
-import "./App.scss";
+import "./index.scss";
 
 import Card from "./components/card.js";
 import BasketShop from "./components/basket.js";
 
 function App() {
   return (
-    <ProductsList>
+    <main className="main">
       <div className="container">
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
@@ -84,7 +83,7 @@ function App() {
           />
         </div>
       </div>
-    </ProductsList>
+    </main>
   );
 }
 

@@ -11,9 +11,8 @@ export const ProductsList = styled.div`
     .menu {
       display: flex;
       flex-wrap: wrap;
-      justify-content:space-between;
-      height:calc(100vh - 173px);
-      gap: 35px 14px;
+      height: calc(100vh - 173px);
+      // gap: 35px 14px;
       overflow-x: auto;
     }
   }
