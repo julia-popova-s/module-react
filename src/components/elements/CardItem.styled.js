@@ -1,13 +1,13 @@
 import styled from "styled-components";
 export const CardItem = styled.div`
   font-family: "Montserrat", sans-serif;
-  padding: 43px 25px 32px 17px;
+  padding: 43px 25px 32px 21px;
   border: 1px solid #d58c51;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-width: 312px;
-  max-height: 552px;
+  height: 552px;
   transition: color 0.2s ease;
 
   &:hover {
@@ -19,11 +19,6 @@ export const CardItem = styled.div`
     width: 100%;
     height: auto;
     margin-bottom: 31px;
-  }
-  .card__title,
-  .card__description,
-  .card__block {
-    padding-left: 5px;
   }
 
   .card__title {
@@ -45,8 +40,14 @@ export const CardItem = styled.div`
     min-height: 30px;
     margin-top: auto;
 
-    .card__add:hover {
+    .card__add circle {
+      fill: transparent;
+      transition: all 0.2s;
+    }
+    .card__add:hover circle {
+      stroke: #d58c51;
       fill: #d58c51;
+      transition: all 0.2s;
     }
 
     .card__price {

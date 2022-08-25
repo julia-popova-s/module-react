@@ -1,6 +1,8 @@
 import { CardItem } from "./CardItem.styled.js";
+import getPrice from "../base/base.js";
 // import "./card.scss";
 function Card({ url, title, description, price, weight, count, unit }) {
+  const newPrice = getPrice(price);
   return (
     <CardItem>
       <img className="card__preview" src={url} alt="Фотография блюда" />
@@ -8,7 +10,7 @@ function Card({ url, title, description, price, weight, count, unit }) {
       <p className="card__description">{description}</p>
       <div className="card__block">
         <div className="card__price">
-          {price} ₽ /{" "}
+          {newPrice} ₽ /{" "}
           <span className="card__weight">
             {weight} {count} {unit}
           </span>

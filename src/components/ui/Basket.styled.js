@@ -1,11 +1,3 @@
-// .basketshop {
-//   font-family: 'Montserrat', sans-serif;
-//   display: flex;
-//   gap: 20px;
-//   flex-wrap: wrap;
-//   align-items: center;
-//   text-align: right;
-// }
 import styled from "styled-components";
 export const Basket = styled.div`
   display: flex;

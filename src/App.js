@@ -1,18 +1,18 @@
 import "./components/reset.css";
 import "./index.scss";
-
-import Card from "./components/card.js";
-import BasketShop from "./components/basket.js";
+import { ProductList } from "./components/blocks/ProductList.styled";
+import Card from "./components/elements/card";
+import BasketShop from "./components/ui/basket.js";
 
 function App() {
   return (
-    <main className="main">
+    <div className="products">
       <div className="container">
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
           <BasketShop url={"images/basket.svg"} counter={3} sum={3500} />
         </header>
-        <div className="menu">
+        <ProductList>
           <Card
             url={"images/1.png"}
             title={"Устрицы по рокфеллеровски"}
@@ -81,9 +81,9 @@ function App() {
             weight={500}
             unit={"г."}
           />
-        </div>
+        </ProductList>
       </div>
-    </main>
+    </div>
   );
 }
 
