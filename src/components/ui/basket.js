@@ -5,10 +5,10 @@ function BasketShop({ url, counter, sum }) {
   const newSum = getPrice(sum);
   return (
     <Basket>
-      <span className="basketshop__text">
-        <p>{counter} товара</p>
-        <p>на сумму {newSum} ₽</p>
-      </span>
+      <div className="basketshop__text">
+        <p className="basketshop__text-item">{counter} товара</p>
+        <p className="basketshop__text-item"> на сумму {newSum} ₽</p>
+      </div>
       <img src={url} className="basketshop__icon" alt="Корзина" />
     </Basket>
   );

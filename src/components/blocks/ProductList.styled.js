@@ -14,7 +14,6 @@ export const ProductList = styled.div`
   ::-webkit-scrollbar-track {
     background: #d58c51;
     border-radius: 20px;
-    /* цвет дорожки */
   }
 
   ::-webkit-scrollbar-thumb {

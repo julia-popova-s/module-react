@@ -26,6 +26,7 @@ export const CardItem = styled.div`
     font-weight: 500;
     font-size: 17px;
     line-height: 21px;
+    min-height: 42px;
   }
   .card__description {
     font-weight: 400;
@@ -40,14 +41,24 @@ export const CardItem = styled.div`
     min-height: 30px;
     margin-top: auto;
 
-    .card__add circle {
-      fill: transparent;
-      transition: all 0.2s;
+    .card__btn-add {
+      border-radius: 50%;
+      border: 1px solid #fff;
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+      transition: all 0.2s ease;
+      position: relative;
     }
-    .card__add:hover circle {
-      stroke: #d58c51;
-      fill: #d58c51;
-      transition: all 0.2s;
+    .card__btn-add:hover {
+      background-color: #d58c51;
+      border: 1px solid #d58c51;
+      transition: all 0.2s ease;
+    }
+    .card__btn-plus {
+      position: absolute;
+      top: 7px;
+      right: 7px;
     }
 
     .card__price {

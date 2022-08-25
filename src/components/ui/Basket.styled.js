@@ -4,6 +4,7 @@ export const Basket = styled.div`
   gap: 20px;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: right;
 
   .basketshop__text {
     font-weight: 500;
