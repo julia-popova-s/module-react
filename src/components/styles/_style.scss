@@ -6,11 +6,11 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: #161516;
+  background-color: $color-back;
 }
 
 .products {
-  color: white;
+  color: $white;
   max-width: 1440px;
   margin: 0 auto;
 }
@@ -27,11 +27,9 @@ body {
   align-items: center;
   margin-bottom: 75px;
   padding-top: 48px;
-  font-family: "Montserrat", sans-serif;
+  font-family: $font-family;
 
   &__title {
-    font-weight: 700;
-    font-size: 31px;
-    line-height: 38px;
+    @include setFontSize(700, 31px, 38px);
   }
 }

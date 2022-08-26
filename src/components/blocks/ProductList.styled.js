@@ -6,6 +6,7 @@ export const ProductList = styled.div`
   gap: 35px 13px;
   overflow-x: auto;
   padding-bottom: 67px;
+  padding-right: 5px;
 
   ::-webkit-scrollbar {
     width: 8px;

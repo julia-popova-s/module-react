@@ -1,4 +1,5 @@
-import "./components/reset.css";
+import "./components/styles/reset.css";
+import "./components/styles/variables.css";
 import "./index.scss";
 import { ProductList } from "./components/blocks/ProductList.styled";
 import Card from "./components/elements/card";

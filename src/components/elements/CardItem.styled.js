@@ -1,23 +1,24 @@
 import styled from "styled-components";
 export const CardItem = styled.div`
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--font-family);
   padding: 43px 25px 32px 21px;
-  border: 1px solid #d58c51;
+  border: 1px solid var(--color-basic);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   max-width: 312px;
   height: 552px;
   transition: color 0.2s ease;
+  cursor: pointer;
 
   &:hover {
-    color: #d58c51;
+    color: var(--color-basic);
     transition: color 0.2s ease;
   }
 
   .card__preview {
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    max-height: 100%;
     margin-bottom: 31px;
   }
 
@@ -44,18 +45,20 @@ export const CardItem = styled.div`
 
     .card__btn-add {
       border-radius: 50%;
-      border: 1px solid #fff;
+      border: 1px solid var(--color-white);
       width: 30px;
       height: 30px;
       background-color: transparent;
       transition: all 0.2s ease;
       position: relative;
     }
+
     .card__btn-add:hover {
-      background-color: #d58c51;
-      border: 1px solid #d58c51;
+      background-color: var(--color-basic);
+      border: 1px solid var(--color-basic);
       transition: all 0.2s ease;
     }
+
     .card__btn-plus {
       position: absolute;
       top: 7px;
