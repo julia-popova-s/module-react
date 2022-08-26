@@ -1,5 +1,5 @@
 import { Basket } from "./Basket.styled";
-import getPrice from "../base/base.js";
+import getPrice from "../base/getPrice.js";
 
 function BasketShop({ url, counter, sum }) {
   const newSum = getPrice(sum);

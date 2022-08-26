@@ -33,22 +33,6 @@ export const CardItem = styled.div`
     font-size: 14px;
     line-height: 17px;
     margin-bottom: 10px;
-    overflow-x: auto;
-
-    ::-webkit-scrollbar {
-      width: 5px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #d58c51;
-      border-radius: 20px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #161516;
-      border-radius: 20px;
-      border: 2px solid #212121;
-    }
   }
 
   .card__block {

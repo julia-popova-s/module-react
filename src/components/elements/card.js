@@ -1,7 +1,11 @@
 import { CardItem } from "./CardItem.styled.js";
-import getPrice from "../base/base.js";
+import getPrice from "../base/getPrice.js";
+import cutLine from "../base/cutLine.js";
+
 function Card({ img, name, description, price, weight }) {
   const newPrice = getPrice(price);
+  const title = cutLine(name, 48);
+  const descriptor = cutLine(description, 138);
   return (
     <CardItem>
       <img
@@ -9,8 +13,8 @@ function Card({ img, name, description, price, weight }) {
         src={"/images/" + img}
         alt="Фотография блюда"
       />
-      <h2 className="card__title">{name}</h2>
-      <p className="card__description">{description}</p>
+      <h2 className="card__title">{title}</h2>
+      <p className="card__description">{descriptor}</p>
       <div className="card__block">
         <div className="card__price">
           {newPrice} ₽ / <span className="card__weight">{weight + "."}</span>
