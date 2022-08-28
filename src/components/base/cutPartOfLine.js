@@ -1,7 +1,7 @@
-const cutLine = (text, count) => {
+const cutPartOfLine = (text, count) => {
   if (text.length > count + 1) {
     return text.slice(0, count) + "...";
   }
   return text;
 };
-export default cutLine;
+export default cutPartOfLine;

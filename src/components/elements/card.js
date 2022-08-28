@@ -1,11 +1,12 @@
 import { CardItem } from "./CardItem.styled.js";
-import getPrice from "../base/getPrice.js";
-import cutLine from "../base/cutLine.js";
+import getPriceWithSpace from "../base/getPriceWithSpace.js";
+import cutPartOfLine from "../base/cutPartOfLine.js";
+import PropTypes from "prop-types";
 
 function Card({ img, name, description, price, weight }) {
-  const newPrice = getPrice(price);
-  const title = cutLine(name, 48);
-  const descriptor = cutLine(description, 138);
+  const newPrice = getPriceWithSpace(price);
+  const title = cutPartOfLine(name, 48);
+  const descriptor = cutPartOfLine(description, 138);
   return (
     <CardItem>
       <img
@@ -46,4 +47,13 @@ function Card({ img, name, description, price, weight }) {
     </CardItem>
   );
 }
+
+Card.propTypes = {
+  img: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string,
+  price: PropTypes.string,
+  weight: PropTypes.string,
+};
+
 export default Card;

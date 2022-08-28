@@ -16,9 +16,10 @@ function App() {
         </header>
         <ProductList>
           {products.map((key) => {
-            const { img, name, description, price, weight } = key;
+            const { id, img, name, description, price, weight } = key;
             return (
               <Card
+                key={+id}
                 img={img}
                 name={name}
                 description={description}
