@@ -4,10 +4,9 @@ export const ProductList = styled.div`
   flex-wrap: wrap;
   align-items: baseline;
   height: calc(100vh - 173px);
-  gap: 35px 13px;
+  gap: 35px 14px;
   overflow-x: auto;
-  padding-bottom: 67px;
-  padding-right: 5px;
+  padding-bottom: 66px;
 
   ::-webkit-scrollbar {
     width: 8px;
