@@ -2,10 +2,11 @@ import styled from "styled-components";
 export const ProductList = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   height: calc(100vh - 173px);
-  gap: 35px 13px;
+  gap: 35px 14px;
   overflow-x: auto;
-  padding-bottom: 67px;
+  padding-bottom: 66px;
 
   ::-webkit-scrollbar {
     width: 8px;
