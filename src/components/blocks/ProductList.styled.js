@@ -2,6 +2,7 @@ import styled from "styled-components";
 export const ProductList = styled.div`
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   height: calc(100vh - 173px);
   gap: 35px 13px;
   overflow-x: auto;
