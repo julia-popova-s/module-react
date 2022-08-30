@@ -13,7 +13,7 @@ function App() {
           <h1 className="header__title">наша продукция</h1>
           <BasketShop url={"images/basket.svg"} counter={3} sum={3500} />
         </header>
-        <div className="product-list">
+        <section className="product-list">
           {products.map((key) => {
             const { id, img, name, description, price, weight } = key;
             return (
@@ -27,7 +27,7 @@ function App() {
               />
             );
           })}
-        </div>
+        </section>
       </div>
     </div>
   );

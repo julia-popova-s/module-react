@@ -6,11 +6,13 @@ import CardForBasket from "./components/elements/сardForBasket";
 function App() {
   return (
     <div className="basket">
-      <div className="container">
-        <header className="header">
+      <header className="header">
+        <div className="container">
           <h2 className="header__title">корзина с выбранными товарами</h2>
-        </header>
-        <div className="basket-list">
+        </div>
+      </header>
+      <section className="basket-list">
+        <div className="container">
           <CardForBasket
             img={"4.png"}
             name={"Устрицы по рокфеллеровски"}
@@ -27,14 +29,18 @@ function App() {
             price={"1600"}
           />
         </div>
-        <div className="footer">
-          <div className="footer__block-amount">
-            <span className="footer__label">Заказ на сумму:</span>
-            <span className="footer__sum">6 220 ₽</span>
+      </section>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-block">
+            <div className="footer-block__label">
+              Заказ на сумму:
+              <span className="footer-block__sum">6 220 ₽</span>
+            </div>
+            <button className="footer-block__btn">Оформить заказ</button>
           </div>
-          <button className="footer__btn">Оформить заказ</button>
         </div>
-      </div>
+      </footer>
     </div>
   );
 }

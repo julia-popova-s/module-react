@@ -2,7 +2,7 @@
   color: $white;
   max-width: 1440px;
   margin: 0 auto;
-  border-bottom: 1px solid $color-basic;
+
 
   .container {
     max-width: 920px;
@@ -20,11 +20,12 @@
     }
   }
 
-  .basket {
+  .basket-list {
     border-bottom: 1px solid $color-basic;
+    width: 100%;
   }
 
-  .footer {
+  .footer-block {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -38,10 +39,10 @@
       line-height: 26px;
       text-transform: uppercase;
       color: #FFFFFF;
-      margin-right: 16px;
     }
 
     &__sum {
+      margin-left: 16px;
       font-weight: 400;
       font-size: 18px;
       line-height: 22px;
