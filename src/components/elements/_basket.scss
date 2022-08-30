@@ -17,12 +17,14 @@
       font-family: $font-family;
       text-align: center;
       padding-top: 53px;
+      margin-bottom: 22.5px;
     }
   }
 
   .basket-list {
     border-bottom: 1px solid $color-basic;
     width: 100%;
+    padding-bottom: 86.5px;
   }
 
   .footer-block {
@@ -50,13 +52,21 @@
     }
 
     &__btn {
+      font-family: $font-family;
+      box-sizing: border-box;
       width: 200px;
       height: 42px;
-      background-color: var(--color-basic);
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
       color: #131313;
+      background-color: $color-basic;
+      transition: all 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px rgb(255, 0, 0);
+        transition: all 0.3s ease;
+      }
     }
   }
 }

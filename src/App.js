@@ -37,7 +37,9 @@ function App() {
               Заказ на сумму:
               <span className="footer-block__sum">6 220 ₽</span>
             </div>
-            <button className="footer-block__btn">Оформить заказ</button>
+            <button className="footer-block__btn">
+              <span className="footer-block__btn-name">Оформить заказ</span>
+            </button>
           </div>
         </div>
       </footer>

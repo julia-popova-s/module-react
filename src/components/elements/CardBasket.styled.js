@@ -20,6 +20,10 @@ export const CardBasket = styled.div`
   .card__preview {
     max-width: 220px;
     min-height: 133px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     .card__img {
       max-width: 100%;
       max-height: 100%;
@@ -44,6 +48,7 @@ export const CardBasket = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      gap: 15px;
 
       .card__price {
         font-weight: 500;
@@ -54,7 +59,7 @@ export const CardBasket = styled.div`
       }
 
       .card__btn-add {
-        margin-left: 15px;
+        // margin-left: 15px;
         border-radius: 50%;
         border: 1px solid var(--color-basic);
         width: 30px;
