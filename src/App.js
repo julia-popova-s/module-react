@@ -1,18 +1,16 @@
 import "./components/styles/reset.css";
 import "./components/styles/variables.css";
 import "./index.scss";
-import { BasketList } from "./components/blocks/BasketList.styled.js";
 import CardForBasket from "./components/elements/сardForBasket";
-import ButtonPlaceAnOrder from "./components/ui/ButtonPlaceAnOrder";
 
 function App() {
   return (
-    <div className="basket-list">
+    <div className="basket">
       <div className="container">
         <header className="header">
           <h2 className="header__title">корзина с выбранными товарами</h2>
         </header>
-        <BasketList>
+        <div className="basket-list">
           <CardForBasket
             img={"4.png"}
             name={"Устрицы по рокфеллеровски"}
@@ -28,13 +26,13 @@ function App() {
             name={"Свиные ребрышки на гриле с зеленью"}
             price={"1600"}
           />
-        </BasketList>
+        </div>
         <div className="footer">
           <div className="footer__block-amount">
             <span className="footer__label">Заказ на сумму:</span>
-            <span className="footer__sum">6 220 ₽</span>            
+            <span className="footer__sum">6 220 ₽</span>
           </div>
-          <ButtonPlaceAnOrder name={"Оформить заказ"} />
+          <button className="footer__btn">Оформить заказ</button>
         </div>
       </div>
     </div>
