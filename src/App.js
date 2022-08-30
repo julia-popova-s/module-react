@@ -7,10 +7,10 @@ import ButtonPlaceAnOrder from "./components/ui/ButtonPlaceAnOrder";
 
 function App() {
   return (
-    <div className="products">
+    <div className="basket-list">
       <div className="container">
         <header className="header">
-          <h1 className="header__title">корзина с выбранными товарами</h1>
+          <h2 className="header__title">корзина с выбранными товарами</h2>
         </header>
         <BasketList>
           <CardForBasket
@@ -32,9 +32,9 @@ function App() {
         <div className="footer">
           <div className="footer__block-amount">
             <span className="footer__label">Заказ на сумму:</span>
-            <span className="footer__sum">6 220 ₽</span>
-            <ButtonPlaceAnOrder name={"Оформить заказ"} />
+            <span className="footer__sum">6 220 ₽</span>            
           </div>
+          <ButtonPlaceAnOrder name={"Оформить заказ"} />
         </div>
       </div>
     </div>

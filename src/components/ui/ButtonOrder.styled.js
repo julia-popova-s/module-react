@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const ButtonOrder = styled.span`
+export const ButtonOrder = styled.div`
   .btn-order__item {
     width: 200px;
     height: 42px;
@@ -8,5 +8,4 @@ export const ButtonOrder = styled.span`
     font-size: 14px;
     line-height: 17px;
     color: #131313;
-  }
 `;

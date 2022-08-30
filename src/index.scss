@@ -4,4 +4,6 @@ code {
 }
 
 @import "./components/styles/variables";
-@import "./components/styles/style";
+@import "./components/styles/base";
+@import "./components/blocks/productList";
+@import "./components/blocks/basketList";

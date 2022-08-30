@@ -8,7 +8,7 @@ import { products } from "./menuList";
 
 function App() {
   return (
-    <div className="products">
+    <div className="product-list">
       <div className="container">
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
