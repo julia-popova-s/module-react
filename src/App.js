@@ -1,7 +1,8 @@
-import "./components/styles/reset.css";
-import "./components/styles/variables.css";
+import "./components/app/styles/reset.css";
+import "./components/app/styles/variables.css";
 import "./index.scss";
-import CardForBasket from "./components/elements/сardForBasket";
+import CardForBasket from "./components/elements/cardBasket/сardForBasket";
+import OrderAmount from "./components/elements/orderAmount/orderAmount";
 
 function App() {
   return (
@@ -33,12 +34,9 @@ function App() {
       <footer className="footer">
         <div className="container">
           <div className="footer-block">
-            <div className="footer-block__label">
-              Заказ на сумму:
-              <span className="footer-block__sum">6 220 ₽</span>
-            </div>
-            <button className="footer-block__btn">
-              <span className="footer-block__btn-name">Оформить заказ</span>
+            <OrderAmount sum={"6220"} />
+            <button type="submit" className="footer-block__btn">
+              Оформить заказ
             </button>
           </div>
         </div>

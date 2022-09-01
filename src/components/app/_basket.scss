@@ -14,7 +14,6 @@
     &__title {
       @include setFontSize(700, 31px, 38px);
       text-transform: uppercase;
-      font-family: $font-family;
       text-align: center;
       padding-top: 53px;
       margin-bottom: 22.5px;
@@ -35,37 +34,19 @@
     padding-top: 20px;
     margin-bottom: 27px;
 
-    &__label {
-      font-weight: 400;
-      font-size: 21px;
-      line-height: 26px;
-      text-transform: uppercase;
-      color: #FFFFFF;
-    }
-
-    &__sum {
-      margin-left: 16px;
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 22px;
-      color: #D58C51;
-    }
-
     &__btn {
       font-family: $font-family;
       box-sizing: border-box;
+      @include setFontSize(400, 14px, 17px);
       width: 200px;
       height: 42px;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
       color: #131313;
       background-color: $color-basic;
-      transition: all 0.3s ease;
+      transition: box-shadow 0.3s ease;
 
       &:hover {
         box-shadow: 0 0 10px rgb(255, 0, 0);
-        transition: all 0.3s ease;
+        transition: box-shadow 0.3s ease;
       }
     }
   }

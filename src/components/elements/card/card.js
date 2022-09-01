@@ -23,7 +23,7 @@ function Card({ img, name, description, price, weight }) {
           <div className="card__price">
             {newPrice} ₽ / <span className="card__weight">{weight + "."}</span>
           </div>
-          <button className="card__btn-add">
+          <button type="button" className="card__btn-add">
             <svg
               className="card__btn-plus"
               width="14"

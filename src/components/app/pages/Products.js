@@ -2,7 +2,7 @@ import "./components/styles/reset.css";
 import "./components/styles/variables.css";
 import "./index.scss";
 import Card from "./components/elements/card";
-import BasketShop from "./components/ui/basket.js";
+import BasketShopMini from "./components/ui/basket.js.js";
 import { products } from "./menuList";
 
 function App() {
@@ -11,14 +11,14 @@ function App() {
       <div className="container">
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
-          <BasketShop url={"images/basket.svg"} counter={3} sum={3500} />
+          <BasketShopMini url={"images/basket.svg"} counter={3} sum={3500} />
         </header>
         <section className="product-list">
           {products.map((key) => {
             const { id, img, name, description, price, weight } = key;
             return (
               <Card
-                key={+id}
+                key={id}
                 img={img}
                 name={name}
                 description={description}

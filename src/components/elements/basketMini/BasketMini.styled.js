@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const Basket = styled.div`
+export const BasketMini = styled.div`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
