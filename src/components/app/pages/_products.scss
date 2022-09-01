@@ -1,4 +1,5 @@
 .products {
+  font-family: $font-family;
   color: $white;
   max-width: 1440px;
   margin: 0 auto;
@@ -15,7 +16,6 @@
     align-items: center;
     margin-bottom: 75px;
     padding-top: 48px;
-    font-family: $font-family;
 
     &__title {
       text-transform: uppercase;
@@ -26,7 +26,7 @@
   .product-list {
     display: flex;
     flex-wrap: wrap;
-    align-items: baseline;
+    align-items: flex-start;
     height: calc(100vh - 173px);
     gap: 35px 14px;
     overflow-x: auto;

@@ -11,7 +11,11 @@ function App() {
       <div className="container">
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
-          <BasketShopMini url={"images/basket.svg"} counter={3} sum={3500} />
+          <BasketShopMini
+            url={"images/products/basket.svg"}
+            counter={3}
+            sum={3500}
+          />
         </header>
         <section className="product-list">
           {products.map((key) => {

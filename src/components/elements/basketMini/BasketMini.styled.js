@@ -6,7 +6,7 @@ export const BasketMini = styled.div`
   align-items: center;
   justify-content: right;
 
-  .basketshop__text {
+  .basket-mini__text {
     font-weight: 500;
     font-size: 17px;
     line-height: 21px;

@@ -6,11 +6,11 @@ function BasketShopMini({ url, counter, sum }) {
   const newSum = getPriceWithSpace(sum);
   return (
     <BasketMini>
-      <div className="basketshop__text">
-        <p className="basketshop__text-item">{counter} товара</p>
-        <p className="basketshop__text-item"> на сумму {newSum} ₽</p>
+      <div className="basket-mini__text">
+        <p className="basket-mini__text-item">{counter} товара</p>
+        <p className="basket-mini__text-item"> на сумму {newSum} ₽</p>
       </div>
-      <img src={url} className="basketshop__icon" alt="Корзина" />
+      <img src={url} className="basket-mini__icon" alt="Корзина" />
     </BasketMini>
   );
 }

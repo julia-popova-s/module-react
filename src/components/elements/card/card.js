@@ -12,7 +12,7 @@ function Card({ img, name, description, price, weight }) {
       <div className="card__preview">
         <img
           className="card__img"
-          src={"/images/" + img}
+          src={"/images/products/" + img}
           alt="Фотография блюда"
         />
       </div>
