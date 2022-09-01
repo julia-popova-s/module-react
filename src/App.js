@@ -1,35 +1,46 @@
-import "./components/styles/reset.css";
-import "./components/styles/variables.css";
+import "./components/app/styles/reset.css";
+import "./components/app/styles/variables.css";
 import "./index.scss";
-import { ProductList } from "./components/blocks/ProductList.styled";
-import Card from "./components/elements/card";
-import BasketShop from "./components/ui/basket.js";
-import { products } from "./menuList";
+import CardForBasket from "./components/elements/cardBasket/сardForBasket";
+import OrderAmount from "./components/elements/orderAmount/orderAmount";
 
 function App() {
   return (
-    <div className="products">
-      <div className="container">
-        <header className="header">
-          <h1 className="header__title">наша продукция</h1>
-          <BasketShop url={"images/basket.svg"} counter={3} sum={3500} />
-        </header>
-        <ProductList>
-          {products.map((key) => {
-            const { id, img, name, description, price, weight } = key;
-            return (
-              <Card
-                key={+id}
-                img={img}
-                name={name}
-                description={description}
-                price={price}
-                weight={weight}
-              />
-            );
-          })}
-        </ProductList>
-      </div>
+    <div className="basket">
+      <header className="header">
+        <div className="container">
+          <h2 className="header__title">корзина с выбранными товарами</h2>
+        </div>
+      </header>
+      <section className="basket-list">
+        <div className="container">
+          <CardForBasket
+            img={"4.png"}
+            name={"Устрицы по рокфеллеровски"}
+            price={"2700"}
+          />
+          <CardForBasket
+            img={"3.png"}
+            name={"Креветки по-королевски в лимонном соке"}
+            price={"1820"}
+          />
+          <CardForBasket
+            img={"2.png"}
+            name={"Свиные ребрышки на гриле с зеленью"}
+            price={"1600"}
+          />
+        </div>
+      </section>
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-block">
+            <OrderAmount sum={"6220"} />
+            <button type="submit" className="footer-block__btn">
+              Оформить заказ
+            </button>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

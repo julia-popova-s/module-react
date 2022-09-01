@@ -1,6 +1,6 @@
 const cutPartOfLine = (text, count) => {
-  if (text.length > count + 1) {
-    return text.slice(0, count) + "...";
+  if (text.length > count) {
+    return `${text.slice(0, count - 1)}...`;
   }
   return text;
 };

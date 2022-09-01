@@ -1,0 +1,53 @@
+.basket {
+  color: $white;
+  max-width: 1440px;
+  margin: 0 auto;
+
+
+  .container {
+    max-width: 920px;
+    padding: 0 30px;
+    margin: 0 auto;
+  }
+
+  .header {
+    &__title {
+      @include setFontSize(700, 31px, 38px);
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: 53px;
+      margin-bottom: 22.5px;
+    }
+  }
+
+  .basket-list {
+    border-bottom: 1px solid $color-basic;
+    width: 100%;
+    padding-bottom: 86.5px;
+  }
+
+  .footer-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-bottom: 27px;
+
+    &__btn {
+      font-family: $font-family;
+      box-sizing: border-box;
+      @include setFontSize(400, 14px, 17px);
+      width: 200px;
+      height: 42px;
+      color: #131313;
+      background-color: $color-basic;
+      transition: box-shadow 0.3s ease;
+
+      &:hover {
+        box-shadow: 0 0 10px rgb(255, 0, 0);
+        transition: box-shadow 0.3s ease;
+      }
+    }
+  }
+}

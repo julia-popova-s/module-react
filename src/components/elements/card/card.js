@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 
 function Card({ img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
-  const title = cutPartOfLine(name, 47);
-  const descriptor = cutPartOfLine(description, 113);
+  const title = cutPartOfLine(name, 51);
+  const descriptor = cutPartOfLine(description, 127);
   return (
     <CardItem>
       <div className="card__preview">
         <img
           className="card__img"
-          src={"/images/" + img}
+          src={`/images/products/${img}`}
           alt="Фотография блюда"
         />
       </div>
@@ -21,9 +21,10 @@ function Card({ img, name, description, price, weight }) {
         <p className="card__description">{descriptor}</p>
         <div className="card__block-price">
           <div className="card__price">
-            {newPrice} ₽ / <span className="card__weight">{weight + "."}</span>
+            {`${newPrice} ₽`} {"/ "}
+            <span className="card__weight">{`${weight}.`}</span>
           </div>
-          <button className="card__btn-add">
+          <button type="button" className="card__btn-add">
             <svg
               className="card__btn-plus"
               width="14"

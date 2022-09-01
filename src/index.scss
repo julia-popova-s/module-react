@@ -3,5 +3,6 @@ code {
     monospace;
 }
 
-@import "./components/styles/variables";
-@import "./components/styles/style";
+@import "./components/app/styles/variables";
+@import "./components/app/styles/base";
+@import "./components/app/basket";
