@@ -8,7 +8,7 @@ function BasketShopMini({ url, counter, sum }) {
     <BasketMini>
       <div className="basket-mini__text">
         <p className="basket-mini__text-item">{counter} товара</p>
-        <p className="basket-mini__text-item"> на сумму {newSum} ₽</p>
+        <p className="basket-mini__text-item"> на сумму {`${newSum} ₽`}</p>
       </div>
       <img src={url} className="basket-mini__icon" alt="Корзина" />
     </BasketMini>

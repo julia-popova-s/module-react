@@ -11,14 +11,14 @@ function CardForBasket({ img, name, price }) {
       <div className="card__preview">
         <img
           className="card__img"
-          src={"./images/basket/" + img}
+          src={`./images/basket/${img}`}
           alt="Фотография блюда"
         />
       </div>
       <div className="card__text">
         <div className="card__title">{title}</div>
         <div className="card__block-price">
-          <span className="card__price">{newPrice} ₽</span>
+          <span className="card__price">{`${newPrice} ₽`}</span>
           <button type="button" className="card__btn-add">
             <svg
               className="card__btn-minus"

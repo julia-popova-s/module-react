@@ -12,7 +12,7 @@ function App() {
         <header className="header">
           <h1 className="header__title">наша продукция</h1>
           <BasketShopMini
-            url={"images/products/basket.svg"}
+            url={"/images/products/basket.svg"}
             counter={3}
             sum={3500}
           />
