@@ -1,7 +1,7 @@
 import "./index.scss";
 import CardForBasket from "../../elements/cardBasket";
 import OrderAmount from "../../elements/orderAmount";
-import ButtonOrder from "../../elements/buttonOrder/";
+import ButtonForOrder from "../../ui/buttonForOrder";
 
 function BasketPage() {
   return (
@@ -34,11 +34,7 @@ function BasketPage() {
         <div className="container">
           <div className="footer-block">
             <OrderAmount sum={"6220"} />
-            <ButtonOrder
-              type={"submit"}
-              name={"Оформить заказ"}
-              className={"footer-block__btn"}
-            />
+            <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
           </div>
         </div>
       </footer>

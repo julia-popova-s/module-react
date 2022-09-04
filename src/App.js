@@ -1,7 +1,7 @@
 import "./components/pages/styles/reset.css";
 import "./components/pages/styles/variables.css";
-import BasketPage from "./components/pages/BasketPage/BasketPage";
-import ProductsPage from "./components/pages/ProductsPage/ProductsPage";
+import BasketPage from "./components/pages/basketPage";
+import ProductsPage from "./components/pages/productsPage";
 
 function App() {
   return (
