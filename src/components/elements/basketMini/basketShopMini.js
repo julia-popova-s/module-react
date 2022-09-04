@@ -1,5 +1,5 @@
 import { BasketMini } from "./BasketMini.styled";
-import getPriceWithSpace from "../../base/getPriceWithSpace.js";
+import getPriceWithSpace from "../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
 
 function BasketShopMini({ url, counter, sum }) {

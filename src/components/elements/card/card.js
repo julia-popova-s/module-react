@@ -1,14 +1,15 @@
 import { CardItem } from "./CardItem.styled.js";
-import getPriceWithSpace from "../base/getPriceWithSpace.js";
-import cutPartOfLine from "../base/cutPartOfLine.js";
+import getPriceWithSpace from "../utils/getPriceWithSpace.js";
+import cutPartOfLine from "../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 
 function Card({ img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
+  const margin = name.length > 24 ? true : false;
   return (
-    <CardItem>
+    <CardItem margin={margin}>
       <div className="card__preview">
         <img
           className="card__img"

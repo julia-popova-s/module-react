@@ -1,6 +1,6 @@
 import { CardBasket } from "./CardBasket.styled.js";
-import getPriceWithSpace from "../base/getPriceWithSpace.js";
-import cutPartOfLine from "../base/cutPartOfLine.js";
+import getPriceWithSpace from "../utils/getPriceWithSpace.js";
+import cutPartOfLine from "../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 
 function CardForBasket({ img, name, price }) {

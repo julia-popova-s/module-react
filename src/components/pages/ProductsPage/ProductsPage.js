@@ -1,11 +1,9 @@
-import "./components/styles/reset.css";
-import "./components/styles/variables.css";
 import "./index.scss";
-import Card from "./components/elements/card";
-import BasketShopMini from "./components/ui/basket.js.js";
+import Card from "../../elements/card";
+import BasketShopMini from "../../elements/basketMini";
 import { products } from "./menuList";
 
-function App() {
+function ProductsPage() {
   return (
     <div className="products">
       <div className="container">
@@ -37,4 +35,4 @@ function App() {
   );
 }
 
-export default App;
+export default ProductsPage;
