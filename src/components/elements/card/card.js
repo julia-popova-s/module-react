@@ -10,6 +10,7 @@ function Card({
   price,
   weight,
   onGetQuantityOfProducts,
+  onGetAmountOfOrder,
 }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
@@ -33,7 +34,10 @@ function Card({
             <span className="card__weight">{`${weight}.`}</span>
           </div>
           <button
-            onClick={onGetQuantityOfProducts}
+            onClick={() => {
+              onGetQuantityOfProducts();
+              onGetAmountOfOrder();
+            }}
             type="button"
             className="card__btn-add"
           >

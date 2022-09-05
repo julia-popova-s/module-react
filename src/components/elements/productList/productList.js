@@ -1,6 +1,10 @@
 import Card from "../card";
 
-function ProductList({ products, onGetQuantityOfProducts }) {
+function ProductList({
+  products,
+  onGetQuantityOfProducts,
+  onGetAmountOfOrder,
+}) {
   return (
     <section className="product-list">
       {products.map((key) => {
@@ -13,7 +17,10 @@ function ProductList({ products, onGetQuantityOfProducts }) {
             description={description}
             price={price}
             weight={weight}
-            onGetQuantityOfProducts={() => onGetQuantityOfProducts(id)}
+            onGetQuantityOfProducts={() => onGetQuantityOfProducts()}
+            onGetAmountOfOrder={() =>
+              onGetAmountOfOrder(+price.replace(" ", ""))
+            }
           />
         );
       })}

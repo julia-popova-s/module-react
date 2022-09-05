@@ -7,6 +7,7 @@ import ProductList from "../../elements/productList/";
 
 function ProductsPage() {
   const [count, setCountProduct] = useState(0);
+  const [sum, setAmountOrder] = useState(0);
 
   return (
     <div className="products">
@@ -16,12 +17,13 @@ function ProductsPage() {
           <BasketShopMini
             url={"/images/products/basket.svg"}
             counter={count}
-            sum={0}
+            sum={sum}
           />
         </header>
         <ProductList
           products={products}
-          onGetQuantityOfProducts={(id) => setCountProduct(count + 1)}
+          onGetQuantityOfProducts={() => setCountProduct(count + 1)}
+          onGetAmountOfOrder={(price) => setAmountOrder(sum + price)}
         />
       </div>
     </div>
