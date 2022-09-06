@@ -22,29 +22,4 @@
       @include setFontSize(700, 31px, 38px);
     }
   }
-
-  .product-list {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    height: calc(100vh - 173px);
-    gap: 35px 14px;
-    overflow-x: auto;
-    padding-bottom: 66px;
-
-    &::-webkit-scrollbar {
-      width: 8px;
-    }
-
-    &::-webkit-scrollbar-track {
-      background: $color-basic;
-      border-radius: 20px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: $color-back;
-      border-radius: 20px;
-      border: 2px solid #212121;
-    }
-  }
 }

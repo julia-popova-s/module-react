@@ -1,4 +1,5 @@
 import Card from "../card";
+import ProductListWrap from "./ProductListWrap.styled.js";
 
 function ProductList({
   products,
@@ -6,7 +7,7 @@ function ProductList({
   onGetAmountOfOrder,
 }) {
   return (
-    <section className="product-list">
+    <ProductListWrap>
       {products.map((key) => {
         const { id, img, name, description, price, weight } = key;
         return (
@@ -24,7 +25,7 @@ function ProductList({
           />
         );
       })}
-    </section>
+    </ProductListWrap>
   );
 }
 export default ProductList;
