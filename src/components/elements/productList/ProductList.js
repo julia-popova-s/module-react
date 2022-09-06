@@ -1,12 +1,7 @@
 import Card from "../card";
 import ProductListWrap from "./ProductListWrap.styled.js";
 
-function ProductList({
-  products,
-  onGetQuantityOfProducts,
-  onGetAmountOfOrder,
-  onGetCard,
-}) {
+function ProductList({ products, onGetCard }) {
   return (
     <ProductListWrap>
       {products.map((key) => {
@@ -19,10 +14,6 @@ function ProductList({
             description={description}
             price={price}
             weight={weight}
-            onGetQuantityOfProducts={() => onGetQuantityOfProducts()}
-            onGetAmountOfOrder={() =>
-              onGetAmountOfOrder(+price.replace(" ", ""))
-            }
             onGetCard={() => onGetCard(id)}
           />
         );

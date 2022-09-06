@@ -35,11 +35,7 @@ function Card({
             <span className="card__weight">{`${weight}.`}</span>
           </div>
           <button
-            onClick={() => {
-              onGetQuantityOfProducts();
-              onGetAmountOfOrder();
-              onGetCard();
-            }}
+            onClick={() => onGetCard()}
             type="button"
             className="card__btn-add"
           >

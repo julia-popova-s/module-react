@@ -1,14 +1,14 @@
 import "./index.scss";
 import { products } from "./menuList";
 import BasketShopMini from "../../elements/basketMini";
-import { useState } from "react";
-
+import { useContext } from "react";
+import { Context } from "../../../App";
 import ProductList from "../../elements/productList";
 
 function ProductsPage() {
-  const [count, setCountProduct] = useState(0);
-  const [sum, setAmountOrder] = useState(0);
-  const [data, setData] = useState([]);
+  const { data, setData, sumСalculation } = useContext(Context);
+
+  const sum = sumСalculation();
 
   return (
     <div className="products">
@@ -17,21 +17,25 @@ function ProductsPage() {
           <h1 className="header__title">наша продукция</h1>
           <BasketShopMini
             url={"/images/products/basket.svg"}
-            counter={count}
+            counter={data.length}
             sum={sum}
           />
         </header>
         <ProductList
           products={products}
-          onGetQuantityOfProducts={() => setCountProduct(count + 1)}
-          onGetAmountOfOrder={(price) => setAmountOrder(sum + price)}
           onGetCard={(id) =>
             setData(() => {
               const index = products.findIndex((elem) => elem.id === id);
-              const element = products[index];
-              const newListshop = [...data, element];
-              console.log(newListshop);
-              return [...data, element];
+
+              const element = { ...products[index] };
+              element.count = 1;
+              if (data.findIndex((elem) => elem.id === id) !== -1) {
+                element.count++;
+                console.log(element.count);
+                return data;
+              } else {
+                return [...data, element];
+              }
             })
           }
         />
