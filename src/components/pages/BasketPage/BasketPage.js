@@ -37,8 +37,8 @@ function BasketPage() {
   const [data, deleteItem] = useState(products);
   const [amount, setAmount] = useState(0);
   const allAmount = [];
-  const sumСalculation = (price) => {
-    const index = data.findIndex((elem) => +elem.price === price);
+  const sumСalculation = (id) => {
+    const index = data.findIndex((elem) => elem.id === id);
     allAmount.push(+data[index].price);
     return allAmount.reduce((sum, elem) => sum + elem, 0);
   };
@@ -61,9 +61,7 @@ function BasketPage() {
             return newListProducts;
           })
         }
-        onGetAmountOfOrder={(price) =>
-          setAmount(sumСalculation(price) + amount)
-        }
+        onGetAmountOfOrder={(id) => setAmount(sumСalculation(id) + amount)}
       />
       <footer className="footer">
         <div className="container">

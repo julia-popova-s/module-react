@@ -13,7 +13,7 @@ function BasketList({ products, onDelete, onGetAmountOfOrder }) {
               price={price}
               onDelete={() => onDelete(id)}
               onGetAmountOfOrder={() => {
-                onGetAmountOfOrder(+price.replace(" ", ""));
+                onGetAmountOfOrder(id);
               }}
             />
           );
