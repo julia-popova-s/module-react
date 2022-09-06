@@ -12,6 +12,6 @@ function OrderAmount({ sum }) {
   );
 }
 OrderAmount.propTypes = {
-  sum: PropTypes.string,
+  sum: PropTypes.number,
 };
 export default OrderAmount;

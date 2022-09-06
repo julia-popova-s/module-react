@@ -35,6 +35,13 @@ const products = [
 
 function BasketPage() {
   const [data, deleteItem] = useState(products);
+  const [amount, setAmount] = useState(0);
+  const allAmount = [];
+  const sumСalculation = (price) => {
+    const index = data.findIndex((elem) => +elem.price === price);
+    allAmount.push(+data[index].price);
+    return allAmount.reduce((sum, elem) => sum + elem, 0);
+  };
   return (
     <div className="basket">
       <header className="header">
@@ -54,11 +61,14 @@ function BasketPage() {
             return newListProducts;
           })
         }
+        onGetAmountOfOrder={(price) =>
+          setAmount(sumСalculation(price) + amount)
+        }
       />
       <footer className="footer">
         <div className="container">
           <div className="footer-block">
-            <OrderAmount sum={"6220"} />
+            <OrderAmount sum={amount} />
             <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
           </div>
         </div>

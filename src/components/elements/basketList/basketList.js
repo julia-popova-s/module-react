@@ -1,5 +1,5 @@
 import CardForBasket from "../cardBasket";
-function BasketList({ products, onDelete }) {
+function BasketList({ products, onDelete, onGetAmountOfOrder }) {
   return (
     <section className="basket-list">
       <div className="container">
@@ -12,6 +12,9 @@ function BasketList({ products, onDelete }) {
               name={name}
               price={price}
               onDelete={() => onDelete(id)}
+              onGetAmountOfOrder={() => {
+                onGetAmountOfOrder(+price.replace(" ", ""));
+              }}
             />
           );
         })}
