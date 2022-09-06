@@ -1,0 +1,12 @@
+$font-family: "Montserrat", "Arial", sans-serif;
+$white: #FEFEFE;
+$black: #000000;
+$color-back: #161516;
+$color-basic: #d58c51;
+
+
+@mixin setFontSize($weight, $size, $line-height) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+}

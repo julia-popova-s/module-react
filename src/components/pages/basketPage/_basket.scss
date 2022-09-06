@@ -1,0 +1,32 @@
+.basket {
+  color: $white;
+  max-width: 1440px;
+  margin: 0 auto;
+
+
+  .container {
+    max-width: 920px;
+    padding: 0 30px;
+    margin: 0 auto;
+  }
+
+  .header {
+    &__title {
+      @include setFontSize(700, 31px, 38px);
+      text-transform: uppercase;
+      text-align: center;
+      padding-top: 53px;
+      margin-bottom: 22.5px;
+    }
+  }
+
+
+  .footer-block {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    margin-bottom: 27px;
+  }
+}
