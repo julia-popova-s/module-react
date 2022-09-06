@@ -1,14 +1,23 @@
 import { CardItem } from "./CardItem.styled.js";
-import getPriceWithSpace from "../base/getPriceWithSpace.js";
-import cutPartOfLine from "../base/cutPartOfLine.js";
+import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
+import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 
-function Card({ img, name, description, price, weight }) {
+function Card({
+  img,
+  name,
+  description,
+  price,
+  weight,
+  onGetQuantityOfProducts,
+  onGetAmountOfOrder,
+}) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
+  const margin = name.length > 24 ? true : false;
   return (
-    <CardItem>
+    <CardItem margin={margin}>
       <div className="card__preview">
         <img
           className="card__img"
@@ -24,7 +33,14 @@ function Card({ img, name, description, price, weight }) {
             {`${newPrice} ₽`} {"/ "}
             <span className="card__weight">{`${weight}.`}</span>
           </div>
-          <button type="button" className="card__btn-add">
+          <button
+            onClick={() => {
+              onGetQuantityOfProducts();
+              onGetAmountOfOrder();
+            }}
+            type="button"
+            className="card__btn-add"
+          >
             <svg
               className="card__btn-plus"
               width="14"

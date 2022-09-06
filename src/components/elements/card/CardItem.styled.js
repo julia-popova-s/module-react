@@ -34,7 +34,7 @@ export const CardItem = styled.div`
     padding: 0 27px 0 21px;
 
     .card__title {
-      margin-bottom: 9px;
+      margin-bottom: ${({ margin }) => (margin ? "9px" : "13px")};
       font-weight: 500;
       font-size: 17px;
       line-height: 21px;
