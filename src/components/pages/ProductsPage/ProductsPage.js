@@ -3,7 +3,7 @@ import { products } from "./menuList";
 import BasketShopMini from "../../elements/basketMini";
 import { useState } from "react";
 
-import ProductList from "../../elements/productList/";
+import ProductList from "../../elements/productList";
 
 function ProductsPage() {
   const [count, setCountProduct] = useState(0);
