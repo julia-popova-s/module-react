@@ -5,6 +5,7 @@ function ProductList({
   products,
   onGetQuantityOfProducts,
   onGetAmountOfOrder,
+  onGetCard,
 }) {
   return (
     <ProductListWrap>
@@ -22,6 +23,7 @@ function ProductList({
             onGetAmountOfOrder={() =>
               onGetAmountOfOrder(+price.replace(" ", ""))
             }
+            onGetCard={() => onGetCard(id)}
           />
         );
       })}

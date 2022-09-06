@@ -8,6 +8,7 @@ import ProductList from "../../elements/productList";
 function ProductsPage() {
   const [count, setCountProduct] = useState(0);
   const [sum, setAmountOrder] = useState(0);
+  const [data, setData] = useState([]);
 
   return (
     <div className="products">
@@ -24,6 +25,15 @@ function ProductsPage() {
           products={products}
           onGetQuantityOfProducts={() => setCountProduct(count + 1)}
           onGetAmountOfOrder={(price) => setAmountOrder(sum + price)}
+          onGetCard={(id) =>
+            setData(() => {
+              const index = products.findIndex((elem) => elem.id === id);
+              const element = products[index];
+              const newListshop = [...data, element];
+              console.log(newListshop);
+              return [...data, element];
+            })
+          }
         />
       </div>
     </div>

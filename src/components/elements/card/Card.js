@@ -11,6 +11,7 @@ function Card({
   weight,
   onGetQuantityOfProducts,
   onGetAmountOfOrder,
+  onGetCard,
 }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
@@ -37,6 +38,7 @@ function Card({
             onClick={() => {
               onGetQuantityOfProducts();
               onGetAmountOfOrder();
+              onGetCard();
             }}
             type="button"
             className="card__btn-add"
