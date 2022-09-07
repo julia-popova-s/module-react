@@ -2,13 +2,15 @@ import { BasketMini } from "./BasketMini.styled";
 import getPriceWithSpace from "../../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import getWordProduct from "../../utils/getWordProduct";
 
 function BasketShopMini({ url, counter, sum }) {
   const newSum = getPriceWithSpace(sum);
+  const word = getWordProduct(counter);
   return (
     <BasketMini>
       <div className="basket-mini__text">
-        <p className="basket-mini__text-item">{counter} товара</p>
+        <p className="basket-mini__text-item">{`${counter} ${word}`}</p>
         <p className="basket-mini__text-item"> на сумму {`${newSum} ₽`}</p>
       </div>
       <Link to="/shoplist">
