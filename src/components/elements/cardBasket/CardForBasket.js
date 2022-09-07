@@ -3,7 +3,7 @@ import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 
-function CardForBasket({ img, name, price, onDelete }) {
+function CardForBasket({ img, name, price, onDelete, quantity }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 47);
 
@@ -20,6 +20,7 @@ function CardForBasket({ img, name, price, onDelete }) {
         <div className="card__title">{title}</div>
         <div className="card__block-price">
           <span className="card__price">{`${newPrice} ₽`}</span>
+          <span>{`${quantity} шт.`}</span>
           <button onClick={onDelete} type="button" className="card__btn-add">
             <svg
               className="card__btn-minus"
@@ -56,7 +57,7 @@ function CardForBasket({ img, name, price, onDelete }) {
 CardForBasket.propTypes = {
   img: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
 };
 
 export default CardForBasket;

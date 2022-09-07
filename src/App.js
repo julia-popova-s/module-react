@@ -6,17 +6,17 @@ import ProductsPage from "./components/pages/productsPage";
 export const Context = createContext();
 function App() {
   const [data, setData] = useState([]);
-  console.log(data);
   const sumСalculation = () => {
     const allAmount = [];
-    data.forEach((elem) => allAmount.push(+elem.price));
+    data.forEach((elem) => allAmount.push(+elem.price * elem.quantity));
     return allAmount.reduce((sum, el) => sum + el, 0);
   };
-
+  const totalQuantity = data.reduce((acc, elem) => elem.quantity + acc, 0);
   const context = {
     data,
     setData,
     sumСalculation,
+    totalQuantity,
   };
   return (
     <Context.Provider value={context}>

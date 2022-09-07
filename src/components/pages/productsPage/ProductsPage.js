@@ -6,8 +6,9 @@ import { Context } from "../../../App";
 import ProductList from "../../elements/productList";
 
 function ProductsPage() {
-  const { data, setData, sumСalculation } = useContext(Context);
+  const { data, setData, sumСalculation, totalQuantity } = useContext(Context);
   const sum = sumСalculation();
+
   return (
     <div className="products">
       <div className="container">
@@ -15,7 +16,7 @@ function ProductsPage() {
           <h1 className="header__title">наша продукция</h1>
           <BasketShopMini
             url={"/images/products/basket.svg"}
-            counter={data.length}
+            counter={totalQuantity}
             sum={sum}
           />
         </header>
