@@ -4,7 +4,7 @@ import React, { createContext, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import BasketPage from "./components/pages/basketPage";
 import ProductsPage from "./components/pages/productsPage";
-import NotFound from "./components/pages/NotFound";
+import NotFound from "./components/pages/notFoundPage/";
 export const Context = createContext();
 function App() {
   const [data, setData] = useState([]);

@@ -21,11 +21,9 @@ function BasketPage() {
         onDelete={(id) =>
           setData(() => {
             const index = data.findIndex((elem) => elem.id === id);
-            const newListProducts = [
-              ...data.slice(0, index),
-              ...data.slice(index + 1),
-            ];
-            return newListProducts;
+            if (index !== -1) {
+              return [...data.slice(0, index), ...data.slice(index + 1)];
+            }
           })
         }
       />
