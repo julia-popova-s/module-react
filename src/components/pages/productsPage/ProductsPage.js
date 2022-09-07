@@ -8,7 +8,6 @@ import ProductList from "../../elements/productList";
 function ProductsPage() {
   const { data, setData, sumСalculation } = useContext(Context);
   const sum = sumСalculation();
-  data.forEach((elem) => (elem.count = 0));
   return (
     <div className="products">
       <div className="container">
@@ -24,9 +23,22 @@ function ProductsPage() {
           products={products}
           onGetCard={(id) =>
             setData(() => {
+              const j = data.findIndex((elem) => elem.id === id);
               const index = products.findIndex((elem) => elem.id === id);
-              const element = products[index];
-              return [...data, element];
+
+              if (j === -1) {
+                return data.concat({
+                  ...products[index],
+                  quantity: 1,
+                });
+              } else {
+                const updateData = [...data];
+                updateData[j] = {
+                  ...updateData[j],
+                  quantity: updateData[j].quantity + 1,
+                };
+                return updateData;
+              }
             })
           }
         />
