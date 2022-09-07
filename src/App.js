@@ -1,8 +1,10 @@
 import "./components/pages/styles/reset.css";
 import "./components/pages/styles/variables.css";
 import React, { createContext, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import BasketPage from "./components/pages/basketPage";
 import ProductsPage from "./components/pages/productsPage";
+import NotFound from "./components/pages/NotFound";
 export const Context = createContext();
 function App() {
   const [data, setData] = useState([]);
@@ -19,10 +21,15 @@ function App() {
     totalQuantity,
   };
   return (
-    <Context.Provider value={context}>
-      <ProductsPage />
-      <BasketPage />
-    </Context.Provider>
+    <>
+      <Context.Provider value={context}>
+        <Routes>
+          <Route path="/" element={<ProductsPage />} />
+          <Route path="/shoplist" element={<BasketPage />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </Context.Provider>
+    </>
   );
 }
 

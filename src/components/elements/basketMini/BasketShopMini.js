@@ -1,6 +1,7 @@
 import { BasketMini } from "./BasketMini.styled";
 import getPriceWithSpace from "../../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function BasketShopMini({ url, counter, sum }) {
   const newSum = getPriceWithSpace(sum);
@@ -10,7 +11,9 @@ function BasketShopMini({ url, counter, sum }) {
         <p className="basket-mini__text-item">{counter} товара</p>
         <p className="basket-mini__text-item"> на сумму {`${newSum} ₽`}</p>
       </div>
-      <img src={url} className="basket-mini__icon" alt="Корзина" />
+      <Link to="/shoplist">
+        <img src={url} className="basket-mini__icon" alt="Корзина" />
+      </Link>
     </BasketMini>
   );
 }
