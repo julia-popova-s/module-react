@@ -7,9 +7,8 @@ import ProductList from "../../elements/productList";
 
 function ProductsPage() {
   const { data, setData, sumСalculation } = useContext(Context);
-
   const sum = sumСalculation();
-
+  data.forEach((elem) => (elem.count = 0));
   return (
     <div className="products">
       <div className="container">
@@ -26,16 +25,8 @@ function ProductsPage() {
           onGetCard={(id) =>
             setData(() => {
               const index = products.findIndex((elem) => elem.id === id);
-
-              const element = { ...products[index] };
-              element.count = 1;
-              if (data.findIndex((elem) => elem.id === id) !== -1) {
-                element.count++;
-                console.log(element.count);
-                return data;
-              } else {
-                return [...data, element];
-              }
+              const element = products[index];
+              return [...data, element];
             })
           }
         />

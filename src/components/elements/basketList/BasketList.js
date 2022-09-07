@@ -2,7 +2,6 @@ import CardForBasket from "../cardBasket";
 import BasketListWrap from "./BasketListWrap.styled";
 function BasketList({ products, onDelete, onGetAmountOfOrder }) {
   return (
-    // <section className="basket-list">
     <BasketListWrap>
       <div className="container">
         {products.map((key) => {
