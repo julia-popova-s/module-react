@@ -6,6 +6,7 @@ import BasketPage from "./components/pages/basketPage";
 import ProductsPage from "./components/pages/productsPage";
 import NotFound from "./components/pages/notFoundPage/";
 export const Context = createContext();
+
 function App() {
   const [data, setData] = useState([]);
   const sumСalculation = () => {
@@ -20,16 +21,15 @@ function App() {
     sumСalculation,
     totalQuantity,
   };
+  
   return (
-    <>
-      <Context.Provider value={context}>
-        <Routes>
-          <Route path="/" element={<ProductsPage />} />
-          <Route path="/shoplist" element={<BasketPage />} />
-          <Route path="/*" element={<NotFound />} />
-        </Routes>
-      </Context.Provider>
-    </>
+    <Context.Provider value={context}>
+      <Routes>
+        <Route path="/" element={<ProductsPage />} />
+        <Route path="/shoplist" element={<BasketPage />} />
+        <Route path="/*" element={<NotFound />} />
+      </Routes>
+    </Context.Provider>
   );
 }
 
