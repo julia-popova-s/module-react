@@ -13,6 +13,9 @@ export const BasketMini = styled.div`
     text-align: right;
   }
   .basket-mini__icon {
+    svg {
+      display: block;
+    }
     svg circle {
       transition: fill 0.3s ease;
     }

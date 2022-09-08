@@ -4,7 +4,7 @@ const ProductListWrap = styled.section`
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    height: calc(100vh - 173px);
+    height: calc(100vh - 98px - 75px);
     gap: 35px 14px;
     overflow-x: auto;
     padding-bottom: 67px;
