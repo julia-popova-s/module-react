@@ -4,6 +4,7 @@ import ButtonForOrder from "../../ui/buttonForOrder";
 import BasketList from "../../elements/basketList";
 import { useContext } from "react";
 import { Context } from "../../../App";
+import { Link } from "react-router-dom";
 
 function BasketPage() {
   const { data, setData, sumСalculation } = useContext(Context);
@@ -13,7 +14,33 @@ function BasketPage() {
     <div className="basket">
       <header className="header">
         <div className="container">
-          <h2 className="header__title">корзина с выбранными товарами</h2>
+          <div className="header-block">
+            <Link to="/" className="header-block__link">
+              <svg
+                version="1.0"
+                xmlns="http://www.w3.org/2000/svg"
+                width="35.000000pt"
+                height="25.000000pt"
+                viewBox="0 0 1280.000000 1070.000000"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                <g
+                  transform="translate(0.000000,1070.000000) scale(0.100000,-0.100000)"
+                  fill="#d58c51"
+                  stroke="none"
+                >
+                  <path
+                    d="M2672 8027 l-2672 -2672 2673 -2673 2673 -2673 1769 -6 1770 -5
+-2020 2021 -2020 2021 3977 0 3978 0 0 1300 0 1300 -3990 -2 c-2195 -2 -3990
+-1 -3990 2 0 3 912 917 2027 2032 l2028 2028 -1765 0 -1765 0 -2673 -2673z"
+                  />
+                </g>
+              </svg>
+            </Link>
+            <h2 className="header-block__title">
+              корзина с выбранными товарами
+            </h2>
+          </div>
         </div>
       </header>
       <BasketList

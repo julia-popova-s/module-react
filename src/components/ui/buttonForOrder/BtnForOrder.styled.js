@@ -10,7 +10,7 @@ export const BtnOrder = styled.button`
   transition: box-shadow 0.3s ease;
 
   :hover {
-    box-shadow: 0 0 10px rgb(255, 0, 0);
+    box-shadow: 0 0 10px #ff5100;
     transition: box-shadow 0.3s ease;
   }
 `;

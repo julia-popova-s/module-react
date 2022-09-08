@@ -6,7 +6,7 @@ const ProductListWrap = styled.section`
     height: calc(100vh - 173px);
     gap: 35px 14px;
     overflow-x: auto;
-    padding-bottom: 66px;   
+    padding-bottom: 67px;
 
     ::-webkit-scrollbar {
       width: 8px;
