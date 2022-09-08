@@ -11,6 +11,7 @@ export const CardBasket = styled.div`
   transition: color 0.2s ease;
   cursor: pointer;
   padding: 15.5px 0;
+  max-width: 860px;
 
   &:hover {
     color: var(--color-basic);
@@ -59,7 +60,6 @@ export const CardBasket = styled.div`
       }
 
       .card__btn-add {
-        // margin-left: 15px;
         border-radius: 50%;
         border: 1px solid var(--color-basic);
         width: 30px;

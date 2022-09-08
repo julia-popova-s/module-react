@@ -1,5 +1,6 @@
 import styled from "styled-components";
 const ProductListWrap = styled.section`
+  .product-list {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -23,5 +24,8 @@ const ProductListWrap = styled.section`
       border: 2px solid #212121;
     }
   }
-  `;
+  .container {
+    padding: 0 22px 0 30px;
+  }
+`;
 export default ProductListWrap;
