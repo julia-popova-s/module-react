@@ -1,12 +1,13 @@
 import styled from "styled-components";
 const ProductListWrap = styled.section`
+  .product-list {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    height: calc(100vh - 173px);
+    height: calc(100vh - 98px - 75px);
     gap: 35px 14px;
     overflow-x: auto;
-    padding-bottom: 66px;   
+    padding-bottom: 67px;
 
     ::-webkit-scrollbar {
       width: 8px;
@@ -23,5 +24,8 @@ const ProductListWrap = styled.section`
       border: 2px solid #212121;
     }
   }
-  `;
+  .container {
+    padding: 0 22px 0 30px;
+  }
+`;
 export default ProductListWrap;

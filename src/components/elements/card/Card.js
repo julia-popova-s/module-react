@@ -3,15 +3,7 @@ import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 
-function Card({
-  img,
-  name,
-  description,
-  price,
-  weight,
-  onGetQuantityOfProducts,
-  onGetAmountOfOrder,
-}) {
+function Card({ img, name, description, price, weight, onGetCard }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
@@ -33,14 +25,7 @@ function Card({
             {`${newPrice} ₽`} {"/ "}
             <span className="card__weight">{`${weight}.`}</span>
           </div>
-          <button
-            onClick={() => {
-              onGetQuantityOfProducts();
-              onGetAmountOfOrder();
-            }}
-            type="button"
-            className="card__btn-add"
-          >
+          <button onClick={onGetCard} type="button" className="card__btn-add">
             <svg
               className="card__btn-plus"
               width="14"

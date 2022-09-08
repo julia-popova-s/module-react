@@ -6,7 +6,6 @@ export const CardItem = styled.div`
   max-width: 312px;
   height: 552px;
   transition: color 0.2s ease;
-  cursor: pointer;
 
   &:hover {
     color: var(--color-basic);
