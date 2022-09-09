@@ -73,16 +73,23 @@ const basketSlice = createSlice({
         0
       );
     },
-
     minusProduct(state, action) {
       const index = state.basket.findIndex(
         (elem) => elem.id === action.payload.id
       );
-      const updateData = [...state.basket];
-      updateData[index] = {
-        ...updateData[index],
-        quantity: updateData[index].quantity - 1,
-      };
+      let updateData;
+      if (action.payload.quantity > 1) {
+        updateData = [...state.basket];
+        updateData[index] = {
+          ...updateData[index],
+          quantity: updateData[index].quantity - 1,
+        };
+      } else {
+        updateData = [
+          ...state.basket.slice(0, index),
+          ...state.basket.slice(index + 1),
+        ];
+      }
       state.basket = updateData;
       state.totalAmount = state.basket.reduce(
         (sum, elem) => +elem.price * elem.quantity + sum,

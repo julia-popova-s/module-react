@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 function BasketPage() {
   const basket = useSelector((state) => state.basket.basket);
   const amount = useSelector((state) => state.basket.totalAmount);
-  console.log(basket);
   return (
     <div className="basket">
       <header className="header">

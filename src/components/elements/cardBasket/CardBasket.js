@@ -20,6 +20,7 @@ function CardBasket({ id, img, name, description, price, weight, quantity }) {
     dispatch(plusProduct(item));
   };
   const handleMinusProduct = () => {
+    item = { id: id, quantity: quantity };
     dispatch(minusProduct(item));
   };
 
@@ -35,57 +36,56 @@ function CardBasket({ id, img, name, description, price, weight, quantity }) {
       <div className="card__text">
         <div className="card__title">{title}</div>
         <div className="card__block-price">
-          <div className="card__quantity">
-            <button
-              onClick={handlePlusProduct}
-              type="button"
-              className="card__btn-add"
+          <button
+            onClick={handlePlusProduct}
+            type="button"
+            className="card__btn-add"
+          >
+            <svg
+              className="card__btn-minus"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                className="card__btn-minus"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M7 1.28564V12.3571"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M12.3569 6.82135L1.28551 6.82135"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-            {`${quantity} шт.`}
-            <button
-              onClick={handleMinusProduct}
-              type="button"
-              className="card__btn-add"
+              <path
+                d="M7 1.28564V12.3571"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M12.3569 6.82135L1.28551 6.82135"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+          {`${quantity} шт.`}
+          <button
+            onClick={handleMinusProduct}
+            type="button"
+            className="card__btn-add"
+          >
+            <svg
+              className="card__btn-minus"
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <svg
-                className="card__btn-minus"
-                width="14"
-                height="14"
-                viewBox="0 0 14 14"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12.3569 6.82135L1.28551 6.82135"
-                  stroke="white"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </button>
-          </div>
+              <path
+                d="M12.3569 6.82135L1.28551 6.82135"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+          </button>
+
           <span className="card__price">{`${newPrice} ₽`}</span>
           <button
             onClick={handleDeleteProduct}
