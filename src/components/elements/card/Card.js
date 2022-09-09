@@ -2,12 +2,20 @@ import { CardItem } from "./CardItem.styled.js";
 import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../store/reducers/basket";
+// import { v4 as uuidv4 } from "uuid";
 
-function Card({ img, name, description, price, weight, onGetCard }) {
+function Card({ img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;
+  const dispatch = useDispatch();
+  let item = { img: img, name: name, price: price };
+  const handleAddProduct = () => {
+    dispatch(addProduct(item));
+  };
   return (
     <CardItem margin={margin}>
       <div className="card__preview">
@@ -25,7 +33,11 @@ function Card({ img, name, description, price, weight, onGetCard }) {
             {`${newPrice} ₽`} {"/ "}
             <span className="card__weight">{`${weight}.`}</span>
           </div>
-          <button onClick={onGetCard} type="button" className="card__btn-add">
+          <button
+            onClick={handleAddProduct}
+            type="button"
+            className="card__btn-add"
+          >
             <svg
               className="card__btn-plus"
               width="14"

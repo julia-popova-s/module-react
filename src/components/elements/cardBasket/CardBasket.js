@@ -1,14 +1,21 @@
-import { CardBasket } from "./CardBasket.styled.js";
+import { CardBasketWrap } from "./CardBasketWrap.styled.js";
 import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
-
-function CardForBasket({ img, name, price, onDelete, quantity }) {
+import { useDispatch } from "react-redux";
+import { removeProduct } from "../../../store/reducers/basket";
+function CardBasket({ id, img, name, price, onDelete, quantity }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 47);
 
+  const dispatch = useDispatch();
+  let item = { id: id };
+  const handleDeleteProduct = () => {
+    dispatch(removeProduct(item));
+  };
+
   return (
-    <CardBasket>
+    <CardBasketWrap>
       <div className="card__preview">
         <img
           className="card__img"
@@ -20,8 +27,12 @@ function CardForBasket({ img, name, price, onDelete, quantity }) {
         <div className="card__title">{title}</div>
         <div className="card__block-price">
           <span className="card__price">{`${newPrice} ₽`}</span>
-          <span>{`${quantity} шт.`}</span>
-          <button onClick={onDelete} type="button" className="card__btn-add">
+          {/* <span>{`${quantity} шт.`}</span> */}
+          <button
+            onClick={handleDeleteProduct}
+            type="button"
+            className="card__btn-add"
+          >
             <svg
               className="card__btn-minus"
               width="13"
@@ -50,14 +61,14 @@ function CardForBasket({ img, name, price, onDelete, quantity }) {
           </button>
         </div>
       </div>
-    </CardBasket>
+    </CardBasketWrap>
   );
 }
 
-CardForBasket.propTypes = {
+CardBasket.propTypes = {
   img: PropTypes.string,
   name: PropTypes.string,
-  price: PropTypes.number,
+  price: PropTypes.string,
 };
 
-export default CardForBasket;
+export default CardBasket;

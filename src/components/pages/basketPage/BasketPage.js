@@ -5,11 +5,13 @@ import BasketList from "../../elements/basketList";
 import { useContext } from "react";
 import { Context } from "../../../App";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function BasketPage() {
-  const { data, setData, sumСalculation } = useContext(Context);
-  const sum = sumСalculation();
-
+  // const { data, setData, sumСalculation } = useContext(Context);
+  // const sum = sumСalculation();
+  const basket = useSelector((state) => state.basket.basket);
+  console.log(basket);
   return (
     <div className="basket">
       <header className="header">
@@ -44,20 +46,20 @@ function BasketPage() {
         </div>
       </header>
       <BasketList
-        products={data}
-        onDelete={(id) =>
-          setData(() => {
-            const index = data.findIndex((elem) => elem.id === id);
-            if (index !== -1) {
-              return [...data.slice(0, index), ...data.slice(index + 1)];
-            }
-          })
-        }
+        products={basket}
+        // onDelete={(id) =>
+        //   setData(() => {
+        //     const index = data.findIndex((elem) => elem.id === id);
+        //     if (index !== -1) {
+        //       return [...data.slice(0, index), ...data.slice(index + 1)];
+        //     }
+        //   })
+        // }
       />
       <footer className="footer">
         <div className="container">
           <div className="footer-block">
-            <OrderAmount sum={sum} />
+            <OrderAmount sum={0} />
             <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
           </div>
         </div>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardBasket = styled.div`
+export const CardBasketWrap = styled.div`
   font-family: var(--font-family);
   display: flex;
   flex-wrap: wrap;
