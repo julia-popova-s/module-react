@@ -68,6 +68,10 @@ const basketSlice = createSlice({
         quantity: updateData[index].quantity + 1,
       };
       state.basket = updateData;
+      state.totalAmount = state.basket.reduce(
+        (sum, elem) => +elem.price * elem.quantity + sum,
+        0
+      );
     },
 
     minusProduct(state, action) {
@@ -80,6 +84,10 @@ const basketSlice = createSlice({
         quantity: updateData[index].quantity - 1,
       };
       state.basket = updateData;
+      state.totalAmount = state.basket.reduce(
+        (sum, elem) => +elem.price * elem.quantity + sum,
+        0
+      );
     },
   },
 });

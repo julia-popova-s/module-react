@@ -50,7 +50,19 @@ export const CardBasketWrap = styled.div`
       flex-wrap: wrap;
       align-items: center;
       gap: 15px;
-
+      .card__btn-add {
+        position: relative;
+        card__btn-plus {
+          position: absolute;
+          top: 10px;
+          right: 7px;
+        }
+      }
+      .card__quantity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
       .card__price {
         font-weight: 500;
         font-size: 17px;
@@ -67,6 +79,18 @@ export const CardBasketWrap = styled.div`
         background-color: transparent;
         transition: all 0.2s ease;
         position: relative;
+        .card__btn-plus,
+        .card__btn-minus {
+          position: absolute;
+          top: 7px;
+          right: 7px;
+        }
+
+        .card__btn-delete {
+          position: absolute;
+          top: 8px;
+          right: 7px;
+        }
       }
 
       .card__btn-add:hover {
@@ -76,11 +100,6 @@ export const CardBasketWrap = styled.div`
         path {
           fill: white;
         }
-      }
-      .card__btn-minus {
-        position: absolute;
-        top: 8px;
-        right: 7px;
       }
     }
   }
