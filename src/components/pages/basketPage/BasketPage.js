@@ -11,6 +11,7 @@ function BasketPage() {
   // const { data, setData, sumСalculation } = useContext(Context);
   // const sum = sumСalculation();
   const basket = useSelector((state) => state.basket.basket);
+  const amount = useSelector((state) => state.basket.totalAmount);
   console.log(basket);
   return (
     <div className="basket">
@@ -59,7 +60,7 @@ function BasketPage() {
       <footer className="footer">
         <div className="container">
           <div className="footer-block">
-            <OrderAmount sum={0} />
+            <OrderAmount sum={amount} />
             <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
           </div>
         </div>

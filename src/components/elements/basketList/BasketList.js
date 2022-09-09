@@ -19,7 +19,7 @@ function BasketList({ products, onDelete, onGetAmountOfOrder }) {
                 onGetAmountOfOrder={() => {
                   onGetAmountOfOrder(id);
                 }}
-                // quantity={quantity}
+                quantity={quantity}
               />
             );
           })}

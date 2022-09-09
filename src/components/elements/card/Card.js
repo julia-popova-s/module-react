@@ -4,7 +4,6 @@ import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/reducers/basket";
-import { v4 as uuidv4 } from "uuid";
 
 function Card({ id, img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);

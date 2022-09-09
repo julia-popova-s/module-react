@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { removeProduct } from "../../../store/reducers/basket";
 function CardBasket({ id, img, name, price, onDelete, quantity }) {
-  const newPrice = getPriceWithSpace(price);
+  const newPrice = getPriceWithSpace(price * quantity);
   const title = cutPartOfLine(name, 47);
 
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ function CardBasket({ id, img, name, price, onDelete, quantity }) {
         <div className="card__title">{title}</div>
         <div className="card__block-price">
           <span className="card__price">{`${newPrice} ₽`}</span>
-          {/* <span>{`${quantity} шт.`}</span> */}
+          <span>{`${quantity} шт.`}</span>
           <button
             onClick={handleDeleteProduct}
             type="button"

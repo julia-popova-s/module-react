@@ -3,13 +3,15 @@ const basketSlice = createSlice({
   name: "basket",
   initialState: {
     basket: [],
+    totalAmount: 0,
+    totalQuantity: 0,
   },
   reducers: {
     addProduct(state, action) {
       const index = state.basket.findIndex(
         (elem) => elem.id === action.payload.id
       );
-      console.log(index);
+
       if (index !== -1) {
         const updateData = [...state.basket];
         updateData[index] = {
@@ -22,8 +24,16 @@ const basketSlice = createSlice({
           ...action.payload,
           quantity: 1,
         });
-        // state.basket = updateData;
       }
+      state.totalAmount = state.basket.reduce(
+        (sum, elem) => +elem.price * elem.quantity + sum,
+        0
+      );
+
+      state.totalQuantity = state.basket.reduce(
+        (sum, elem) => elem.quantity + sum,
+        0
+      );
     },
     removeProduct(state, action) {
       const index = state.basket.findIndex(
@@ -36,6 +46,15 @@ const basketSlice = createSlice({
         ];
         state.basket = updateData;
       }
+      state.totalAmount = state.basket.reduce(
+        (sum, elem) => +elem.price * elem.quantity + sum,
+        0
+      );
+
+      state.totalQuantity = state.basket.reduce(
+        (sum, elem) => elem.quantity + sum,
+        0
+      );
     },
   },
 });
