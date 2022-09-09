@@ -18,11 +18,11 @@ const basketSlice = createSlice({
         };
         state.basket = updateData;
       } else {
-        const updateData = state.basket.concat({
+        state.basket.push({
           ...action.payload,
           quantity: 1,
         });
-        state.basket = updateData;
+        // state.basket = updateData;
       }
     },
     removeProduct(state, action) {

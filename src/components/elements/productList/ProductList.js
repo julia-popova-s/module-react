@@ -11,6 +11,7 @@ function ProductList({ products }) {
             return (
               <Card
                 key={id}
+                id={id}
                 img={img}
                 name={name}
                 description={description}

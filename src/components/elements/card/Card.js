@@ -4,16 +4,17 @@ import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/reducers/basket";
-// import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-function Card({ img, name, description, price, weight }) {
+function Card({ id, img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;
   const dispatch = useDispatch();
-  let item = { img: img, name: name, price: price };
+  let item;
   const handleAddProduct = () => {
+    item = { id: id, img: img, name: name, price: price };
     dispatch(addProduct(item));
   };
   return (

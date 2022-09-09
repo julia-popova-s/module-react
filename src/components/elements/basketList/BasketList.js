@@ -11,6 +11,7 @@ function BasketList({ products, onDelete, onGetAmountOfOrder }) {
             return (
               <CardBasket
                 key={id}
+                id={id}
                 img={img}
                 name={name}
                 price={price}
