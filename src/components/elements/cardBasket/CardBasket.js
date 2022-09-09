@@ -4,14 +4,23 @@ import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { removeProduct } from "../../../store/reducers/basket";
-function CardBasket({ id, img, name, price, onDelete, quantity }) {
+import { minusProduct } from "../../../store/reducers/basket";
+import { plusProduct } from "../../../store/reducers/basket";
+function CardBasket({ id, img, name, description, price, weight, quantity }) {
   const newPrice = getPriceWithSpace(price * quantity);
   const title = cutPartOfLine(name, 47);
 
   const dispatch = useDispatch();
   let item = { id: id };
+
   const handleDeleteProduct = () => {
     dispatch(removeProduct(item));
+  };
+  const handlePlusProduct = () => {
+    dispatch(plusProduct(item));
+  };
+  const handleMinusProduct = () => {
+    dispatch(minusProduct(item));
   };
 
   return (
@@ -26,8 +35,12 @@ function CardBasket({ id, img, name, price, onDelete, quantity }) {
       <div className="card__text">
         <div className="card__title">{title}</div>
         <div className="card__block-price">
+          <div>
+            <button onClick={handlePlusProduct}>+</button>
+            {`${quantity} шт.`}
+            <button onClick={handleMinusProduct}>-</button>
+          </div>
           <span className="card__price">{`${newPrice} ₽`}</span>
-          <span>{`${quantity} шт.`}</span>
           <button
             onClick={handleDeleteProduct}
             type="button"

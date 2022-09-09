@@ -35,6 +35,7 @@ const basketSlice = createSlice({
         0
       );
     },
+
     removeProduct(state, action) {
       const index = state.basket.findIndex(
         (elem) => elem.id === action.payload.id
@@ -56,7 +57,32 @@ const basketSlice = createSlice({
         0
       );
     },
+
+    plusProduct(state, action) {
+      const index = state.basket.findIndex(
+        (elem) => elem.id === action.payload.id
+      );
+      const updateData = [...state.basket];
+      updateData[index] = {
+        ...updateData[index],
+        quantity: updateData[index].quantity + 1,
+      };
+      state.basket = updateData;
+    },
+
+    minusProduct(state, action) {
+      const index = state.basket.findIndex(
+        (elem) => elem.id === action.payload.id
+      );
+      const updateData = [...state.basket];
+      updateData[index] = {
+        ...updateData[index],
+        quantity: updateData[index].quantity - 1,
+      };
+      state.basket = updateData;
+    },
   },
 });
-export const { addProduct, removeProduct } = basketSlice.actions;
+export const { addProduct, removeProduct, plusProduct, minusProduct } =
+  basketSlice.actions;
 export default basketSlice.reducer;
