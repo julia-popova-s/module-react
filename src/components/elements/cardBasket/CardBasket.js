@@ -63,7 +63,7 @@ function CardBasket({ id, img, name, description, price, weight, quantity }) {
               />
             </svg>
           </button>
-          {`${quantity} шт.`}
+          <span className="card__quantity"> {`${quantity} шт.`}</span>
           <button
             onClick={handleMinusProduct}
             type="button"
