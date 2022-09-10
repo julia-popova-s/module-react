@@ -1,4 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
+import {
+  updateAmount,
+  updateQuantity,
+  getIndex,
+  updateCounterUp,
+  updateCounterDown,
+  removeOneElement,
+} from "./helper";
+
 const basketSlice = createSlice({
   name: "basket",
   initialState: {
@@ -8,93 +17,47 @@ const basketSlice = createSlice({
   },
   reducers: {
     addProduct(state, action) {
-      const index = state.basket.findIndex(
-        (elem) => elem.id === action.payload.id
-      );
-
+      const index = getIndex(state, action);
       if (index !== -1) {
-        const updateData = [...state.basket];
-        updateData[index] = {
-          ...updateData[index],
-          quantity: updateData[index].quantity + 1,
-        };
-        state.basket = updateData;
+        state.basket = updateCounterUp(state, index);
       } else {
         state.basket.push({
           ...action.payload,
           quantity: 1,
         });
       }
-      state.totalAmount = state.basket.reduce(
-        (sum, elem) => +elem.price * elem.quantity + sum,
-        0
-      );
-
-      state.totalQuantity = state.basket.reduce(
-        (sum, elem) => elem.quantity + sum,
-        0
-      );
+      updateAmount(state);
+      updateQuantity(state);
     },
 
     removeProduct(state, action) {
-      const index = state.basket.findIndex(
-        (elem) => elem.id === action.payload.id
-      );
+      const index = getIndex(state, action);
       if (index !== -1) {
-        const updateData = [
-          ...state.basket.slice(0, index),
-          ...state.basket.slice(index + 1),
-        ];
-        state.basket = updateData;
+        state.basket = removeOneElement(state, index);
       }
-      state.totalAmount = state.basket.reduce(
-        (sum, elem) => +elem.price * elem.quantity + sum,
-        0
-      );
-
-      state.totalQuantity = state.basket.reduce(
-        (sum, elem) => elem.quantity + sum,
-        0
-      );
+      updateAmount(state);
+      updateQuantity(state);
     },
 
     plusProduct(state, action) {
-      const index = state.basket.findIndex(
-        (elem) => elem.id === action.payload.id
-      );
-      const updateData = [...state.basket];
-      updateData[index] = {
-        ...updateData[index],
-        quantity: updateData[index].quantity + 1,
-      };
-      state.basket = updateData;
-      state.totalAmount = state.basket.reduce(
-        (sum, elem) => +elem.price * elem.quantity + sum,
-        0
-      );
+      const index = getIndex(state, action);
+      if (index !== -1) {
+        state.basket = updateCounterUp(state, index);
+      }
+      updateAmount(state);
+      updateQuantity(state);
     },
     minusProduct(state, action) {
-      const index = state.basket.findIndex(
-        (elem) => elem.id === action.payload.id
-      );
-      let updateData;
+      const index = getIndex(state, action);
+      let nextState;
       if (action.payload.quantity > 1) {
-        updateData = [...state.basket];
-        updateData[index] = {
-          ...updateData[index],
-          quantity: updateData[index].quantity - 1,
-        };
+        nextState = updateCounterDown(state, index);
       } else {
-        updateData = [
-          ...state.basket.slice(0, index),
-          ...state.basket.slice(index + 1),
-        ];
+        nextState = removeOneElement(state, index);
       }
-      state.basket = updateData;
-      state.totalAmount = state.basket.reduce(
-        (sum, elem) => +elem.price * elem.quantity + sum,
-        0
-      );
+      state.basket = nextState;
+      updateAmount(state);
+      updateQuantity(state);
     },
   },
 });
