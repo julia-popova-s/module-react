@@ -4,7 +4,7 @@
   margin: 0 auto;
 
   .container {
-    max-width: 960px;
+    max-width: 920px;
     padding: 0 30px;
     margin: 0 auto;
   }
@@ -25,6 +25,32 @@
         fill: #a75d3b;
         transition: fill 0.5s ease;
       }
+    }
+
+    &__arrow {
+      border-radius: 50%;
+      border: 1px solid var(--color-basic);
+      width: 30px;
+      height: 30px;
+      background-color: transparent;
+      transition: all 0.2s ease;
+      position: relative;
+
+      &:hover {
+        background-color: var(--color-basic);
+        border: 1px solid var(--color-basic);
+        transition: all 0.2s ease;
+
+        svg path {
+          fill: #fff;
+        }
+      }
+    }
+
+    &__icon {
+      position: absolute;
+      top: 8px;
+      right: 8px;
     }
 
     &__title {

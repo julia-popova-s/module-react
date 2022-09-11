@@ -21,10 +21,7 @@ const basketSlice = createSlice({
       if (index !== -1) {
         state.basket = updateCounterUp(state, index);
       } else {
-        state.basket.push({
-          ...action.payload,
-          quantity: 1,
-        });
+        state.basket.push(Object.assign(action.payload, { quantity: 1 }));
       }
       updateAmount(state);
       updateQuantity(state);

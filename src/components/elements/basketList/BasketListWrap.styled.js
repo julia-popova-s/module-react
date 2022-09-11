@@ -22,7 +22,7 @@ const BasketListWrap = styled.section`
     }
   }
   .container {
-    padding: 0 22px 0 30px;
+    padding: 0 10px 0 30px;
   }
 `;
 export default BasketListWrap;

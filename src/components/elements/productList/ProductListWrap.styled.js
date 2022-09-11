@@ -8,6 +8,7 @@ const ProductListWrap = styled.section`
     gap: 35px 14px;
     overflow-x: auto;
     padding-bottom: 67px;
+    max-width: 1308px;
 
     ::-webkit-scrollbar {
       width: 8px;

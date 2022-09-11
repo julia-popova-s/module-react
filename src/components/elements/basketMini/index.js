@@ -1,2 +1,2 @@
-import BasketShopMini from "./BasketShopMini";
-export default BasketShopMini;
+import BasketMini from "./BasketMini";
+export default BasketMini;

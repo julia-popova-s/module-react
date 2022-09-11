@@ -51,18 +51,11 @@ export const CardBasketWrap = styled.div`
       align-items: center;
       gap: 5px;
 
-      .card__btn-add {
-        position: relative;
-        card__btn-plus {
-          position: absolute;
-          top: 10px;
-          right: 7px;
-        }
-      }
       .card__quantity {
         min-width: 80px;
         text-align: center;
       }
+
       .card__price {
         font-weight: 500;
         font-size: 17px;
@@ -81,6 +74,7 @@ export const CardBasketWrap = styled.div`
         background-color: transparent;
         transition: all 0.2s ease;
         position: relative;
+
         .card__btn-plus,
         .card__btn-minus {
           position: absolute;
@@ -99,7 +93,8 @@ export const CardBasketWrap = styled.div`
         background-color: var(--color-basic);
         border: 1px solid var(--color-basic);
         transition: all 0.2s ease;
-        path {
+
+        svg path {
           fill: white;
         }
       }

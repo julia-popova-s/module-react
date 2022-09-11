@@ -1,6 +1,6 @@
 import "./index.scss";
 import { products } from "./menuList";
-import BasketShopMini from "../../elements/basketMini";
+import BasketMini from "../../elements/basketMini";
 import ProductList from "../../elements/productList";
 import { useSelector } from "react-redux";
 function ProductsPage() {
@@ -13,11 +13,7 @@ function ProductsPage() {
         <div className="container">
           <div className="header-block">
             <h1 className="header-block__title">наша продукция</h1>
-            <BasketShopMini
-              url={"/images/products/basket.svg"}
-              counter={quantity}
-              sum={amount}
-            />
+            <BasketMini counter={quantity} sum={amount} />
           </div>
         </div>
       </header>
