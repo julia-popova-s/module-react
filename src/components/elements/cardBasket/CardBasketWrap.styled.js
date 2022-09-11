@@ -65,38 +65,8 @@ export const CardBasketWrap = styled.div`
         min-width: 90px;
         text-align: center;
       }
-
-      .card__btn-add {
-        border-radius: 50%;
+      .card__btn_color {
         border: 1px solid var(--color-basic);
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        transition: all 0.2s ease;
-        position: relative;
-
-        .card__btn-plus,
-        .card__btn-minus {
-          position: absolute;
-          top: 7px;
-          right: 7px;
-        }
-
-        .card__btn-delete {
-          position: absolute;
-          top: 8px;
-          right: 7px;
-        }
-      }
-
-      .card__btn-add:hover {
-        background-color: var(--color-basic);
-        border: 1px solid var(--color-basic);
-        transition: all 0.2s ease;
-
-        svg path {
-          fill: white;
-        }
       }
     }
   }
