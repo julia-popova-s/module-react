@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import { products } from "./menuList";
 import BasketMini from "../../elements/basketMini";
 import ProductList from "../../elements/productList";
@@ -8,11 +8,11 @@ function ProductsPage() {
   const quantity = useSelector((state) => state.basket.totalQuantity);
 
   return (
-    <div className="products">
-      <header className="header">
-        <div className="container">
-          <div className="header-block">
-            <h1 className="header-block__title">наша продукция</h1>
+    <div className={styles.productMenu}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.headerBlock}>
+            <h1 className={styles.headerBlock__title}>наша продукция</h1>
             <BasketMini counter={quantity} sum={amount} />
           </div>
         </div>

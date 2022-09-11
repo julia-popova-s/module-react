@@ -1,4 +1,4 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import OrderAmount from "../../elements/orderAmount";
 import ButtonForOrder from "../../ui/buttonForOrder";
 import BasketList from "../../elements/basketList";
@@ -9,14 +9,14 @@ function BasketPage() {
   const basket = useSelector((state) => state.basket.basket);
   const amount = useSelector((state) => state.basket.totalAmount);
   return (
-    <div className="basket">
-      <header className="header">
-        <div className="container">
-          <div className="header-block">
-            <Link to="/" className="header-block__link">
-              <div className="header-block__arrow">
+    <div className={styles.basket}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.headerBlock}>
+            <Link to="/" className={styles.headerBlock_link}>
+              <div className={styles.headerBlock_arrow}>
                 <svg
-                  className="header-block__icon"
+                  className={styles.headerBlock_icon}
                   width="11"
                   height="11"
                   viewBox="0 0 11 11"
@@ -42,16 +42,16 @@ function BasketPage() {
                 </svg>
               </div>
             </Link>
-            <h2 className="header-block__title">
+            <h2 className={styles.headerBlock_title}>
               корзина с выбранными товарами
             </h2>
           </div>
         </div>
       </header>
       <BasketList products={basket} />
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-block">
+      <footer className={styles.footer}>
+        <div className={styles.container}>
+          <div className={styles.footerBlock}>
             <OrderAmount sum={amount} />
             <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
           </div>
