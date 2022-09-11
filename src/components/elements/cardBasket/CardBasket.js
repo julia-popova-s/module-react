@@ -3,10 +3,12 @@ import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { removeProduct } from "../../../store/reducers/basket";
-import { minusProduct } from "../../../store/reducers/basket";
-import { plusProduct } from "../../../store/reducers/basket";
-function CardBasket({ id, img, name, description, price, weight, quantity }) {
+import {
+  removeProduct,
+  minusProduct,
+  plusProduct,
+} from "../../../store/reducers/basket";
+function CardBasket({ id, img, name, price, quantity }) {
   const newPrice = getPriceWithSpace(price * quantity);
   const title = cutPartOfLine(name, 47);
 
