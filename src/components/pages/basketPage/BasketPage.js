@@ -13,10 +13,10 @@ function BasketPage() {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerBlock}>
-            <Link to="/" className={styles.headerBlock_link}>
-              <div className={styles.headerBlock_arrow}>
+            <Link to="/" className={styles.headerBlock__link}>
+              <div className={styles.headerBlock__arrow}>
                 <svg
-                  className={styles.headerBlock_icon}
+                  className={styles.headerBlock__icon}
                   width="11"
                   height="11"
                   viewBox="0 0 11 11"
@@ -42,7 +42,7 @@ function BasketPage() {
                 </svg>
               </div>
             </Link>
-            <h2 className={styles.headerBlock_title}>
+            <h2 className={styles.headerBlock__title}>
               корзина с выбранными товарами
             </h2>
           </div>

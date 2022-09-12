@@ -13,13 +13,13 @@
 .headerBlock {
   position: relative;
 
-  &_link {
+  &__link {
     position: absolute;
     left: 0;
     top: 56px;
   }
 
-  &_arrow {
+  &__arrow {
     border-radius: 50%;
     border: 1px solid $color-basic;
     width: 32px;
@@ -32,26 +32,25 @@
       background-color: $color-basic;
       border: 1px solid $color-basic;
       transition: all 0.3s ease;
-
-      svg path {
-        transition: all 0.3s ease;
-        fill: $white;
-      }
-    }
-
-    svg path {
-      transition: all 0.3s ease;
-
     }
   }
 
-  &_icon {
+  &__arrow:hover &__icon path {
+    transition: all 0.3s ease;
+    fill: $white;
+  }
+
+  &__icon path {
+    transition: all 0.3s ease;
+  }
+
+  &__icon {
     position: absolute;
     top: 30%;
     right: 30%;
   }
 
-  &_title {
+  &__title {
     @include setFontSize(700, 31px, 38px);
     text-transform: uppercase;
     text-align: center;
