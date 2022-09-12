@@ -86,8 +86,8 @@ export const CardItem = styled.div`
 
       .card__btn-plus {
         position: absolute;
-        top: 7px;
-        right: 7px;
+        top: 25%;
+        right: 25%;
       }
     }
   }

@@ -1,7 +1,7 @@
-import CardForBasket from "../cardBasket";
+import CardBasket from "../cardBasket";
 import BasketListWrap from "./BasketListWrap.styled";
 
-function BasketList({ products, onDelete, onGetAmountOfOrder }) {
+function BasketList({ products }) {
   return (
     <BasketListWrap>
       <div className="container">
@@ -9,15 +9,12 @@ function BasketList({ products, onDelete, onGetAmountOfOrder }) {
           {products.map((key) => {
             const { id, img, name, price, quantity } = key;
             return (
-              <CardForBasket
+              <CardBasket
                 key={id}
+                id={id}
                 img={img}
                 name={name}
-                price={price * quantity}
-                onDelete={() => onDelete(id)}
-                onGetAmountOfOrder={() => {
-                  onGetAmountOfOrder(id);
-                }}
+                price={price}
                 quantity={quantity}
               />
             );

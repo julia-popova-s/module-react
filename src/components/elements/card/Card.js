@@ -2,12 +2,20 @@ import { CardItem } from "./CardItem.styled.js";
 import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
 import cutPartOfLine from "../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
-
-function Card({ img, name, description, price, weight, onGetCard }) {
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../../store/reducers/basket";
+import ButtonCircle from "../../ui/buttonCircle";
+function Card({ id, img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;
+  const dispatch = useDispatch();
+  let item;
+  const handleAddProduct = () => {
+    item = { id: id, img: img, name: name, price: price };
+    dispatch(addProduct(item));
+  };
   return (
     <CardItem margin={margin}>
       <div className="card__preview">
@@ -25,29 +33,7 @@ function Card({ img, name, description, price, weight, onGetCard }) {
             {`${newPrice} ₽`} {"/ "}
             <span className="card__weight">{`${weight}.`}</span>
           </div>
-          <button onClick={onGetCard} type="button" className="card__btn-add">
-            <svg
-              className="card__btn-plus"
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M7 1.28564V12.3571"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M12.3569 6.82135L1.28551 6.82135"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
-          </button>
+          <ButtonCircle handle={handleAddProduct} view={"plus"} />
         </div>
       </div>
     </CardItem>

@@ -1,7 +1,7 @@
 import Card from "../card";
 import ProductListWrap from "./ProductListWrap.styled.js";
 
-function ProductList({ products, onGetCard }) {
+function ProductList({ products }) {
   return (
     <ProductListWrap>
       <div className="container">
@@ -11,12 +11,12 @@ function ProductList({ products, onGetCard }) {
             return (
               <Card
                 key={id}
+                id={id}
                 img={img}
                 name={name}
                 description={description}
                 price={price}
                 weight={weight}
-                onGetCard={() => onGetCard(id)}
               />
             );
           })}

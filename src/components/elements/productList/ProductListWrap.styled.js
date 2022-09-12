@@ -5,9 +5,10 @@ const ProductListWrap = styled.section`
     flex-wrap: wrap;
     align-items: flex-start;
     height: calc(100vh - 98px - 75px);
-    gap: 35px 14px;
+    gap: 35px 17.33px;
     overflow-x: auto;
     padding-bottom: 67px;
+    max-width: 1320px;
 
     ::-webkit-scrollbar {
       width: 8px;
@@ -25,7 +26,9 @@ const ProductListWrap = styled.section`
     }
   }
   .container {
-    padding: 0 22px 0 30px;
+    max-width: 1360px;
+    padding: 0 10px 0 30px;
+    margin: 0 auto;
   }
 `;
 export default ProductListWrap;

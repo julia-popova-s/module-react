@@ -2,8 +2,7 @@ import styled from "styled-components";
 const BasketListWrap = styled.section`
   .basket-list {
     width: 100%;
-    padding-bottom: 77.5px;
-    height: calc(773px - 113.5px - 90px);
+    height: calc(100vh - 113.5px - 90px);
     overflow-x: auto;
 
     ::-webkit-scrollbar {
@@ -22,7 +21,9 @@ const BasketListWrap = styled.section`
     }
   }
   .container {
-    padding: 0 22px 0 30px;
+    max-width: 920px;
+    padding: 0 5px 0 30px;
+    margin: 0 auto;
   }
 `;
 export default BasketListWrap;

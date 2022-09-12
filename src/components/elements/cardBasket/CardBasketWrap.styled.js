@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardBasket = styled.div`
+export const CardBasketWrap = styled.div`
   font-family: var(--font-family);
   display: flex;
   flex-wrap: wrap;
@@ -49,7 +49,12 @@ export const CardBasket = styled.div`
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 15px;
+      gap: 5px;
+
+      .card__quantity {
+        min-width: 80px;
+        text-align: center;
+      }
 
       .card__price {
         font-weight: 500;
@@ -57,30 +62,11 @@ export const CardBasket = styled.div`
         line-height: 21px;
         color: var(--color-basic);
         justify-self: right;
+        min-width: 90px;
+        text-align: center;
       }
-
-      .card__btn-add {
-        border-radius: 50%;
+      .card__btn_color {
         border: 1px solid var(--color-basic);
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        transition: all 0.2s ease;
-        position: relative;
-      }
-
-      .card__btn-add:hover {
-        background-color: var(--color-basic);
-        border: 1px solid var(--color-basic);
-        transition: all 0.2s ease;
-        path {
-          fill: white;
-        }
-      }
-      .card__btn-minus {
-        position: absolute;
-        top: 8px;
-        right: 7px;
       }
     }
   }

@@ -1,51 +1,23 @@
-import "./index.scss";
+import styles from "./index.module.scss";
 import { products } from "./menuList";
-import BasketShopMini from "../../elements/basketMini";
-import { useContext } from "react";
-import { Context } from "../../../App";
+import BasketMini from "../../elements/basketMini";
 import ProductList from "../../elements/productList";
-
+import { useSelector } from "react-redux";
 function ProductsPage() {
-  const { data, setData, sumСalculation, totalQuantity } = useContext(Context);
-  const sum = sumСalculation();
+  const amount = useSelector((state) => state.basket.totalAmount);
+  const quantity = useSelector((state) => state.basket.totalQuantity);
 
   return (
-    <div className="products">
-      <header className="header">
-        <div className="container">
-          <div className="header-block">
-            <h1 className="header-block__title">наша продукция</h1>
-            <BasketShopMini
-              url={"/images/products/basket.svg"}
-              counter={totalQuantity}
-              sum={sum}
-            />
+    <div className={styles.productMenu}>
+      <header className={styles.header}>
+        <div className={styles.container}>
+          <div className={styles.headerBlock}>
+            <h1 className={styles.headerBlock__title}>наша продукция</h1>
+            <BasketMini counter={quantity} sum={amount} />
           </div>
         </div>
       </header>
-      <ProductList
-        products={products}
-        onGetCard={(id) =>
-          setData(() => {
-            const j = data.findIndex((elem) => elem.id === id);
-            const index = products.findIndex((elem) => elem.id === id);
-
-            if (j === -1) {
-              return data.concat({
-                ...products[index],
-                quantity: 1,
-              });
-            } else {
-              const updateData = [...data];
-              updateData[j] = {
-                ...updateData[j],
-                quantity: updateData[j].quantity + 1,
-              };
-              return updateData;
-            }
-          })
-        }
-      />
+      <ProductList products={products} />
     </div>
   );
 }
