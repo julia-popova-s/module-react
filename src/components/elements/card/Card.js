@@ -32,14 +32,18 @@ function Card({ id, img, name, description, price, weight }) {
           <h2 className="card__title">{title}</h2>
           <p className="card__description">{descriptor}</p>
           <div className="card__block-price">
-            <div className="card__price">
+            <span className="card__price">
               {`${newPrice} ₽`} {"/ "}
-              <span className="card__weight">{`${weight}.`}</span>
-            </div>
+            </span>
+            <span className="card__weight">{`${weight}.`}</span>
           </div>
         </div>
       </Link>
-      <ButtonCircle handle={handleAddProduct} view={"plus"} />
+      <ButtonCircle
+        handle={handleAddProduct}
+        view={"plus"}
+        classNames="card__btn"
+      />
     </CardItem>
   );
 }

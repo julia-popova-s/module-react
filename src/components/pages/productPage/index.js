@@ -1,2 +1,2 @@
-import DetailedCardPage from "./ProductPage";
-export default DetailedCardPage;
+import ProductPage from "./ProductPage";
+export default ProductPage;

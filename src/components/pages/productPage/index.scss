@@ -64,7 +64,7 @@
   &__block-price {
     display: flex;
     flex-wrap: wrap;
-    gap: 68px;
+
     align-items: center;
     margin-top: auto;
   }
@@ -73,6 +73,7 @@
     font-weight: 500;
     font-size: 23px;
     line-height: 28px;
+    margin-right: 5px;
     color: #FFFFFF;
   }
 
@@ -81,6 +82,7 @@
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    margin-right: 68px;
   }
 
 }

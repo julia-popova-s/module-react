@@ -24,7 +24,7 @@ const BtnCircle = styled.button`
   }
 
   .delete {
-    margin: 2px 0 0 2px;
+    margin: 1px 0 0 1px;
   }
 `;
 export default BtnCircle;
