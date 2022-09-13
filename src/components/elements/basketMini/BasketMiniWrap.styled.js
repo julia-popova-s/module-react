@@ -5,6 +5,7 @@ export const BasketMiniWrap = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: right;
+  color: var(--color-white);
 
   .basket-mini__text {
     font-weight: 500;

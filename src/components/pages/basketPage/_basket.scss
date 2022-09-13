@@ -11,51 +11,16 @@
 }
 
 .headerBlock {
-  position: relative;
-
-  &__link {
-    position: absolute;
-    left: 0;
-    top: 56px;
-  }
-
-  &__arrow {
-    border-radius: 50%;
-    border: 1px solid $color-basic;
-    width: 32px;
-    height: 32px;
-    background-color: transparent;
-    transition: all 0.3s ease;
-    position: relative;
-
-    &:hover {
-      background-color: $color-basic;
-      border: 1px solid $color-basic;
-      transition: all 0.3s ease;
-    }
-  }
-
-  &__arrow:hover &__icon path {
-    transition: all 0.3s ease;
-    fill: $white;
-  }
-
-  &__icon path {
-    transition: all 0.3s ease;
-  }
-
-  &__icon {
-    position: absolute;
-    top: 30%;
-    right: 30%;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 53px;
+  margin-bottom: 22.5px;
+  gap: 63px;
 
   &__title {
     @include setFontSize(700, 31px, 38px);
     text-transform: uppercase;
-    text-align: center;
-    padding-top: 53px;
-    margin-bottom: 22.5px;
   }
 }
 

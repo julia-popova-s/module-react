@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/reducers/basket";
 import ButtonCircle from "../../ui/buttonCircle";
+import { Link } from "react-router-dom";
 function Card({ id, img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
@@ -16,15 +17,18 @@ function Card({ id, img, name, description, price, weight }) {
     item = { id: id, img: img, name: name, price: price };
     dispatch(addProduct(item));
   };
+
   return (
     <CardItem margin={margin}>
-      <div className="card__preview">
-        <img
-          className="card__img"
-          src={`/images/products/${img}`}
-          alt="Фотография блюда"
-        />
-      </div>
+      <Link to={`product/${id}/${name}`}>
+        <div className="card__preview">
+          <img
+            className="card__img"
+            src={`/images/products/${img}`}
+            alt="Фотография блюда"
+          />
+        </div>
+      </Link>
       <div className="card__text">
         <h2 className="card__title">{title}</h2>
         <p className="card__description">{descriptor}</p>

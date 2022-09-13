@@ -5,14 +5,14 @@ import { Routes, Route } from "react-router-dom";
 import BasketPage from "./components/pages/basketPage";
 import ProductsPage from "./components/pages/productsPage";
 import NotFound from "./components/pages/notFoundPage/";
-
+import ProductPage from "./components/pages/productPage";
 function App() {
- 
   return (
     <Routes>
-      <Route index element={<ProductsPage />} />
+      <Route path="/" element={<ProductsPage />} />
+      <Route path="product/:id/:name" element={<ProductPage />} />
       <Route path="/shoplist" element={<BasketPage />} />
-      <Route path="/*" element={<NotFound />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }
