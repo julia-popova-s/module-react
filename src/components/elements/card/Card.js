@@ -20,7 +20,7 @@ function Card({ id, img, name, description, price, weight }) {
 
   return (
     <CardItem margin={margin}>
-      <Link to={`product/${id}/${name}`}>
+      <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
           <img
             className="card__img"
@@ -28,18 +28,18 @@ function Card({ id, img, name, description, price, weight }) {
             alt="Фотография блюда"
           />
         </div>
-      </Link>
-      <div className="card__text">
-        <h2 className="card__title">{title}</h2>
-        <p className="card__description">{descriptor}</p>
-        <div className="card__block-price">
-          <div className="card__price">
-            {`${newPrice} ₽`} {"/ "}
-            <span className="card__weight">{`${weight}.`}</span>
+        <div className="card__text">
+          <h2 className="card__title">{title}</h2>
+          <p className="card__description">{descriptor}</p>
+          <div className="card__block-price">
+            <div className="card__price">
+              {`${newPrice} ₽`} {"/ "}
+              <span className="card__weight">{`${weight}.`}</span>
+            </div>
           </div>
-          <ButtonCircle handle={handleAddProduct} view={"plus"} />
         </div>
-      </div>
+      </Link>
+      <ButtonCircle handle={handleAddProduct} view={"plus"} />
     </CardItem>
   );
 }

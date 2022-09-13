@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./index.scss";
 import ButtonForOrder from "../../ui/buttonForOrder";
+
 function DetailedCardPage() {
   const amount = useSelector((state) => state.basket.totalAmount);
   const quantity = useSelector((state) => state.basket.totalQuantity);
@@ -19,7 +20,6 @@ function DetailedCardPage() {
         <div className="container">
           <div className="header-block">
             <ButtonToBack handleGoBack={goBack} />
-
             <BasketMini counter={quantity} sum={amount} />
           </div>
         </div>

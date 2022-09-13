@@ -1,5 +1,8 @@
 .details {
   color: white;
+  background-image: url('../../../../public/images/product/back.png');
+  background-size: contain;
+  background-position: 100% 100%;
 }
 
 .container {
@@ -21,7 +24,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 6px 0;
+  padding-top: 6px;
+  padding-bottom: 108px;
 
   &__view {
     padding-left: 50px;
@@ -46,6 +50,7 @@
     line-height: 37px;
     color: #D58C51;
     margin-bottom: 21px;
+    max-width: 415px;
   }
 
   &__description {

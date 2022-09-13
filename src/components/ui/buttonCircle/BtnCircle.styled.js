@@ -6,7 +6,10 @@ const BtnCircle = styled.button`
   height: 30px;
   background-color: transparent;
   transition: all 0.2s ease;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   :hover {
     background-color: var(--color-basic);
     border: 1px solid var(--color-basic);
@@ -19,17 +22,9 @@ const BtnCircle = styled.button`
   svg path {
     transition: all 0.2s ease;
   }
-  .plus,
-  .minus {
-    position: absolute;
-    top: 25%;
-    right: 25%;
-  }
 
   .delete {
-    position: absolute;
-    top: 8px;
-    right: 7px;
+    margin: 2px 0 0 2px;
   }
 `;
 export default BtnCircle;
