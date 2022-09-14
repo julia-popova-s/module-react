@@ -1,8 +1,8 @@
 import { BtnOrder } from "./BtnForOrder.styled.js";
 import PropTypes from "prop-types";
-function ButtonOrder({ name, type, classNames }) {
+function ButtonOrder({ name, type, classNames, handle }) {
   return (
-    <BtnOrder type={type} className={classNames}>
+    <BtnOrder onClick={handle} type={type} className={classNames}>
       {name}
     </BtnOrder>
   );

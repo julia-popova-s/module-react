@@ -1,6 +1,6 @@
 import { CardBasketWrap } from "./CardBasketWrap.styled.js";
-import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
-import cutPartOfLine from "../../utils/cutPartOfLine.js";
+import getPriceWithSpace from "../../../utils/getPriceWithSpace.js";
+import cutPartOfLine from "../../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import {

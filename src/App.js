@@ -1,5 +1,5 @@
-import "./components/pages/styles/reset.css";
-import "./components/pages/styles/variables.css";
+import "./styles/reset.css";
+import "./styles/variables.css";
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import BasketPage from "./components/pages/basketPage";
@@ -11,7 +11,7 @@ function App() {
     <Routes>
       <Route path="/" element={<ProductsPage />} />
       <Route path="/:id/:name" element={<ProductPage />} />
-      <Route path="/shoplist" element={<BasketPage />} />
+      <Route path="/basket" element={<BasketPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

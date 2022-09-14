@@ -1,6 +1,6 @@
 import { CardItem } from "./CardItem.styled.js";
-import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
-import cutPartOfLine from "../../utils/cutPartOfLine.js";
+import getPriceWithSpace from "../../../utils/getPriceWithSpace";
+import cutPartOfLine from "../../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { addProduct } from "../../../store/reducers/basket";

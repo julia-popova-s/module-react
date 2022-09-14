@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const ProductListWrap = styled.section`
+const ProductListWrap = styled.main`
   .product-list {
     display: flex;
     flex-wrap: wrap;

@@ -1,7 +1,7 @@
 import { ButtonToBackCircle } from "./ButtonToBackCircle.styled";
-function ButtonToBack({ handleGoBack }) {
+function ButtonToBack({ handleGoBack, classNames }) {
   return (
-    <ButtonToBackCircle onClick={handleGoBack}>
+    <ButtonToBackCircle onClick={handleGoBack} className={classNames}>
       <svg
         className="arrow"
         width="11"
