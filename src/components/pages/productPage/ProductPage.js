@@ -5,7 +5,8 @@ import BasketMini from "../../elements/basketMini";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import "./index.scss";
-import ButtonForOrder from "../../ui/buttonForOrder";
+import Product from "../../elements/product/Product";
+import { products } from "../productsPage/menuList";
 
 function ProductPage() {
   const amount = useSelector((state) => state.basket.totalAmount);
@@ -13,9 +14,12 @@ function ProductPage() {
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
   const params = useParams();
-  console.log(params.id);
+  const product = products.filter((item) => item.id === params.id);
+  const { img, name, description, price, weight } = product[0];
+  console.log(name);
+  console.log(product);
   return (
-    <div className="product">
+    <div className="product-details">
       <header className="header">
         <div className="container">
           <div className="header-block">
@@ -24,42 +28,13 @@ function ProductPage() {
           </div>
         </div>
       </header>
-      <section className="product">
-        <div className="container">
-          <div className="product-item">
-            <div className="product-item__view">
-              <img
-                className="product-item__img"
-                src="/images/product/2.png"
-                alt="Фотография блюда"
-              />
-            </div>
-            <div className="product-item__text">
-              <div className="product-item__title">{params.name}</div>
-              <div className="product-item__description">
-                Не следует, однако забывать, что консультация с широким активом
-                представляет собой интересный эксперимент проверки новых
-                предложений. Не следует, однако забывать, что сложившаяся
-                структура организации позволяет оценить значение новых
-                предложений. Разнообразный и богатый опыт начало повседневной
-                работы по формированию позиции требуют от нас анализа позиций.Не
-                следует, однако забывать, что консультация с широким активом
-                представляет собой интересный эксперимент проверки новых
-                предложений. Не следует, однако забывать, что сложившаяся
-                структура организации позволяет оценить значение новых
-                предложений.
-              </div>
-              <div className="product-item__block-price">
-                <span className="product-item__price">
-                  {`${0} ₽`} {"/"}
-                </span>
-                <span className="product-item__weight">{`${5} г.`}</span>
-                <ButtonForOrder name={"В корзину"} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Product
+        img={img}
+        name={name}
+        description={description}
+        price={price}
+        weight={weight}
+      />
     </div>
   );
 }

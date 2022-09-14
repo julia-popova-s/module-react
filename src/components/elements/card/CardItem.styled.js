@@ -13,12 +13,14 @@ export const CardItem = styled.div`
     color: var(--color-basic);
     transition: color 0.2s ease;
   }
+
   .card__btn {
     position: absolute;
     z-index: 5;
     right: 27px;
     bottom: 28px;
   }
+
   .card__preview {
     padding: 43px 20px 0 20px;
     width: 100%;
@@ -65,11 +67,11 @@ export const CardItem = styled.div`
         font-weight: 500;
         font-size: 17px;
         line-height: 21px;
-      }
-      .card__weight {
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 17px;
+        .card__weight {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 17px;
+        }
       }
     }
   }

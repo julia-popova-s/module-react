@@ -12,6 +12,7 @@ export const ButtonToBackCircle = styled.div`
     background-color: var(--color-basic);
     border: 1px solid var(--color-basic);
     transition: all 0.3s ease;
+    cursor: pointer;
     .arrow path {
       transition: all 0.3s ease;
       fill: var(--color-white);
