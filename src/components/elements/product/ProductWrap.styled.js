@@ -5,6 +5,7 @@ export const ProductWrap = styled.section`
     padding: 0 30px;
     margin: 0 auto;
   }
+
   .product {
     min-height: 503px;
     display: flex;
@@ -12,6 +13,16 @@ export const ProductWrap = styled.section`
     justify-content: space-between;
     padding-top: 6px;
     padding-bottom: 108px;
+    height: calc(100vh - 117px);
+    overflow-x: auto;
+
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+
+    @media screen and (max-width: 1230px) {
+      justify-content: center;
+    }
 
     .product__view {
       padding-left: 50px;
@@ -21,12 +32,14 @@ export const ProductWrap = styled.section`
         max-height: 100%;
       }
     }
+
     .product__text {
       display: flex;
       flex-direction: column;
       max-width: 528px;
       padding-top: 58px;
       max-height: 454px;
+      margin-left: 30px;
 
       .product__title {
         font-weight: 500;
@@ -42,8 +55,13 @@ export const ProductWrap = styled.section`
         font-size: 14px;
         line-height: 17px;
         color: $white;
+
+        @media screen and (max-width: 1230px) {
+          margin-bottom: 30px;
+        }
       }
     }
+
     .product__block-price {
       display: flex;
       flex-wrap: wrap;

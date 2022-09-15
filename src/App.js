@@ -6,13 +6,15 @@ import BasketPage from "./components/pages/basketPage";
 import ProductsPage from "./components/pages/productsPage";
 import NotFound from "./components/pages/notFoundPage/";
 import ProductPage from "./components/pages/productPage";
+import FormPage from "./components/pages/formPage";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<ProductsPage />} />
+      <Route path="/products" element={<ProductsPage />} />
       <Route path="/:id/:name" element={<ProductPage />} />
       <Route path="/basket" element={<BasketPage />} />
       <Route path="*" element={<NotFound />} />
+      <Route path="/" element={<FormPage />} />
     </Routes>
   );
 }

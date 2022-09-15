@@ -1,0 +1,21 @@
+.formPage {
+  background-image: url('../../../../public/images/form/back.png');
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  max-width: 1360px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  height: 340px;
+}
