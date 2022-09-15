@@ -1,5 +1,6 @@
 .formPage {
   background-image: url('../../../../public/images/form/back.png');
+  background-position: 50% 50%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -12,10 +13,14 @@
   margin: 0 auto;
 }
 
-form {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  width: 460px;
-  height: 340px;
-}
+// .registration,
+// .login {
+//   background-color: $color-back;
+//   padding-bottom: 243px;
+//   padding-top: 82px;
+
+//   @media screen and (max-width:768px) {
+//     padding-top: 20px;
+//     padding-bottom: 20px;
+//   }
+// }

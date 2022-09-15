@@ -14,6 +14,7 @@ const basketSlice = createSlice({
     basket: [],
     totalAmount: 0,
     totalQuantity: 0,
+    autho: false,
   },
   reducers: {
     addProduct(state, action) {
@@ -56,8 +57,17 @@ const basketSlice = createSlice({
       updateAmount(state);
       updateQuantity(state);
     },
+    toogleAuto(state, action) {
+      state.autho = action.payload;
+      console.log(state.autho);
+    },
   },
 });
-export const { addProduct, removeProduct, plusProduct, minusProduct } =
-  basketSlice.actions;
+export const {
+  addProduct,
+  removeProduct,
+  plusProduct,
+  minusProduct,
+  toogleAuto,
+} = basketSlice.actions;
 export default basketSlice.reducer;
