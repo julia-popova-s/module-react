@@ -3,33 +3,33 @@ import ButtonForOrder from "../../ui/buttonForOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { toogleAuto } from "../../../store/reducers/basket";
+import { Link } from "react-router-dom";
+const validateInput = (value, setMessage) => {
+  if (value.length >= 4) {
+    setMessage("");
+  } else if (value.length < 4 && value.length > 0) {
+    setMessage("Логин должен содержать не менее 4-х символов");
+  } else if (value === "") {
+    setMessage("Поле не должно быть пустым");
+  }
+};
 
-function Form({ nameForm, btnToForm, idForm, idCheckbox }) {
+function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
+  const link = id === "reg" ? "login" : "reg";
   const [state, setState] = useState("");
-  let userData = [];
 
   const navigate = useNavigate();
   const autho = useSelector((state) => state.basket.autho);
-  console.log(autho);
+
   const [messageLogin, setMessageLogin] = useState("");
   const [messagePassword, setMessagePassword] = useState("");
 
-  const validateInput = (value, setMessage) => {
-    if (value.length >= 4) {
-      setMessage("");
-      userData.push(value);
-    } else if (value.length < 4 && value.length > 0) {
-      setMessage("Логин должен содержать не менее 4-х символов");
-    } else if (value === "") {
-      setMessage("Поле не должно быть пустым");
-    }
-  };
-  console.log(userData);
-
   const handleChange = (e) => {
     const target = e.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
+    const value =
+      target.type === "checkbox"
+        ? target.checked
+        : target.value.trim().replace(" ", "");
     const name = target.name;
 
     if (name === "login") {
@@ -43,34 +43,30 @@ function Form({ nameForm, btnToForm, idForm, idCheckbox }) {
       console.log(state);
     }
   };
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(state);
 
-    if (state.login === "") {
+    if (state.login === "" && state.password === "") {
       setMessageLogin("Поле не должно быть пустым");
+      setMessagePassword("Поле не должно быть пустым");
+    } else if (state.login.length >= 4 && state.password.length >= 4) {
+      localStorage.setItem(state.login, JSON.stringify(state));
+
+      navigate("/products");
     } else {
       setMessageLogin("");
     }
-    if (state.password === "") {
-      setMessagePassword("Поле не должно быть пустым");
-    } else {
-      setMessagePassword("");
-    }
-    if (state.login.length >= 4 && state.password.length >= 4) {
-      localStorage.setItem(state.login, JSON.stringify(state));
-      dispatch(toogleAuto(true));
-      navigate("/products");
-    }
   };
-
   return (
-    <form className="login-form" id={idForm} onSubmit={handleSubmit}>
-      <button className="login-form__autho" type="button">
-        {btnToForm}
-      </button>
+    <form className={"login-form "} id={idForm} onSubmit={handleSubmit}>
+      <Link to={`/${link}`}>
+        <button className="login-form__autho" type="button">
+          {btnToForm}
+        </button>
+      </Link>
       <div className="login-form__title">{nameForm}</div>
 
       <div className="login-form__item">
@@ -116,7 +112,7 @@ function Form({ nameForm, btnToForm, idForm, idCheckbox }) {
       <p className="login-form__alert login-form__alert_pdg"></p>
 
       <ButtonForOrder
-        name={"Войти"}
+        name={nameButton}
         classNames={"login-form__btn"}
         form={idForm}
         type={"submit"}
