@@ -14,15 +14,23 @@ import { Link } from "react-router-dom";
 //     setMessage("Поле не должно быть пустым");
 //   }
 // };
-// const checkEmpty = () => {};
+const checkEmpty = (state, setState) => {
+  if (state === "") {
+    setState("Поле не должно быть пустым");
+  } else if (state.length > 0 && state.length < 5) {
+    setState("Логин должен содержать не менее 4-х символов");
+  } else {
+    setState("");
+  }
+};
 
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
 
   const [state, setState] = useState("");
-  const [messageLogin, setMessageLogin] = useState("");
-  const [messagePassword, setMessagePassword] = useState("");
-  const [messageAll, setMessageAll] = useState("");
+  const [message, setMessage] = useState("");
+  const [messageAutho, setMessageAutho] = useState("");
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -32,39 +40,58 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         ? target.checked
         : target.value.trim().replace(" ", "");
     const name = target.name;
-
-    if (name === "login" && value.length >= 4) {
+    if (name === "login") {
       setState({ ...state, [name]: value });
-    } else if (name === "password" && value.length >= 4) {
+    } else if (name === "password") {
       setState({ ...state, [name]: value });
     } else if (value) {
       setState({ ...state, [name]: value });
     }
+
+    // if (name === "login" && state.login.length > 0 && state.login.length < 5) {
+    //   setMessageLogin("Логин должен содержать не менее 4-х символов");
+    //   setMessagePassword("");
+    // } else if (
+    //   name === "password" &&
+    //   state.password.length > 0 &&
+    //   state.password.length < 5
+    // ) {
+    //   setMessagePassword("Пароль должен содержать не менее 4-х символов");
+    //   setMessageLogin("");
+    // }
   };
 
   const handleSubmitReg = (e) => {
     e.preventDefault();
     if (state === "") {
-      setMessageLogin("Поле не должно быть пустым");
-      setMessagePassword("Поле не должно быть пустым");
-      setMessageAll("");
-    } else if (state.login.length >= 4 && state.password.length >= 4) {
+      setMessage("Поле не должно быть пустым");
+    } else if (
+      state !== "" &&
+      state.login.length < 4 &&
+      state.password.length > 0
+    ) {
+      setMessage("Логин должен содержать не менее 4-х символов");
+    } else if (
+      state !== "" &&
+      state.login.length >= 4 &&
+      state.password.length >= 4
+    ) {
       localStorage.setItem(state.login, JSON.stringify(state));
-      navigate("/login");
+      setState("");
+      setMessage("");
+      setTimeout(() => navigate("/login"), 1000);
+      // navigate("/login");
     }
+    console.log(state);
   };
   const handleSubmitLogin = (e) => {
     e.preventDefault();
     if (state === "") {
-      setMessageLogin("Поле не должно быть пустым");
-      setMessagePassword("Поле не должно быть пустым");
-      setMessageAll("");
+      setMessage("Поле не должно быть пустым");
     } else if (localStorage.getItem(state.login) !== null) {
       navigate("/products");
     } else {
-      setMessageLogin("");
-      setMessagePassword("");
-      setMessageAll("Неверен");
+      setMessage("");
     }
   };
   const handle =
@@ -89,7 +116,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           value={state.name}
         />
       </div>
-      <p className="login-form__alert">{messageLogin}</p>
+      <p className="login-form__alert">{message}</p>
 
       <div className="login-form__item">
         <input
@@ -102,7 +129,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           value={state.name}
         />
       </div>
-      <p className="login-form__alert">{messagePassword}</p>
+      <p className="login-form__alert">{message}</p>
 
       <div className="checkbox login-form__check">
         <input
@@ -118,7 +145,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           Я согласен получать обновления на почту
         </label>
       </div>
-      <p className="login-form__alert login-form__alert_pdg">{messageAll}</p>
+      <p className="login-form__alert login-form__alert_pdg">{messageAutho}</p>
 
       <ButtonForOrder
         name={nameButton}
