@@ -2,27 +2,28 @@ import "./index.scss";
 import ButtonForOrder from "../../ui/buttonForOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-const validateInput = (value, setMessage) => {
-  if (value.length >= 4) {
-    setMessage("");
-  } else if (value.length < 4 && value.length > 0) {
-    setMessage("Логин должен содержать не менее 4-х символов");
-  } else if (value === "") {
-    setMessage("Поле не должно быть пустым");
-  }
-};
+
+// const validateInput = (value, setMessage) => {
+//   if (value.length >= 4) {
+//     setMessage("");
+//   } else if (value.length < 4 && value.length > 0) {
+//     setMessage("Логин должен содержать не менее 4-х символов");
+//   } else if (value === "") {
+//     setMessage("Поле не должно быть пустым");
+//   }
+// };
+// const checkEmpty = () => {};
 
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
+
   const [state, setState] = useState("");
-
-  const navigate = useNavigate();
-  const autho = useSelector((state) => state.basket.autho);
-
   const [messageLogin, setMessageLogin] = useState("");
   const [messagePassword, setMessagePassword] = useState("");
+  const [messageAll, setMessageAll] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const target = e.target;
@@ -32,36 +33,44 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         : target.value.trim().replace(" ", "");
     const name = target.name;
 
-    if (name === "login") {
-      validateInput(value, setMessageLogin);
+    if (name === "login" && value.length >= 4) {
       setState({ ...state, [name]: value });
-    } else if (name === "password") {
-      validateInput(value, setMessagePassword);
+    } else if (name === "password" && value.length >= 4) {
       setState({ ...state, [name]: value });
     } else if (value) {
       setState({ ...state, [name]: value });
-      console.log(state);
     }
   };
-  // const dispatch = useDispatch();
 
-  const handleSubmit = (e) => {
+  const handleSubmitReg = (e) => {
     e.preventDefault();
-    console.log(state);
-
-    if (state.login === "" && state.password === "") {
+    if (state === "") {
       setMessageLogin("Поле не должно быть пустым");
       setMessagePassword("Поле не должно быть пустым");
+      setMessageAll("");
     } else if (state.login.length >= 4 && state.password.length >= 4) {
       localStorage.setItem(state.login, JSON.stringify(state));
-
+      navigate("/login");
+    }
+  };
+  const handleSubmitLogin = (e) => {
+    e.preventDefault();
+    if (state === "") {
+      setMessageLogin("Поле не должно быть пустым");
+      setMessagePassword("Поле не должно быть пустым");
+      setMessageAll("");
+    } else if (localStorage.getItem(state.login) !== null) {
       navigate("/products");
     } else {
       setMessageLogin("");
+      setMessagePassword("");
+      setMessageAll("Неверен");
     }
   };
+  const handle =
+    nameButton === "Регистрация" ? handleSubmitReg : handleSubmitLogin;
   return (
-    <form className={"login-form "} id={idForm} onSubmit={handleSubmit}>
+    <form className={"login-form "} id={idForm} onSubmit={handle}>
       <Link to={`/${link}`}>
         <button className="login-form__autho" type="button">
           {btnToForm}
@@ -109,7 +118,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           Я согласен получать обновления на почту
         </label>
       </div>
-      <p className="login-form__alert login-form__alert_pdg"></p>
+      <p className="login-form__alert login-form__alert_pdg">{messageAll}</p>
 
       <ButtonForOrder
         name={nameButton}

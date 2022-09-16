@@ -20,9 +20,7 @@ let forms = [
 
 function FormPage() {
   const params = useParams();
-  console.log(params);
   const form = forms.filter((item) => item.idForm === params.id);
-  console.log(form);
   const { nameForm, btnToForm, nameButton, idForm, idCheckbox } = form[0];
 
   return (
