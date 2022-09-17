@@ -12,7 +12,7 @@ let forms = [
   {
     nameForm: "Регистрация",
     btnToForm: "Авторизоваться",
-    nameButton: "Регистрация",
+    nameButton: "Зарегистрироваться",
     idForm: "reg",
     idCheckbox: "checkboxReg",
   },

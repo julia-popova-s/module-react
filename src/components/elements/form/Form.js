@@ -3,89 +3,101 @@ import ButtonForOrder from "../../ui/buttonForOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-
-const validateInput = (state, setState) => {
-  if (state === "") {
-    setState("Поле не должно быть пустым");
-  } else if (state.length > 0 && state.length < 4) {
-    setState("Логин и пароль должен содержать не менее 4-х символов");
+// const validateInputReg = (state, setState) => {
+//   if (state.login === "") {
+//     setState("Поле не должно быть пустым");
+//   }
+//   if (state.password === "") {
+//     setState("Поле не должно быть пустым");
+//   }
+// };
+// const validateInputReg = (state, setState) => {
+//   if (state === "") {
+//     setState("Поле не должно быть пустым");
+//   } else if (state.length > 0 && state.length < 4) {
+//     setState("Логин и пароль должен содержать не менее 4-х символов");
+//   } else {
+//     setState("");
+//   }
+// };
+const validateInputReg = (form, message, setMessage) => {
+  if (form.login === "" && form.password === "") {
+    setMessage({
+      ...message,
+      loginAlert: "Поле не должно быть пустым",
+      passwordAlert: "Поле не должно быть пустым",
+    });
   } else {
-    setState("");
+    setMessage({
+      ...message,
+      loginAlert: "",
+      passwordAlert: "",
+    });
+  }
+};
+const validateInputLogin = (form, message, setMessage) => {
+  if (form.login === "" && form.password === "") {
+    setMessage({
+      ...message,
+      authoAlert: "Логин или пароль неверен",
+    });
+  } else {
+    setMessage({
+      ...message,
+      authoAlert: "",
+    });
   }
 };
 
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
-  let userData;
-  const [state, setState] = useState("");
-  const [message, setMessage] = useState("");
-  const [messageAutho, setMessageAutho] = useState("");
-
+  const [form, setForm] = useState({
+    login: "",
+    password: "",
+    notice: false,
+  });
+  const [message, setMessage] = useState({
+    loginAlert: "",
+    passwordAlert: "",
+    authoAlert: "",
+  });
   const navigate = useNavigate();
-
-  const handleChange = (e) => {
-    const target = e.target;
-    const value =
-      target.type === "checkbox"
-        ? target.checked
-        : target.value.trim().replace(" ", "");
-    const name = target.name;
-    if (name === "login") {
-      validateInput(value, setMessage);
-      setState({ ...state, [name]: value });
-    } else if (name === "password") {
-      validateInput(value, setMessage);
-      setState({ ...state, [name]: value });
-    } else if (value) {
-      setState({ ...state, [name]: value });
-    }
-  };
 
   const handleSubmitReg = (e) => {
     e.preventDefault();
-    if (state === "") {
-      setMessage("Поле не должно быть пустым");
-    } else if (
-      state !== "" &&
-      state.login.length < 4 &&
-      state.password.length > 0
-    ) {
-      setMessage("Поле не должно быть пустым");
-    } else if (
-      state !== "" &&
-      state.login.length >= 4 &&
-      state.password.length >= 4
-    ) {
-      localStorage.setItem(state.login, JSON.stringify(state));
-      setState("");
-      setMessage("");
-      e.target.reset();
-      console.log(state);
-      setTimeout(() => navigate("/login"), 1000);
-    }
-    console.log(state);
-  };
-  const handleSubmitLogin = (e) => {
-    e.preventDefault();
-    userData = JSON.parse(localStorage.getItem(state.login));
-    if (state === "") {
-      setMessage("Поле не должно быть пустым");
-    } else if (
-      localStorage.getItem(state.login) !== null &&
-      state.password === userData.password
-    ) {
-      e.target.reset();
-      setMessageAutho("");
-      localStorage.setItem("autho", true);
-      setTimeout(() => navigate("/products"), 1000);
+
+    const login = form.login;
+    const password = form.password;
+    console.log(form.login, form.password, form.notice);
+    if (id === "reg") {
+      validateInputReg(form, message, setMessage);
+      if (form.notice && form.login.length >= 4 && form.password.length >= 4) {
+        localStorage.setItem(form.login, JSON.stringify(form));
+        e.target.reset();
+        setTimeout(() => navigate("/login"), 1000);
+      } else if (
+        form.notice ||
+        (form.login.length >= 4 && form.password.length >= 4)
+      ) {
+        localStorage.setItem(form.login, JSON.stringify({ login, password }));
+        e.target.reset();
+        setTimeout(() => navigate("/login"), 1000);
+      }
     } else {
-      setMessageAutho("Логин или пароль неверен");
+      validateInputLogin(form, message, setMessage);
     }
   };
-  const handle = nameButton === "Регистрация" ? handleSubmitReg : handleSubmitLogin;
+
+  const handleUpdate = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]:
+        e.target.type === "checkbox" ? e.target.checked : e.target.value,
+    });
+  };
 
   return (
-    <form className={"login-form "} id={idForm} onSubmit={handle}>
+    <form className={"login-form "} id={idForm} onSubmit={handleSubmitReg}>
       <Link to={`/${link}`}>
         <button className="login-form__autho" type="button">
           {btnToForm}
@@ -100,11 +112,11 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           name="login"
           autoComplete="on"
           placeholder="Логин"
-          onChange={handleChange}
-          value={state.name}
+          onChange={handleUpdate}
+          value={form.login}
         />
       </div>
-      <p className="login-form__alert">{message}</p>
+      <p className="login-form__alert">{message.loginAlert}</p>
 
       <div className="login-form__item">
         <input
@@ -113,27 +125,29 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           type="password"
           name="password"
           autoComplete="current-password"
-          onChange={handleChange}
-          value={state.name}
+          onChange={handleUpdate}
+          value={form.password}
         />
       </div>
-      <p className="login-form__alert">{message}</p>
+      <p className="login-form__alert">{message.passwordAlert}</p>
 
       <div className="checkbox login-form__check">
         <input
-          onChange={handleChange}
+          onChange={handleUpdate}
           type="checkbox"
           className="checkbox__mark"
           id={idCheckbox}
           name="notice"
-          value={state.name}
+          value={form.notice}
         />
 
         <label className="checkbox__label" htmlFor={idCheckbox}>
           Я согласен получать обновления на почту
         </label>
       </div>
-      <p className="login-form__alert login-form__alert_pdg">{messageAutho}</p>
+      <p className="login-form__alert login-form__alert_pdg">
+        {message.authoAlert}
+      </p>
 
       <ButtonForOrder
         name={nameButton}
