@@ -2,18 +2,8 @@ import "./index.scss";
 import ButtonForOrder from "../../ui/buttonForOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-// const validateInput = (value, setMessage) => {
-//   if (value.length >= 4) {
-//     setMessage("");
-//   } else if (value.length < 4 && value.length > 0) {
-//     setMessage("Логин должен содержать не менее 4-х символов");
-//   } else if (value === "") {
-//     setMessage("Поле не должно быть пустым");
-//   }
-// };
 const checkEmpty = (state, setState) => {
   if (state === "") {
     setState("Поле не должно быть пустым");
@@ -27,7 +17,7 @@ const checkEmpty = (state, setState) => {
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
 
-  const [state, setState] = useState("");
+  const [state, setState] = useState({});
   const [message, setMessage] = useState("");
   const [messageAutho, setMessageAutho] = useState("");
 
@@ -47,18 +37,6 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     } else if (value) {
       setState({ ...state, [name]: value });
     }
-
-    // if (name === "login" && state.login.length > 0 && state.login.length < 5) {
-    //   setMessageLogin("Логин должен содержать не менее 4-х символов");
-    //   setMessagePassword("");
-    // } else if (
-    //   name === "password" &&
-    //   state.password.length > 0 &&
-    //   state.password.length < 5
-    // ) {
-    //   setMessagePassword("Пароль должен содержать не менее 4-х символов");
-    //   setMessageLogin("");
-    // }
   };
 
   const handleSubmitReg = (e) => {
@@ -79,8 +57,9 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
       localStorage.setItem(state.login, JSON.stringify(state));
       setState("");
       setMessage("");
+      e.target.reset();
+      console.log(state);
       setTimeout(() => navigate("/login"), 1000);
-      // navigate("/login");
     }
     console.log(state);
   };
@@ -89,7 +68,8 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     if (state === "") {
       setMessage("Поле не должно быть пустым");
     } else if (localStorage.getItem(state.login) !== null) {
-      navigate("/products");
+      e.target.reset();
+      setTimeout(() => navigate("/products"), 1000);
     } else {
       setMessage("");
     }
