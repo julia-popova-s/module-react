@@ -20,7 +20,62 @@ import { Link } from "react-router-dom";
 //     setState("");
 //   }
 // };
-const validateInputReg = (form, message, setMessage) => {
+const validateFormReg = (form, message, setMessage) => {
+  if (form.login === "" && form.password === "") {
+    setMessage({
+      ...message,
+      loginAlert: "Поле не должно быть пустым",
+      passwordAlert: "Поле не должно быть пустым",
+    });
+  }
+  // else {
+  //   setMessage({
+  //     ...message,
+  //     loginAlert: "",
+  //     passwordAlert: "",
+  //   });
+  // }
+  // if (form.login === "") {
+  //   setMessage({
+  //     ...message,
+  //     loginAlert: "Поле не должно быть пустым",
+  //   });
+  // }
+  // if (form.password === "") {
+  //   setMessage({
+  //     ...message,
+  //     passwordAlert: "Поле не должно быть пустым",
+  //   });
+  // }
+  else if (form.login.length < 4 && form.login !== "") {
+    setMessage({
+      ...message,
+      loginAlert: "Логин должен содержать не менее 4-х символов",
+    });
+  } else if (form.login.length > 3) {
+    setMessage({
+      ...message,
+      loginAlert: "",
+    });
+  } else if (form.password.length < 4 && form.password !== "") {
+    setMessage({
+      ...message,
+      passwordAlert: "Пароль должен содержать не менее 4-х символов",
+    });
+  } else if (form.password.length > 3) {
+    setMessage({
+      ...message,
+      passwordAlert: "",
+    });
+  } else {
+    setMessage({
+      ...message,
+      loginAlert: "",
+      passwordAlert: "",
+    });
+  }
+};
+const validateFormLogin = (form, message, setMessage) => {
   if (form.login === "" && form.password === "") {
     setMessage({
       ...message,
@@ -32,18 +87,6 @@ const validateInputReg = (form, message, setMessage) => {
       ...message,
       loginAlert: "",
       passwordAlert: "",
-    });
-  }
-};
-const validateInputLogin = (form, message, setMessage) => {
-  if (form.login === "" && form.password === "") {
-    setMessage({
-      ...message,
-      authoAlert: "Логин или пароль неверен",
-    });
-  } else {
-    setMessage({
-      ...message,
       authoAlert: "",
     });
   }
@@ -70,7 +113,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     const password = form.password;
     console.log(form.login, form.password, form.notice);
     if (id === "reg") {
-      validateInputReg(form, message, setMessage);
+      validateFormReg(form, message, setMessage);
       if (form.notice && form.login.length >= 4 && form.password.length >= 4) {
         localStorage.setItem(form.login, JSON.stringify(form));
         e.target.reset();
@@ -84,7 +127,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         setTimeout(() => navigate("/login"), 1000);
       }
     } else {
-      validateInputLogin(form, message, setMessage);
+      validateFormLogin(form, message, setMessage);
     }
   };
 
