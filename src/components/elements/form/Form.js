@@ -4,11 +4,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-const checkEmpty = (state, setState) => {
+const validateInput = (state, setState) => {
   if (state === "") {
     setState("Поле не должно быть пустым");
-  } else if (state.length > 0 && state.length < 5) {
-    setState("Логин должен содержать не менее 4-х символов");
+  } else if (state.length > 0 && state.length < 4) {
+    setState("Логин и пароль должен содержать не менее 4-х символов");
   } else {
     setState("");
   }
@@ -16,8 +16,8 @@ const checkEmpty = (state, setState) => {
 
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
-
-  const [state, setState] = useState({});
+  let userData;
+  const [state, setState] = useState("");
   const [message, setMessage] = useState("");
   const [messageAutho, setMessageAutho] = useState("");
 
@@ -31,8 +31,10 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         : target.value.trim().replace(" ", "");
     const name = target.name;
     if (name === "login") {
+      validateInput(value, setMessage);
       setState({ ...state, [name]: value });
     } else if (name === "password") {
+      validateInput(value, setMessage);
       setState({ ...state, [name]: value });
     } else if (value) {
       setState({ ...state, [name]: value });
@@ -48,7 +50,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
       state.login.length < 4 &&
       state.password.length > 0
     ) {
-      setMessage("Логин должен содержать не менее 4-х символов");
+      setMessage("Поле не должно быть пустым");
     } else if (
       state !== "" &&
       state.login.length >= 4 &&
@@ -65,17 +67,23 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   };
   const handleSubmitLogin = (e) => {
     e.preventDefault();
+    userData = JSON.parse(localStorage.getItem(state.login));
     if (state === "") {
       setMessage("Поле не должно быть пустым");
-    } else if (localStorage.getItem(state.login) !== null) {
+    } else if (
+      localStorage.getItem(state.login) !== null &&
+      state.password === userData.password
+    ) {
       e.target.reset();
+      setMessageAutho("");
+      localStorage.setItem("autho", true);
       setTimeout(() => navigate("/products"), 1000);
     } else {
-      setMessage("");
+      setMessageAutho("Логин или пароль неверен");
     }
   };
-  const handle =
-    nameButton === "Регистрация" ? handleSubmitReg : handleSubmitLogin;
+  const handle = nameButton === "Регистрация" ? handleSubmitReg : handleSubmitLogin;
+
   return (
     <form className={"login-form "} id={idForm} onSubmit={handle}>
       <Link to={`/${link}`}>
