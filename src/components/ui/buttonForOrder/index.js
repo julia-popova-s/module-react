@@ -1,2 +1,2 @@
-import ButtonForOrder from "./ButtonForOrder";
+import ButtonForOrder from "./ButtonForOrder.js";
 export default ButtonForOrder;

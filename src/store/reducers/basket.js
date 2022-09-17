@@ -6,7 +6,7 @@ import {
   updateCounterUp,
   updateCounterDown,
   removeOneElement,
-} from "./helper";
+} from "../../utils/helperForBasket";
 
 const basketSlice = createSlice({
   name: "basket",

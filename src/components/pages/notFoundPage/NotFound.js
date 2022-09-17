@@ -1,7 +1,7 @@
-import "./index.scss";
+import "./index.module.scss";
 function NotFound() {
   return (
-    <div className="not-found">
+    <div className="notFound">
       <div className="container">Такой страницы не существует</div>
     </div>
   );

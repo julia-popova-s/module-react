@@ -1,6 +1,6 @@
 import { CardBasketWrap } from "./CardBasketWrap.styled.js";
-import getPriceWithSpace from "../../utils/getPriceWithSpace.js";
-import cutPartOfLine from "../../utils/cutPartOfLine.js";
+import getPriceWithSpace from "../../../utils/getPriceWithSpace.js";
+import cutPartOfLine from "../../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import {
@@ -8,6 +8,7 @@ import {
   minusProduct,
   plusProduct,
 } from "../../../store/reducers/basket";
+import { Link } from "react-router-dom";
 import ButtonCircle from "../../ui/buttonCircle";
 function CardBasket({ id, img, name, price, quantity }) {
   const newPrice = getPriceWithSpace(price * quantity);
@@ -29,15 +30,20 @@ function CardBasket({ id, img, name, price, quantity }) {
 
   return (
     <CardBasketWrap>
-      <div className="card__preview">
-        <img
-          className="card__img"
-          src={`/images/basket/${img}`}
-          alt="Фотография блюда"
-        />
-      </div>
+      <Link to={`/${id}/${name}`} className="card__link">
+        <div className="card__preview">
+          <img
+            className="card__img"
+            src={`/images/basket/${img}`}
+            alt="Фотография блюда"
+          />
+        </div>
+      </Link>
+
       <div className="card__text">
-        <div className="card__title">{title}</div>
+        <Link to={`/${id}/${name}`} className="card__link">
+          {title}
+        </Link>
         <div className="card__block-price">
           <ButtonCircle
             handle={handlePlusProduct}
