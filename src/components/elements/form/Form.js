@@ -1,114 +1,14 @@
 import "./index.scss";
 import ButtonForOrder from "../../ui/buttonForOrder";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import useInput from "../../../utils/validatorForm";
 
-const useValidation = (value, validations) => {
-  const [isEmpty, setEmpty] = useState(true);
-  const [minLengthError, setMinLengthError] = useState(false);
-  const [inputValid, setInputValid] = useState(false);
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    for (const validation in validations) {
-      switch (validation) {
-        case "minLength":
-          if (value.length < validations[validation] && value.length > 0) {
-            setMinLengthError(true);
-            setMessage("Поле должно содержать не менее 4-х символов");
-          } else {
-            setMinLengthError(false);
-            setMessage("");
-          }
-          break;
-        case "isEmpty":
-          value ? setEmpty(false) : setEmpty(true);
-
-          break;
-        default:
-          break;
-      }
-    }
-  }, [value, validations]);
-
-  useEffect(() => {
-    if (isEmpty || minLengthError) {
-      setInputValid(false);
-    } else {
-      setInputValid(true);
-    }
-  }, [isEmpty, minLengthError]);
-
-  return {
-    isEmpty,
-    minLengthError,
-    inputValid,
-    setInputValid,
-    message,
-    setMessage,
-  };
-};
-const useInput = (initialState, validations) => {
-  const [value, setValue] = useState(initialState);
-  const [isDirty, setDirty] = useState(false);
-  const valid = useValidation(value, validations);
-  const onChange = (e) => {
-    setValue(e.target.value.replace(" ", ""));
-  };
-  const onBlur = () => {
-    setDirty(true);
-  };
-  return { value, onChange, onBlur, isDirty, ...valid, setValue, setDirty };
-};
-// const getNotice = (login, password, setAlert) => {
-//   if (password.isEmpty & login.isEmpty) {
-//     setAlert({
-//       ...alert,
-//       alertLogin: "Поле не должно быть пустым",
-//       alertPassword: "Поле не должно быть пустым",
-//     });
-//   } else {
-//     setAlert({
-//       ...alert,
-//       alertLogin: "",
-//       alertPassword: "",
-//     });
-//   }
-//   //   }
-//   //   if (password.isDirty && password.isEmpty) {
-//   //     setAlert({
-//   //       ...alert,
-//   //       alertPassword: "Поле не должно быть пустым",
-//   //     });
-//   //   }
-//   //   if (password.isDirty && password.minLengthError && !password.isEmpty) {
-//   //     setAlert({
-//   //       ...alert,
-//   //       alertLogin: " Пароль должен содержать не менее 4-х символов",
-//   //     });
-//   //   }
-//   // if (password.isDirty && password.isEmpty) {
-//   //   setAlert({
-//   //     ...alert,
-//   //     alertPassword: "Поле не должно быть пустым",
-//   //   });
-//   // } else if (password.isDirty && password.minLengthError) {
-//   //   setAlert({
-//   //     ...alert,
-//   //     alertLogin: " Пароль должен содержать не менее 4-х символов",
-//   //   });
-//   // }
-//   //  {password.isDirty && password.isEmpty && (
-//   //       <p className="login-form__alert">Поле не должно быть пустым</p>
-//   //     )}
-//   //     {password.isDirty && password.minLengthError && (
-// };
 function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const link = id === "reg" ? "login" : "reg";
   const navigate = useNavigate();
-  const [alert, setAlert] = useState({
-    alertAutho: "",
-  });
+  const [alert, setAlert] = useState("");
   let login = useInput("", {
     isEmpty: true,
     minLength: 4,
@@ -119,10 +19,9 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   });
 
   const [checked, setChecked] = useState(false);
-  const handleClick = () => {
-    setChecked(!checked);
+  const handleChecked = (e) => {
+    setChecked(e.target.checked);
   };
-
   const handleSubmitReg = (e) => {
     e.preventDefault();
     login.setDirty(true);
@@ -145,11 +44,8 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
               password: password.value,
             })
           );
-      login.setValue("");
-      login.setDirty(false);
-      password.setValue("");
-      password.setDirty(false);
-      setChecked(false);
+
+      handleReset();
       setTimeout(navigate("/login"), 1000);
     }
   };
@@ -174,15 +70,11 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
               notice: checked,
             })
           );
-
-        login.setValue("");
-        login.setDirty(false);
-        password.setValue("");
-        password.setDirty(false);
-        setChecked(false);
+        localStorage.setItem("userAutho", true);
+        handleReset();
         setTimeout(navigate("/products"), 1000);
       } else {
-        setAlert({ alertAutho: "Логин или пароль неверен" });
+        setAlert("Логин или пароль неверен");
       }
     }
   };
@@ -192,6 +84,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     password.setValue("");
     password.setDirty(false);
     setChecked(false);
+    setAlert("");
   };
   const handle = id === "reg" ? handleSubmitReg : handleSubmitAutho;
   return (
@@ -248,7 +141,6 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           Пароль должен содержать не менее 4-х символов
         </p>
       )}
-      {/* <p className="login-form__alert">{password.message}</p> */}
 
       <div className="checkbox login-form__check">
         <input
@@ -257,7 +149,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           id={idCheckbox}
           name="notice"
           checked={checked}
-          onClick={handleClick}
+          onChange={(e) => handleChecked(e)}
         />
 
         <label className="checkbox__label" htmlFor={idCheckbox}>
@@ -265,7 +157,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         </label>
       </div>
 
-      <p className="login-form__alert">{alert.alertAutho}</p>
+      <p className="login-form__alert">{alert}</p>
 
       <ButtonForOrder
         name={nameButton}
