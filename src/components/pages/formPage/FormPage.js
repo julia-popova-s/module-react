@@ -1,6 +1,8 @@
-import Form from "../../elements/form/Form";
+// import FormRegistrator from "../../elements/formRegistator";
+// import FormAutho from "../../elements/formAutho";
 import "./index.scss";
 import { useParams } from "react-router-dom";
+import Form from "../../elements/form/Form";
 let forms = [
   {
     nameForm: "Вход",
@@ -24,8 +26,13 @@ function FormPage() {
   const { nameForm, btnToForm, nameButton, idForm, idCheckbox } = form[0];
 
   return (
-    <section className="formPage">
+    <section className="form-page">
       <div className="container">
+        {/* {params.id === "reg" ? (
+          <FormRegistrator id={params.id} />
+        ) : (
+          <FormAutho id={params.id} />
+        )} */}
         <Form
           id={params.id}
           nameForm={nameForm}
