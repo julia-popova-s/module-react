@@ -25,8 +25,15 @@ function ProductPage() {
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerBlock}>
-            <ButtonToBack handleGoBack={goBack} />
-            <BasketMini counter={quantity} sum={amount} />
+            <ButtonToBack
+              handleGoBack={goBack}
+              classNames={styles.headerBlock__btn}
+            />
+            <BasketMini
+              counter={quantity}
+              sum={amount}
+              classNames={styles.headerBlock__basket}
+            />
             <ButtonExit handle={handleExit} name={"Выйти"} />
           </div>
         </div>

@@ -16,7 +16,15 @@
 .headerBlock {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  align-items: center;
   padding-top: 37px;
   margin-bottom: 30px;
+
+  &__btn {
+    margin-right: auto;
+  }
+
+  &__basket {
+    margin-right: 22px;
+  }
 }
