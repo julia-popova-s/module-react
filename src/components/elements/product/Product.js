@@ -20,7 +20,7 @@ function Product({ id, img, name, description, price, weight }) {
           <div className="product__view">
             <img
               className="product__img"
-              src={`/images/product/2.png`}
+              src={`/images/products/${img}`}
               alt="Фотография блюда"
             />
           </div>

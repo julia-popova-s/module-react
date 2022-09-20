@@ -1,5 +1,7 @@
 import styled from "styled-components";
 export const ProductWrap = styled.section`
+  overflow-x: auto;
+  height: calc(100vh - 117px);
   .container {
     max-width: 1360px;
     padding: 0 30px;
@@ -7,29 +9,25 @@ export const ProductWrap = styled.section`
   }
 
   .product {
-    min-height: 503px;
+    height: 503px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     padding-top: 6px;
-    padding-bottom: 108px;
-    height: calc(100vh - 117px);
-    overflow-x: auto;
+    margin-bottom: 6px;
 
     ::-webkit-scrollbar {
       width: 0;
     }
-
-    @media screen and (max-width: 1230px) {
+    @media screen and (max-width: 1130px) {
       justify-content: center;
+      height: 100%;
     }
-
     .product__view {
       padding-left: 50px;
 
       .product__img {
-        max-width: 100%;
-        max-height: 100%;
+        height: 100%;
       }
     }
 

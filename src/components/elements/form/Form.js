@@ -87,22 +87,23 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     setAlert("");
   };
   const handle = id === "reg" ? handleSubmitReg : handleSubmitAutho;
+
   return (
-    <form className={"login-form "} id={idForm} onSubmit={handle}>
+    <form className={"formLogin "} id={idForm} onSubmit={handle}>
       <Link to={`/${link}`}>
         <button
           onClick={handleReset}
-          className="login-form__autho"
+          className="formLogin__autho"
           type="button"
         >
           {btnToForm}
         </button>
       </Link>
-      <div className="login-form__title">{nameForm}</div>
+      <div className="formLogin__title">{nameForm}</div>
 
-      <div className="login-form__item">
+      <div className="formLogin__item">
         <input
-          className="login-form__input"
+          className="formLogin__input"
           type="text"
           name="login"
           autoComplete="on"
@@ -111,19 +112,21 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           onBlur={(e) => login.onBlur(e)}
           value={login.value}
         />
-      </div>
-      {login.isDirty && login.isEmpty && (
-        <p className="login-form__alert">Поле не должно быть пустым</p>
-      )}
-      {login.isDirty && login.minLengthError && (
-        <p className="login-form__alert">
-          Логин должен содержать не менее 4-х символов
-        </p>
-      )}
 
-      <div className="login-form__item">
+        {login.isDirty && login.isEmpty && (
+          <p className="formLogin__error">Поле не должно быть пустым</p>
+        )}
+        {login.isDirty && login.minLengthError && (
+          <p className="formLogin__error">
+            Логин должен содержать не менее 4-х символов
+          </p>
+        )}
+      </div>
+      {/* <p className="formLogin__alert"></p> */}
+
+      <div className="formLogin__item">
         <input
-          className="login-form__input"
+          className="formLogin__input"
           placeholder="Пароль"
           type="password"
           name="password"
@@ -132,17 +135,18 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           onBlur={(e) => password.onBlur(e)}
           value={password.value}
         />
+        {password.isDirty && password.isEmpty && (
+          <p className="formLogin__error">Поле не должно быть пустым</p>
+        )}
+        {password.isDirty && password.minLengthError && (
+          <p className="formLogin__error">
+            Пароль должен содержать не менее 4-х символов
+          </p>
+        )}
       </div>
-      {password.isDirty && password.isEmpty && (
-        <p className="login-form__alert">Поле не должно быть пустым</p>
-      )}
-      {password.isDirty && password.minLengthError && (
-        <p className="login-form__alert">
-          Пароль должен содержать не менее 4-х символов
-        </p>
-      )}
+      {/* <p className="formLogin__alert"></p> */}
 
-      <div className="checkbox login-form__check">
+      <div className="checkbox form__check">
         <input
           type="checkbox"
           className="checkbox__mark"
@@ -157,11 +161,11 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         </label>
       </div>
 
-      <p className="login-form__alert">{alert}</p>
+      <p className="formLogin__alert">{alert}</p>
 
       <ButtonForOrder
         name={nameButton}
-        classNames={"login-form__btn"}
+        classNames={"formLogin__btn"}
         form={idForm}
         type={"submit"}
       />

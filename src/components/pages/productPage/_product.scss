@@ -2,8 +2,9 @@
   color: $white;
   background-color: #131313;
   background-image: url('../../../../public/images/product/back.png');
-  background-size: contain;
-  background-position: 50% 50%;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
 
 .container {

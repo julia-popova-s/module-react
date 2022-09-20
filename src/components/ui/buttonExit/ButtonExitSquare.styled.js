@@ -1,5 +1,6 @@
 import styled from "styled-components";
 export const ButtonExitSquare = styled.button`
+  font-family: "Montserrat", "Arial", sans-serif;
   background-color: transparent;
   width: 200px;
   height: 42px;
