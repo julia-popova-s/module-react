@@ -12,7 +12,7 @@ function App() {
   const navigate = useNavigate();
   const userAutho = localStorage.getItem("userAutho");
   useEffect(() => {
-    if (userAutho) {
+    if (userAutho === true) {
       navigate("/products");
     } else {
       navigate("/login");
