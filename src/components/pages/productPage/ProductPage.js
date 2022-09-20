@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom";
 import Product from "../../elements/product/Product";
 import { products } from "../../../store/menuList";
 import styles from "./index.module.scss";
+import ButtonExit from "../../ui/buttonExit";
 
 function ProductPage() {
   const amount = useSelector((state) => state.basket.totalAmount);
@@ -15,7 +16,10 @@ function ProductPage() {
   const params = useParams();
   const product = products.filter((item) => item.id === params.id);
   const { img, name, description, price, weight } = product[0];
-
+  const handleExit = () => {
+    localStorage.setItem("userAutho", false);
+    setTimeout(() => navigate("/login"), 1000);
+  };
   return (
     <div className={styles.productDetails}>
       <header className={styles.header}>
@@ -23,6 +27,7 @@ function ProductPage() {
           <div className={styles.headerBlock}>
             <ButtonToBack handleGoBack={goBack} />
             <BasketMini counter={quantity} sum={amount} />
+            <ButtonExit handle={handleExit} name={"Выйти"} />
           </div>
         </div>
       </header>
