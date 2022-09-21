@@ -13,12 +13,12 @@ import { NotFound } from "./components/pages/notFoundPage/";
 export function App() {
   const navigate = useNavigate();
 
-  // const userAutho = localStorage.getItem("userAutho");
-  // useEffect(() => {
-  //   if (userAutho === null) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate, userAutho]);
+  const userAutho = localStorage.getItem("userAutho");
+  useEffect(() => {
+    if (userAutho === null) {
+      navigate("/login");
+    }
+  }, [navigate, userAutho]);
 
   return (
     <Routes>

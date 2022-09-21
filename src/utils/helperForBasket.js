@@ -14,27 +14,16 @@ const getIndex = (state, action) => {
   return state.basket.findIndex((elem) => elem.id === action.payload.id);
 };
 const updateCounterUp = (state, index) => {
-  const nextState = [...state.basket];
-  nextState[index] = Object.assign(nextState[index], {
-    quantity: nextState[index].quantity + 1,
-  });
-  return nextState;
+  state.basket[index].quantity += 1;
 };
 const updateCounterDown = (state, index) => {
-  const nextState = [...state.basket];
-  nextState[index] = Object.assign(nextState[index], {
-    quantity: nextState[index].quantity - 1,
-  });
-  return nextState;
+  state.basket[index].quantity -= 1;
 };
-const removeOneElement = (state, index) => {
-  return [...state.basket.slice(0, index), ...state.basket.slice(index + 1)];
-};
+
 export {
   updateAmount,
   updateQuantity,
   getIndex,
   updateCounterUp,
   updateCounterDown,
-  removeOneElement,
 };

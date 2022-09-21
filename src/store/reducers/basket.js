@@ -5,7 +5,6 @@ import {
   getIndex,
   updateCounterUp,
   updateCounterDown,
-  removeOneElement,
 } from "../../utils/helperForBasket";
 
 const basketSlice = createSlice({
@@ -19,7 +18,7 @@ const basketSlice = createSlice({
     addProduct(state, action) {
       const index = getIndex(state, action);
       if (index !== -1) {
-        state.basket = updateCounterUp(state, index);
+        updateCounterUp(state, index);
       } else {
         state.basket.push(Object.assign(action.payload, { quantity: 1 }));
       }
@@ -30,7 +29,9 @@ const basketSlice = createSlice({
     removeProduct(state, action) {
       const index = getIndex(state, action);
       if (index !== -1) {
-        state.basket = removeOneElement(state, index);
+        state.basket = state.basket.filter(
+          (item) => item.id !== action.payload.id
+        );
       }
       updateAmount(state);
       updateQuantity(state);
@@ -39,20 +40,20 @@ const basketSlice = createSlice({
     plusProduct(state, action) {
       const index = getIndex(state, action);
       if (index !== -1) {
-        state.basket = updateCounterUp(state, index);
+        updateCounterUp(state, index);
       }
       updateAmount(state);
       updateQuantity(state);
     },
     minusProduct(state, action) {
       const index = getIndex(state, action);
-      let nextState;
       if (action.payload.quantity > 1) {
-        nextState = updateCounterDown(state, index);
+        updateCounterDown(state, index);
       } else {
-        nextState = removeOneElement(state, index);
+        state.basket = state.basket.filter(
+          (item) => item.id !== action.payload.id
+        );
       }
-      state.basket = nextState;
       updateAmount(state);
       updateQuantity(state);
     },

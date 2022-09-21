@@ -45,7 +45,7 @@ export function FormRegistration() {
           );
 
       changeForm();
-      setTimeout(navigate("/login"), 1000);
+      setTimeout(navigate("/products"), 1000);
     }
   };
 
