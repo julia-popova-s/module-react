@@ -5,18 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useInput } from "../../../hooks/useInput";
 
-export function Form({
-  id,
-  nameForm,
-  nameButton,
-  btnToForm,
-  idForm,
-  idCheckbox,
-}) {
-  const link = id === "reg" ? "login" : "reg";
+export function FormRegistration() {
   const navigate = useNavigate();
   const [alert, setAlert] = useState("");
-  let login = useInput("", {
+  const login = useInput("", {
     isEmpty: true,
     minLength: 4,
   });
@@ -34,7 +26,7 @@ export function Form({
     login.setDirty(true);
     password.setDirty(true);
 
-    if (id === "reg" && login.inputValid && password.inputValid) {
+    if (login.inputValid && password.inputValid) {
       checked
         ? localStorage.setItem(
             login.value,
@@ -52,40 +44,12 @@ export function Form({
             })
           );
 
-      handleReset();
+      changeForm();
       setTimeout(navigate("/login"), 1000);
     }
   };
-  const handleSubmitAutho = (e) => {
-    e.preventDefault();
-    let userData;
-    login.setDirty(true);
-    password.setDirty(true);
-    if (id === "login" && login.inputValid && password.inputValid) {
-      userData = JSON.parse(localStorage.getItem(login.value));
-      if (
-        userData !== null &&
-        login.value === userData.login &&
-        password.value === userData.password
-      ) {
-        if (!userData.notice && checked)
-          localStorage.setItem(
-            login.value,
-            JSON.stringify({
-              login: login.value,
-              password: password.value,
-              notice: checked,
-            })
-          );
-        localStorage.setItem("userAutho", true);
-        handleReset();
-        setTimeout(navigate("/products"), 1000);
-      } else {
-        setAlert("Логин или пароль неверен");
-      }
-    }
-  };
-  const handleReset = () => {
+
+  const changeForm = () => {
     login.setValue("");
     login.setDirty(false);
     password.setValue("");
@@ -93,20 +57,15 @@ export function Form({
     setChecked(false);
     setAlert("");
   };
-  const handle = id === "reg" ? handleSubmitReg : handleSubmitAutho;
 
   return (
-    <form className={"formLogin "} id={idForm} onSubmit={handle}>
-      <Link to={`/${link}`}>
-        <button
-          onClick={handleReset}
-          className="formLogin__autho"
-          type="button"
-        >
-          {btnToForm}
+    <form className={"formLogin "} id="reg" onSubmit={handleSubmitReg}>
+      <Link to={"/login"}>
+        <button onClick={changeForm} className="formLogin__autho" type="button">
+          Авторизоваться
         </button>
       </Link>
-      <div className="formLogin__title">{nameForm}</div>
+      <div className="formLogin__title">Регистрация</div>
 
       <div className="formLogin__item">
         <input
@@ -155,13 +114,13 @@ export function Form({
         <input
           type="checkbox"
           className="checkbox__mark"
-          id={idCheckbox}
+          id="checkboxReg"
           name="notice"
           checked={checked}
           onChange={(e) => handleChecked(e)}
         />
 
-        <label className="checkbox__label" htmlFor={idCheckbox}>
+        <label className="checkbox__label" htmlFor="checkboxReg">
           Я согласен получать обновления на почту
         </label>
       </div>
@@ -169,9 +128,9 @@ export function Form({
       <p className="formLogin__alert">{alert}</p>
 
       <ButtonOrder
-        name={nameButton}
+        name="Зарегистрироваться"
         classNames={"formLogin__btn"}
-        form={idForm}
+        form="reg"
         type={"submit"}
       />
     </form>
