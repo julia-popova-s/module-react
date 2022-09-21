@@ -1,13 +1,14 @@
-import "./index.scss";
 import { ButtonOrder } from "../../ui/buttonOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useInput } from "../../../hooks/useInput";
+import styles from "./index.module.scss";
 
 export function FormLogin() {
   const navigate = useNavigate();
   const [alert, setAlert] = useState("");
+
   const login = useInput("", {
     isEmpty: true,
     minLength: 4,
@@ -61,17 +62,21 @@ export function FormLogin() {
   };
 
   return (
-    <form className={"formLogin "} id="login" onSubmit={handleSubmitLogin}>
+    <form className={styles.formLogin} id="login" onSubmit={handleSubmitLogin}>
       <Link to={"/registration"}>
-        <button onClick={changeForm} className="formLogin__autho" type="button">
+        <button
+          onClick={changeForm}
+          className={styles.formLogin__autho}
+          type="button"
+        >
           {"Зарегистрироваться"}
         </button>
       </Link>
-      <div className="formLogin__title">Вход</div>
+      <div className={styles.formLogin__title}>Вход</div>
 
-      <div className="formLogin__item">
+      <div className={styles.formLogin__item}>
         <input
-          className="formLogin__input"
+          className={styles.formLogin__input}
           type="text"
           name="login"
           autoComplete="on"
@@ -82,18 +87,18 @@ export function FormLogin() {
         />
 
         {login.isDirty && login.isEmpty && (
-          <p className="formLogin__error">Поле не должно быть пустым</p>
+          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {login.isDirty && login.minLengthError && (
-          <p className="formLogin__error">
+          <p className={styles.formLogin__error}>
             Логин должен содержать не менее 4-х символов
           </p>
         )}
       </div>
 
-      <div className="formLogin__item">
+      <div className={styles.formLogin__item}>
         <input
-          className="formLogin__input"
+          className={styles.formLogin__input}
           placeholder="Пароль"
           type="password"
           name="password"
@@ -103,38 +108,38 @@ export function FormLogin() {
           value={password.value}
         />
         {password.isDirty && password.isEmpty && (
-          <p className="formLogin__error">Поле не должно быть пустым</p>
+          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {password.isDirty && password.minLengthError && (
-          <p className="formLogin__error">
+          <p className={styles.formLogin__error}>
             Пароль должен содержать не менее 4-х символов
           </p>
         )}
       </div>
 
-      <div className="checkbox form__check">
+      <div className={styles.checkbox}>
         <input
           type="checkbox"
-          className="checkbox__mark"
+          className={styles.checkbox__mark}
           id="checkboxReg"
           name="notice"
           checked={checked}
           onChange={(e) => handleChecked(e)}
         />
 
-        <label className="checkbox__label" htmlFor="checkboxReg">
+        <label className={styles.checkbox__label} htmlFor="checkboxReg">
           Я согласен получать обновления на почту
         </label>
       </div>
 
-      <p className="formLogin__alert">{alert}</p>
+      <p className={styles.formLogin__alert}>{alert}</p>
 
       <ButtonOrder
         type={"submit"}
         view={"order"}
         name={"Войти"}
         form="login"
-        classNames="btn-order formLogin__btn"
+        classNames={`btn-order ${styles.formLogin__btn}`}
       />
     </form>
   );
