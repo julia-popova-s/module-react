@@ -22,7 +22,7 @@ export function Card({ id, img, name, description, price, weight }) {
     item = { id: id, img: img, name: name, price: price };
     dispatch(addProduct(item));
   };
-  //  &#8381;
+
   return (
     <CardItem margin={margin}>
       <Link to={`/${id}/${name}`} className="card__link">
@@ -30,7 +30,7 @@ export function Card({ id, img, name, description, price, weight }) {
           <img
             className="card__img"
             src={`/images/products/${img}`}
-            alt={`${name}`}
+            alt={name}
           />
         </div>
         <div className="card__text">

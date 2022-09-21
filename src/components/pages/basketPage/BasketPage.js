@@ -41,7 +41,8 @@ export function BasketPage() {
             <ButtonOrder
               type={"button"}
               name={"Оформить заказ"}
-              classNames={"btn-order"}
+              // classNames={"btn-order"}
+              view={"order"}
             />
           </div>
         </div>

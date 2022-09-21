@@ -139,7 +139,7 @@ export function FormLogin() {
         view={"order"}
         name={"Войти"}
         form="login"
-        classNames={`btn-order ${styles.formLogin__btn}`}
+        classNames={styles.formLogin__btn}
       />
     </form>
   );

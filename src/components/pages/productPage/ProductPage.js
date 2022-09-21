@@ -39,7 +39,7 @@ export function ProductPage() {
               classNames={styles.headerBlock__basket}
             />
             <ButtonOrder
-              classNames={"btn-exit"}
+              view={"exit"}
               type={"button"}
               handle={handleExit}
               name={"Выйти"}

@@ -37,7 +37,7 @@ export function Product({ id, img, name, description, price, weight }) {
                   name={"В корзину"}
                   type={"button"}
                   handle={handleAddProduct}
-                  classNames="btn-order"
+                  view={"order"}
                 />
               </Link>
             </div>

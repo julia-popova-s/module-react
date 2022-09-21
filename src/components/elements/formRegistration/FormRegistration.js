@@ -135,7 +135,8 @@ export function FormRegistration() {
         type={"submit"}
         name={"Зарегистрироваться"}
         form="reg"
-        classNames={`btn-order ${styles.formLogin__btn}`}
+        view={"order"}
+        classNames={styles.formLogin__btn}
       />
     </form>
   );
