@@ -11,7 +11,7 @@ export function BasketMini({ counter, sum, classNames }) {
     <BasketMiniWrap className={classNames}>
       <div className="basket-mini__text">
         <p className="basket-mini__text-item">{`${counter} ${word}`}</p>
-        <p className="basket-mini__text-item"> на сумму {`${newSum} ₽`}</p>
+        <p className="basket-mini__text-item"> на сумму {`${newSum}`}</p>
       </div>
       <Link to="/basket" className="basket-mini__icon">
         <svg

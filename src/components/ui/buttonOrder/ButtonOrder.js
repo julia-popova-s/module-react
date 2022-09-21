@@ -1,10 +1,10 @@
-import { BtnOrder } from "./BtnOrder.styled.js";
+import "./buttonOrder.scss";
 import PropTypes from "prop-types";
 export function ButtonOrder({ name, type, classNames, handle }) {
   return (
-    <BtnOrder onClick={handle} type={type} className={classNames}>
+    <button onClick={handle} type={type} className={classNames}>
       {name}
-    </BtnOrder>
+    </button>
   );
 }
 ButtonOrder.propTypes = {

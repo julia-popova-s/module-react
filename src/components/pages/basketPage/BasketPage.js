@@ -5,7 +5,6 @@ import { BasketList } from "../../elements/basketList";
 import { useSelector } from "react-redux";
 import { ButtonToBack } from "../../ui/buttonToBack";
 import { useNavigate } from "react-router-dom";
-import { ButtonExit } from "../../ui/buttonExit";
 
 export function BasketPage() {
   const basket = useSelector((state) => state.basket.basket);
@@ -25,7 +24,12 @@ export function BasketPage() {
             <h2 className={styles.headerBlock__title}>
               корзина с выбранными товарами
             </h2>
-            <ButtonExit handle={handleExit} name={"Выйти"} />
+            <ButtonOrder
+              type={"button"}
+              classNames={"btn-exit"}
+              handle={handleExit}
+              name={"Выйти"}
+            />
           </div>
         </div>
       </header>
@@ -34,7 +38,11 @@ export function BasketPage() {
         <div className={styles.container}>
           <div className={styles.footerBlock}>
             <OrderAmount sum={amount} />
-            <ButtonOrder type={"submit"} name={"Оформить заказ"} />
+            <ButtonOrder
+              type={"button"}
+              name={"Оформить заказ"}
+              classNames={"btn-order"}
+            />
           </div>
         </div>
       </footer>

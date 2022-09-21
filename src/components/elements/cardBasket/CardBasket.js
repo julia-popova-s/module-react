@@ -35,7 +35,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
           <img
             className="card__img"
             src={`/images/basket/${img}`}
-            alt="Фотография блюда"
+            alt={`${name}`}
           />
         </div>
       </Link>
@@ -56,7 +56,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
             view={"minus"}
             classNames={"card__btn_color"}
           />
-          <span className="card__price">{`${newPrice} ₽`}</span>
+          <span className="card__price">{newPrice}</span>
           <ButtonCircle
             handle={handleDeleteProduct}
             view={"delete"}

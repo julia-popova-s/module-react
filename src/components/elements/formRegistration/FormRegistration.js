@@ -45,7 +45,7 @@ export function FormRegistration() {
           );
 
       changeForm();
-      setTimeout(navigate("/products"), 1000);
+      setTimeout(navigate("/"), 1000);
     }
   };
 
@@ -128,10 +128,10 @@ export function FormRegistration() {
       <p className="formLogin__alert">{alert}</p>
 
       <ButtonOrder
-        name="Зарегистрироваться"
-        classNames={"formLogin__btn"}
-        form="reg"
         type={"submit"}
+        name={"Зарегистрироваться"}
+        form="reg"
+        classNames={"btn-order formLogin__btn"}
       />
     </form>
   );

@@ -4,7 +4,7 @@ import { BasketMini } from "../../elements/basketMini";
 import { ProductList } from "../../elements/productList";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ButtonExit } from "../../ui/buttonExit/";
+import { ButtonOrder } from "../../ui/buttonOrder/";
 
 export function ProductsPage() {
   const amount = useSelector((state) => state.basket.totalAmount);
@@ -25,7 +25,12 @@ export function ProductsPage() {
               sum={amount}
               classNames={styles.headerBlock__basket}
             />
-            <ButtonExit handle={handleExit} name={"Выйти"} />
+            <ButtonOrder
+              classNames={"btn-exit"}
+              type={"button"}
+              handle={handleExit}
+              name={"Выйти"}
+            />
           </div>
         </div>
       </header>

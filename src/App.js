@@ -22,7 +22,7 @@ export function App() {
 
   return (
     <Routes>
-      <Route path="/products" element={<ProductsPage />} />
+      <Route path="/" element={<ProductsPage />} />
       <Route path="/:id/:name" element={<ProductPage />} />
       <Route path="/basket" element={<BasketPage />} />
       <Route path="/registration" element={<FormPage />} />

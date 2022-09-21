@@ -45,7 +45,7 @@ export function FormLogin() {
           );
         localStorage.setItem("userAutho", true);
         changeForm();
-        setTimeout(navigate("/products"), 1000);
+        setTimeout(navigate("/"), 1000);
       } else {
         setAlert("Логин или пароль неверен");
       }
@@ -130,10 +130,11 @@ export function FormLogin() {
       <p className="formLogin__alert">{alert}</p>
 
       <ButtonOrder
-        name={"Войти"}
-        classNames={"formLogin__btn"}
-        form="login"
         type={"submit"}
+        view={"order"}
+        name={"Войти"}
+        form="login"
+        classNames="btn-order formLogin__btn"
       />
     </form>
   );

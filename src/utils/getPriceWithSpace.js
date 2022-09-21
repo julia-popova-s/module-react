@@ -1,8 +1,7 @@
 export const getPriceWithSpace = (price) => {
-  return `${price}`
-    .split("")
-    .reverse()
-    .map((el, index) => (index % 3 !== 2 ? el : ` ${el}`))
-    .reverse()
-    .join("");
+  return Number(price).toLocaleString("ru-RU", {
+    style: "currency",
+    currency: "RUB",
+    maximumFractionDigits: 0,
+  });
 };
