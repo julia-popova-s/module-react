@@ -1,5 +1,6 @@
-import BtnCircle from "./BtnCircle.styled";
-function ButtonCircle({ view, handle, classNames }) {
+import { BtnCircle } from "./BtnCircle.styled";
+
+export function ButtonCircle({ view, handle, classNames }) {
   let svg;
   if (view === "plus") {
     svg = (
@@ -79,4 +80,3 @@ function ButtonCircle({ view, handle, classNames }) {
     </BtnCircle>
   );
 }
-export default ButtonCircle;

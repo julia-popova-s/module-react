@@ -1,2 +1,1 @@
-import FormPage from "./FormPage";
-export default FormPage;
+export { FormPage } from "./FormPage";

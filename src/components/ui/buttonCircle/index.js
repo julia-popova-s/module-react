@@ -1,2 +1,1 @@
-import ButtonCircle from "./ButtonCircle";
-export default ButtonCircle;
+export { ButtonCircle } from "./ButtonCircle";

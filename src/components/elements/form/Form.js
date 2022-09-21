@@ -1,11 +1,18 @@
 import "./index.scss";
-import ButtonForOrder from "../../ui/buttonForOrder";
+import { ButtonOrder } from "../../ui/buttonOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useInput from "../../../utils/validatorForm";
+import { useInput } from "../../../hooks/useInput";
 
-function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
+export function Form({
+  id,
+  nameForm,
+  nameButton,
+  btnToForm,
+  idForm,
+  idCheckbox,
+}) {
   const link = id === "reg" ? "login" : "reg";
   const navigate = useNavigate();
   const [alert, setAlert] = useState("");
@@ -163,7 +170,7 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
 
       <p className="formLogin__alert">{alert}</p>
 
-      <ButtonForOrder
+      <ButtonOrder
         name={nameButton}
         classNames={"formLogin__btn"}
         form={idForm}
@@ -172,4 +179,3 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     </form>
   );
 }
-export default Form;

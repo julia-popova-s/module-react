@@ -1,12 +1,13 @@
 import styles from "./index.module.scss";
-import OrderAmount from "../../elements/orderAmount";
-import ButtonForOrder from "../../ui/buttonForOrder";
-import BasketList from "../../elements/basketList";
+import { OrderAmount } from "../../elements/orderAmount";
+import { ButtonOrder } from "../../ui/buttonOrder";
+import { BasketList } from "../../elements/basketList";
 import { useSelector } from "react-redux";
-import ButtonToBack from "../../ui/buttonToBack";
+import { ButtonToBack } from "../../ui/buttonToBack";
 import { useNavigate } from "react-router-dom";
-import ButtonExit from "../../ui/buttonExit";
-function BasketPage() {
+import { ButtonExit } from "../../ui/buttonExit";
+
+export function BasketPage() {
   const basket = useSelector((state) => state.basket.basket);
   const amount = useSelector((state) => state.basket.totalAmount);
   const navigate = useNavigate();
@@ -33,12 +34,10 @@ function BasketPage() {
         <div className={styles.container}>
           <div className={styles.footerBlock}>
             <OrderAmount sum={amount} />
-            <ButtonForOrder type={"submit"} name={"Оформить заказ"} />
+            <ButtonOrder type={"submit"} name={"Оформить заказ"} />
           </div>
         </div>
       </footer>
     </div>
   );
 }
-
-export default BasketPage;

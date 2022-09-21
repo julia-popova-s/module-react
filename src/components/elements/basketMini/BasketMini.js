@@ -1,10 +1,10 @@
-import { BasketMiniWrap } from "./BasketMiniWrap.styled";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import getWordProduct from "../../../utils/getWordProduct";
+import { BasketMiniWrap } from "./BasketMiniWrap.styled";
+import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
+import { getWordProduct } from "../../../utils/getWordProduct";
 
-function BasketMini({ counter, sum, classNames }) {
+export function BasketMini({ counter, sum, classNames }) {
   const newSum = getPriceWithSpace(sum);
   const word = getWordProduct(counter);
   return (
@@ -36,4 +36,3 @@ BasketMini.propTypes = {
   counter: PropTypes.number,
   sum: PropTypes.number,
 };
-export default BasketMini;

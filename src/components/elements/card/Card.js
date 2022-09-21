@@ -1,17 +1,22 @@
-import { CardItem } from "./CardItem.styled.js";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
-import cutPartOfLine from "../../../utils/cutPartOfLine.js";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+
+import { CardItem } from "./CardItem.styled.js";
+import { ButtonCircle } from "../../ui/buttonCircle";
+
+import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
+import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
 import { addProduct } from "../../../store/reducers/basket";
-import ButtonCircle from "../../ui/buttonCircle";
-import { Link } from "react-router-dom";
-function Card({ id, img, name, description, price, weight }) {
+
+export function Card({ id, img, name, description, price, weight }) {
+  const dispatch = useDispatch();
+
   const newPrice = getPriceWithSpace(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;
-  const dispatch = useDispatch();
+
   let item;
   const handleAddProduct = () => {
     item = { id: id, img: img, name: name, price: price };
@@ -55,5 +60,3 @@ Card.propTypes = {
   price: PropTypes.string,
   weight: PropTypes.string,
 };
-
-export default Card;

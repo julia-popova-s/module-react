@@ -1,5 +1,5 @@
 import "./index.scss";
-import ButtonForOrder from "../../ui/buttonForOrder";
+import { ButtonForOrder } from "../../ui/buttonForOrder";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -49,7 +49,7 @@ const useInput = (initialState, validations) => {
   return { value, onChange, onBlur, isDirty, ...valid, setValue, setDirty };
 };
 
-function Form({ id }) {
+export function Form({ id }) {
   const link = id === "reg" ? "login" : "reg";
   const navigate = useNavigate();
 
@@ -157,4 +157,3 @@ function Form({ id }) {
     </form>
   );
 }
-export default Form;

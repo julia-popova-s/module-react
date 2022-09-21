@@ -1,8 +1,8 @@
 import { OrderSum } from "./OrderSum.styled";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
+import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
 
-function OrderAmount({ sum }) {
+export function OrderAmount({ sum }) {
   const newSum = getPriceWithSpace(sum);
   return (
     <OrderSum>
@@ -14,4 +14,3 @@ function OrderAmount({ sum }) {
 OrderAmount.propTypes = {
   sum: PropTypes.number,
 };
-export default OrderAmount;

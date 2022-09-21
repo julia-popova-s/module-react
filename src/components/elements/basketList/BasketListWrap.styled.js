@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const BasketListWrap = styled.section`
+export const BasketListWrap = styled.section`
   .basket-list {
     width: 100%;
     height: calc(100vh - 116.5px - 90px);
@@ -25,4 +25,3 @@ const BasketListWrap = styled.section`
     margin: 0 auto;
   }
 `;
-export default BasketListWrap;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const BtnCircle = styled.button`
+export const BtnCircle = styled.button`
   border-radius: 50%;
   border: 1px solid var(--color-white);
   width: 30px;
@@ -27,4 +27,3 @@ const BtnCircle = styled.button`
     margin: 1px 0 0 1px;
   }
 `;
-export default BtnCircle;

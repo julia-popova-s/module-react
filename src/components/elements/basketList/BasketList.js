@@ -1,7 +1,7 @@
-import CardBasket from "../cardBasket";
-import BasketListWrap from "./BasketListWrap.styled";
+import { CardBasket } from "../cardBasket";
+import { BasketListWrap } from "./BasketListWrap.styled";
 
-function BasketList({ products }) {
+export function BasketList({ products }) {
   return (
     <BasketListWrap>
       <div className="container">
@@ -24,4 +24,3 @@ function BasketList({ products }) {
     </BasketListWrap>
   );
 }
-export default BasketList;

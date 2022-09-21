@@ -1,11 +1,11 @@
-import ButtonForOrder from "../../ui/buttonForOrder";
+import { ButtonOrder } from "../../ui/buttonOrder";
 import { ProductWrap } from "./ProductWrap.styled";
 import { addProduct } from "../../../store/reducers/basket";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
+import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
 
-function Product({ id, img, name, description, price, weight }) {
+export function Product({ id, img, name, description, price, weight }) {
   const newPrice = getPriceWithSpace(price);
   const dispatch = useDispatch();
   let item;
@@ -33,7 +33,7 @@ function Product({ id, img, name, description, price, weight }) {
                 <span className="product__weight">{`${weight}.`}</span>
               </div>
               <Link to={"/basket"}>
-                <ButtonForOrder
+                <ButtonOrder
                   name={"В корзину"}
                   type={"button"}
                   handle={handleAddProduct}
@@ -46,4 +46,3 @@ function Product({ id, img, name, description, price, weight }) {
     </ProductWrap>
   );
 }
-export default Product;

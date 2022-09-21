@@ -1,5 +1,5 @@
 import { ButtonToBackCircle } from "./ButtonToBackCircle.styled";
-function ButtonToBack({ handleGoBack, classNames }) {
+export function ButtonToBack({ handleGoBack, classNames }) {
   return (
     <ButtonToBackCircle onClick={handleGoBack} className={classNames}>
       <svg
@@ -30,4 +30,3 @@ function ButtonToBack({ handleGoBack, classNames }) {
     </ButtonToBackCircle>
   );
 }
-export default ButtonToBack;

@@ -1,2 +1,1 @@
-import OrderAmount from "./OrderAmount";
-export default OrderAmount;
+export { OrderAmount } from "./OrderAmount";

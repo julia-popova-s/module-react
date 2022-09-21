@@ -2,7 +2,7 @@
 // import FormAutho from "../../elements/formAutho";
 import "./index.scss";
 import { useParams } from "react-router-dom";
-import Form from "../../elements/form/Form";
+import { Form } from "../../elements/form/Form";
 let forms = [
   {
     nameForm: "Вход",
@@ -20,7 +20,7 @@ let forms = [
   },
 ];
 
-function FormPage() {
+export function FormPage() {
   const params = useParams();
   const form = forms.filter((item) => item.idForm === params.id);
   const { nameForm, btnToForm, nameButton, idForm, idCheckbox } = form[0];
@@ -45,4 +45,3 @@ function FormPage() {
     </section>
   );
 }
-export default FormPage;

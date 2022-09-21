@@ -1,2 +1,1 @@
-import BasketPage from "./BasketPage";
-export default BasketPage;
+export { BasketPage } from "./BasketPage";

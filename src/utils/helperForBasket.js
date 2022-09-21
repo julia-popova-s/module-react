@@ -1,14 +1,14 @@
 const updateAmount = (state) => {
-  return (state.totalAmount = state.basket.reduce(
+  state.totalAmount = state.basket.reduce(
     (sum, elem) => +elem.price * elem.quantity + sum,
     0
-  ));
+  );
 };
 const updateQuantity = (state) => {
-  return (state.totalQuantity = state.basket.reduce(
+  state.totalQuantity = state.basket.reduce(
     (sum, elem) => elem.quantity + sum,
     0
-  ));
+  );
 };
 const getIndex = (state, action) => {
   return state.basket.findIndex((elem) => elem.id === action.payload.id);

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-const ProductListWrap = styled.main`
+export const ProductListWrap = styled.main`
   .product-list {
     display: flex;
     flex-wrap: wrap;
@@ -30,4 +30,3 @@ const ProductListWrap = styled.main`
     margin: 0 auto;
   }
 `;
-export default ProductListWrap;

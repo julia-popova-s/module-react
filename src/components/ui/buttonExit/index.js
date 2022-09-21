@@ -1,2 +1,1 @@
-import ButtonExit from "./ButtonExit";
-export default ButtonExit;
+export { ButtonExit } from "./ButtonExit";

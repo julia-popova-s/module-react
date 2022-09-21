@@ -1,4 +1,4 @@
-const getPriceWithSpace = (price) => {
+export const getPriceWithSpace = (price) => {
   return `${price}`
     .split("")
     .reverse()
@@ -6,5 +6,3 @@ const getPriceWithSpace = (price) => {
     .reverse()
     .join("");
 };
-
-export default getPriceWithSpace;
