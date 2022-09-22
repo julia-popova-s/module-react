@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+
 import { BasketMiniWrap } from "./BasketMiniWrap.styled";
 import { getFormatNumber } from "../../../utils/getFormatNumber";
 import { getWordProduct } from "../../../utils/getWordProduct";
@@ -7,6 +8,7 @@ import { getWordProduct } from "../../../utils/getWordProduct";
 export function BasketMini({ counter, sum, classNames }) {
   const newSum = getFormatNumber(sum);
   const word = getWordProduct(counter);
+
   return (
     <BasketMiniWrap className={classNames}>
       <div className="basket-mini__text">
@@ -31,6 +33,7 @@ export function BasketMini({ counter, sum, classNames }) {
     </BasketMiniWrap>
   );
 }
+
 BasketMini.propTypes = {
   url: PropTypes.string,
   counter: PropTypes.number,

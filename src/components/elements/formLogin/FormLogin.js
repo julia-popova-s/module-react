@@ -1,7 +1,8 @@
-import { ButtonOrder } from "../../ui/buttonOrder";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
+import { ButtonOrder } from "../../ui/buttonOrder";
 import { useInput } from "../../../hooks/useInput";
 import styles from "./index.module.scss";
 
@@ -13,6 +14,7 @@ export function FormLogin() {
     isEmpty: true,
     minLength: 4,
   });
+
   const password = useInput("", {
     isEmpty: true,
     minLength: 4,
@@ -28,6 +30,7 @@ export function FormLogin() {
     let userData;
     login.setDirty(true);
     password.setDirty(true);
+
     if (login.inputValid && password.inputValid) {
       userData = JSON.parse(localStorage.getItem(login.value));
       if (
@@ -44,6 +47,7 @@ export function FormLogin() {
               notice: checked,
             })
           );
+
         localStorage.setItem("userAutho", true);
         changeForm();
         setTimeout(navigate("/"), 1000);
@@ -52,6 +56,7 @@ export function FormLogin() {
       }
     }
   };
+
   const changeForm = () => {
     login.setValue("");
     login.setDirty(false);

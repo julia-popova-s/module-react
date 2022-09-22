@@ -1,9 +1,11 @@
+import PropTypes from "prop-types";
+
 import { OrderSum } from "./OrderSum.styled";
 import { getFormatNumber } from "../../../utils/getFormatNumber";
-import PropTypes from "prop-types";
 
 export function OrderAmount({ sum }) {
   const newSum = getFormatNumber(sum);
+
   return (
     <OrderSum>
       Заказ на сумму:
@@ -11,6 +13,7 @@ export function OrderAmount({ sum }) {
     </OrderSum>
   );
 }
+
 OrderAmount.propTypes = {
   sum: PropTypes.number,
 };

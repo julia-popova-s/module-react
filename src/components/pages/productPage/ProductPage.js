@@ -1,12 +1,13 @@
-import { ButtonToBack } from "../../ui/buttonToBack";
 import { useNavigate } from "react-router-dom";
-import { BasketMini } from "../../elements/basketMini";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Product } from "../../elements/product/Product";
+
+import { Product } from "../../elements/product/";
 import { products } from "../../../store/menuList";
-import styles from "./index.module.scss";
 import { ButtonOrder } from "../../ui/buttonOrder";
+import { ButtonToBack } from "../../ui/buttonToBack";
+import { BasketMini } from "../../elements/basketMini";
+import styles from "./index.module.scss";
 
 export function ProductPage() {
   const amount = useSelector((state) => state.basket.totalAmount);

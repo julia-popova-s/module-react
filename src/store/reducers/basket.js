@@ -45,6 +45,7 @@ const basketSlice = createSlice({
       updateAmount(state);
       updateQuantity(state);
     },
+
     minusProduct(state, action) {
       const index = getIndex(state, action);
       if (action.payload.quantity > 1) {
@@ -59,6 +60,7 @@ const basketSlice = createSlice({
     },
   },
 });
+
 export const { addProduct, removeProduct, plusProduct, minusProduct } =
   basketSlice.actions;
 export default basketSlice.reducer;

@@ -18,7 +18,8 @@ export function Card({ id, img, name, description, price, weight }) {
   const margin = name.length > 24 ? true : false;
 
   let item;
-  const handleAddProduct = () => {
+  const handleAddProduct = (e) => {
+    e.preventDefault();
     item = { id: id, img: img, name: name, price: price };
     dispatch(addProduct(item));
   };
@@ -37,18 +38,18 @@ export function Card({ id, img, name, description, price, weight }) {
           <h2 className="card__title">{title}</h2>
           <p className="card__description">{descriptor}</p>
           <div className="card__block-price">
-            <span className="card__price">
+            <div className="card__price">
               {`${newPrice}`} {"/ "}
-            </span>
-            <span className="card__weight">{`${weight}.`}</span>
+              <span className="card__weight">{`${weight}.`}</span>
+            </div>
+            <ButtonCircle
+              handle={(e) => handleAddProduct(e)}
+              view={"plus"}
+              classNames="card__btn"
+            />
           </div>
         </div>
       </Link>
-      <ButtonCircle
-        handle={handleAddProduct}
-        view={"plus"}
-        classNames="card__btn"
-      />
     </CardItem>
   );
 }

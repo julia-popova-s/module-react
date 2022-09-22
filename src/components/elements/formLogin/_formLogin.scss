@@ -45,16 +45,12 @@
     color: $color-back;
   }
 
-
-
   &__item {
     display: flex;
     align-items: flex-start;
     max-width: 100%;
     position: relative;
   }
-
-
 
   &__input {
     width: 100%;
@@ -79,7 +75,6 @@
       color: $color-back;
     }
   }
-
 
 
   &__alert {
@@ -114,7 +109,6 @@
     }
   }
 }
-
 
 .checkbox {
   display: flex;

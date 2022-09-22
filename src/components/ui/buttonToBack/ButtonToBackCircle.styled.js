@@ -22,6 +22,7 @@ export const ButtonToBackCircle = styled.div`
   .arrow path {
     transition: all 0.3s ease;
   }
+  
   .arrow {
     position: absolute;
     top: 30%;

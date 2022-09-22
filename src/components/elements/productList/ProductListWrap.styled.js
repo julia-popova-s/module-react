@@ -24,6 +24,7 @@ export const ProductListWrap = styled.main`
       border-radius: 10px;
     }
   }
+  
   .container {
     max-width: 1360px;
     padding: 0 10px 0 30px;

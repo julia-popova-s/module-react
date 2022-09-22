@@ -5,6 +5,7 @@ export const useValidation = (value, validations) => {
   const [minLengthError, setMinLengthError] = useState(false);
   const [inputValid, setInputValid] = useState(false);
   const [message, setMessage] = useState("");
+
   useEffect(() => {
     for (const validation in validations) {
       switch (validation) {

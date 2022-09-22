@@ -8,19 +8,23 @@ import styles from "./index.module.scss";
 export function FormRegistration() {
   const navigate = useNavigate();
   const [alert, setAlert] = useState("");
+
   const login = useInput("", {
     isEmpty: true,
     minLength: 4,
   });
+
   const password = useInput("", {
     isEmpty: true,
     minLength: 4,
   });
 
   const [checked, setChecked] = useState(false);
+
   const handleChecked = (e) => {
     setChecked(e.target.checked);
   };
+
   const handleSubmitReg = (e) => {
     e.preventDefault();
     login.setDirty(true);

@@ -22,6 +22,7 @@ export const CardBasketWrap = styled.div`
       transition: color 0.2s ease;
     }
   }
+
   .card__preview {
     max-width: 220px;
     min-height: 133px;
@@ -51,6 +52,7 @@ export const CardBasketWrap = styled.div`
       line-height: 21px;
       color: var(--color-white);
     }
+
     .card__block-price {
       display: flex;
       flex-wrap: wrap;
@@ -71,6 +73,7 @@ export const CardBasketWrap = styled.div`
         min-width: 90px;
         text-align: center;
       }
+
       .card__btn_color {
         border: 1px solid var(--color-basic);
       }

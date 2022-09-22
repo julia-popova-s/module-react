@@ -14,11 +14,13 @@ export const BtnCircle = styled.button`
     background-color: var(--color-basic);
     border: 1px solid var(--color-basic);
     transition: all 0.2s ease;
+    
     svg path {
       transition: all 0.2s ease;
       fill: white;
     }
   }
+
   svg path {
     transition: all 0.2s ease;
   }

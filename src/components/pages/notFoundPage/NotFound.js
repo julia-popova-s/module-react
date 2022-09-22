@@ -1,4 +1,5 @@
 import "./index.module.scss";
+
 export function NotFound() {
   return (
     <div className="notFound">

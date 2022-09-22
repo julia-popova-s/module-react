@@ -1,18 +1,22 @@
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { ButtonOrder } from "../../ui/buttonOrder";
 import { ProductWrap } from "./ProductWrap.styled";
 import { addProduct } from "../../../store/reducers/basket";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { getFormatNumber } from "../../../utils/getFormatNumber";
 
 export function Product({ id, img, name, description, price, weight }) {
-  const newPrice = getFormatNumber(price);
   const dispatch = useDispatch();
+
+  const newPrice = getFormatNumber(price);
+
   let item;
   const handleAddProduct = () => {
     item = { id: id, img: img, name: name, price: price, weight: weight };
     dispatch(addProduct(item));
   };
+
   return (
     <ProductWrap>
       <div className="container">
@@ -21,7 +25,7 @@ export function Product({ id, img, name, description, price, weight }) {
             <img
               className="product__img"
               src={`/images/products/${img}`}
-              alt={`${name}`}
+              alt={name}
             />
           </div>
           <div className="product__text">
