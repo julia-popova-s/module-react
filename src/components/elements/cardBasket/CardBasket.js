@@ -1,5 +1,5 @@
 import { CardBasketWrap } from "./CardBasketWrap.styled.js";
-import { getPriceWithSpace } from "../../../utils/getPriceWithSpace.js";
+import { getFormatNumber } from "../../../utils/getFormatNumber.js";
 import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
@@ -10,8 +10,9 @@ import {
 } from "../../../store/reducers/basket";
 import { Link } from "react-router-dom";
 import { ButtonCircle } from "../../ui/buttonCircle";
+
 export function CardBasket({ id, img, name, price, quantity }) {
-  const newPrice = getPriceWithSpace(price * quantity);
+  const newPrice = getFormatNumber(price * quantity);
   const title = cutPartOfLine(name, 47);
 
   const dispatch = useDispatch();

@@ -3,10 +3,10 @@ import { ProductWrap } from "./ProductWrap.styled";
 import { addProduct } from "../../../store/reducers/basket";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
+import { getFormatNumber } from "../../../utils/getFormatNumber";
 
 export function Product({ id, img, name, description, price, weight }) {
-  const newPrice = getPriceWithSpace(price);
+  const newPrice = getFormatNumber(price);
   const dispatch = useDispatch();
   let item;
   const handleAddProduct = () => {

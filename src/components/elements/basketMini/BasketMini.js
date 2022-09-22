@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { BasketMiniWrap } from "./BasketMiniWrap.styled";
-import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
+import { getFormatNumber } from "../../../utils/getFormatNumber";
 import { getWordProduct } from "../../../utils/getWordProduct";
 
 export function BasketMini({ counter, sum, classNames }) {
-  const newSum = getPriceWithSpace(sum);
+  const newSum = getFormatNumber(sum);
   const word = getWordProduct(counter);
   return (
     <BasketMiniWrap className={classNames}>

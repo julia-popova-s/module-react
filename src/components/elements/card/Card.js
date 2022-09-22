@@ -5,14 +5,14 @@ import { useDispatch } from "react-redux";
 import { CardItem } from "./CardItem.styled.js";
 import { ButtonCircle } from "../../ui/buttonCircle";
 
-import { getPriceWithSpace } from "../../../utils/getPriceWithSpace";
+import { getFormatNumber } from "../../../utils/getFormatNumber";
 import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
 import { addProduct } from "../../../store/reducers/basket";
 
 export function Card({ id, img, name, description, price, weight }) {
   const dispatch = useDispatch();
 
-  const newPrice = getPriceWithSpace(price);
+  const newPrice = getFormatNumber(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;

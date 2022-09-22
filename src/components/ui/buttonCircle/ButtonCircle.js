@@ -75,7 +75,7 @@ export function ButtonCircle({ view, handle, classNames }) {
   }
 
   return (
-    <BtnCircle onClick={handle} className={`btn ${classNames}`} type="button">
+    <BtnCircle onClick={handle} className={classNames} type="button">
       {svg}
     </BtnCircle>
   );

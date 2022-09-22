@@ -1,4 +1,4 @@
-export const getPriceWithSpace = (price) => {
+export const getFormatNumber = (price) => {
   return Number(price).toLocaleString("ru-RU", {
     style: "currency",
     currency: "RUB",
