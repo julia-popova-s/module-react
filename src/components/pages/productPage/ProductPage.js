@@ -26,6 +26,9 @@ export function ProductPage() {
     setTimeout(() => navigate("/login"), 1000);
   };
 
+  const userAutho = JSON.parse(localStorage.getItem("userAutho"));
+  const nameBtn = userAutho ? "Выйти" : "Войти";
+
   return (
     <div className={styles.productDetails}>
       <header className={styles.header}>
@@ -44,7 +47,7 @@ export function ProductPage() {
               view={"exit"}
               type={"button"}
               handle={handleExit}
-              name={"Выйти"}
+              name={nameBtn}
             />
           </div>
         </div>

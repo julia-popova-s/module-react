@@ -20,6 +20,17 @@ export const BasketListWrap = styled.section`
       border-radius: 10px;
     }
   }
+
+  .basket-list__alert {
+    padding: 60px 0;
+    text-align: center;
+    color: var(--color-white);
+    font-size: 24px;
+
+    .basket-list__link {
+      color: var(--color-basic);
+    }
+  }
   .container {
     max-width: 920px;
     padding: 0 5px 0 30px;
