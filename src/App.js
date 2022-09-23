@@ -11,7 +11,7 @@ import "./styles/reset.css";
 import "./styles/variables.css";
 
 export function App() {
-  localStorage.setItem("userAutho", false);
+  localStorage.setItem("userAuth", false);
 
   return (
     <Routes>

@@ -15,12 +15,12 @@ export function ProductCatalogPage() {
   const quantity = useSelector((state) => state.basket.totalQuantity);
 
   const handleExit = () => {
-    localStorage.setItem("userAutho", false);
+    localStorage.setItem("userAuth", false);
     setTimeout(() => navigate("/login"), 1000);
   };
 
-  const userAutho = JSON.parse(localStorage.getItem("userAutho"));
-  const nameBtn = userAutho ? "Выйти" : "Войти";
+  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+  const nameBtn = userAuth ? "Выйти" : "Войти";
 
   return (
     <div className={styles.productCatalog}>

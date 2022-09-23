@@ -49,7 +49,7 @@ export function FormRegistration() {
               password: password.value,
             })
           );
-      localStorage.setItem("userAutho", true);
+      localStorage.setItem("userAuth", true);
       changeForm();
       setTimeout(navigate("/"), 1000);
     }

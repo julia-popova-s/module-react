@@ -49,7 +49,7 @@ export function FormLogin() {
             })
           );
 
-        localStorage.setItem("userAutho", true);
+        localStorage.setItem("userAuth", true);
         changeForm();
         setTimeout(navigate("/"), 1000);
       } else {
