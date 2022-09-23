@@ -20,6 +20,9 @@ export function BasketPage() {
     setTimeout(() => navigate("/login"), 1000);
   };
 
+  const userAutho = JSON.parse(localStorage.getItem("userAutho"));
+  const nameBtn = userAutho ? "Выйти" : "Войти";
+
   return (
     <div className={styles.basket}>
       <header className={styles.header}>
@@ -33,7 +36,7 @@ export function BasketPage() {
               type={"button"}
               classNames={"btn-exit"}
               handle={handleExit}
-              name={"Выйти"}
+              name={nameBtn}
             />
           </div>
         </div>

@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 import { ProductCatalogPage } from "./components/pages/productCatalogPage";
 import { ProductPage } from "./components/pages/productPage";
@@ -12,14 +11,7 @@ import "./styles/reset.css";
 import "./styles/variables.css";
 
 export function App() {
-  const navigate = useNavigate();
-
-  const userAutho = localStorage.getItem("userAutho");
-  useEffect(() => {
-    if (userAutho === null) {
-      navigate("/login");
-    }
-  }, [navigate, userAutho]);
+  localStorage.setItem("userAutho", false);
 
   return (
     <Routes>
