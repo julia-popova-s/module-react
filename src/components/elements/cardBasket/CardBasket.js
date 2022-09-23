@@ -26,7 +26,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
     dispatch(plusProduct(item));
   };
   const handleMinusProduct = () => {
-    item = { id, quantity: quantity };
+    item = { id, quantity };
     dispatch(minusProduct(item));
   };
 
