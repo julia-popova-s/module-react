@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const CardItem = styled.div`
   font-family: var(--font-family);
   border: 1px solid var(--color-basic);
@@ -6,19 +7,10 @@ export const CardItem = styled.div`
   max-width: 312px;
   height: 552px;
   transition: color 0.2s ease;
-  position: relative;
-  z-index: 1;
 
   &:hover .card__link .card__text {
     color: var(--color-basic);
     transition: color 0.2s ease;
-  }
-
-  .card__btn {
-    position: absolute;
-    z-index: 5;
-    right: 27px;
-    bottom: 28px;
   }
 
   .card__preview {
@@ -62,11 +54,16 @@ export const CardItem = styled.div`
       margin-top: auto;
       margin-bottom: 32px;
       padding-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
 
       .card__price {
         font-weight: 500;
         font-size: 17px;
         line-height: 21px;
+
         .card__weight {
           font-weight: 400;
           font-size: 14px;

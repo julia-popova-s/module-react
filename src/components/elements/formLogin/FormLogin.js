@@ -1,19 +1,22 @@
-import "./index.scss";
-import ButtonForOrder from "../../ui/buttonForOrder";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useInput from "../../../utils/validatorForm";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
-  const link = id === "reg" ? "login" : "reg";
+import { ButtonOrder } from "../../ui/buttonOrder";
+import { useInput } from "../../../hooks/useInput";
+
+import styles from "./index.module.scss";
+
+export function FormLogin() {
   const navigate = useNavigate();
   const [alert, setAlert] = useState("");
-  let login = useInput("", {
+
+  const login = useInput("", {
     isEmpty: true,
     minLength: 4,
   });
-  let password = useInput("", {
+
+  const password = useInput("", {
     isEmpty: true,
     minLength: 4,
   });
@@ -22,39 +25,14 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
   const handleChecked = (e) => {
     setChecked(e.target.checked);
   };
-  const handleSubmitReg = (e) => {
-    e.preventDefault();
-    login.setDirty(true);
-    password.setDirty(true);
 
-    if (id === "reg" && login.inputValid && password.inputValid) {
-      checked
-        ? localStorage.setItem(
-            login.value,
-            JSON.stringify({
-              login: login.value,
-              password: password.value,
-              notice: checked,
-            })
-          )
-        : localStorage.setItem(
-            login.value,
-            JSON.stringify({
-              login: login.value,
-              password: password.value,
-            })
-          );
-
-      handleReset();
-      setTimeout(navigate("/login"), 1000);
-    }
-  };
-  const handleSubmitAutho = (e) => {
+  const handleSubmitLogin = (e) => {
     e.preventDefault();
     let userData;
     login.setDirty(true);
     password.setDirty(true);
-    if (id === "login" && login.inputValid && password.inputValid) {
+
+    if (login.inputValid && password.inputValid) {
       userData = JSON.parse(localStorage.getItem(login.value));
       if (
         userData !== null &&
@@ -70,15 +48,17 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
               notice: checked,
             })
           );
+
         localStorage.setItem("userAutho", true);
-        handleReset();
-        setTimeout(navigate("/products"), 1000);
+        changeForm();
+        setTimeout(navigate("/"), 1000);
       } else {
         setAlert("Логин или пароль неверен");
       }
     }
   };
-  const handleReset = () => {
+
+  const changeForm = () => {
     login.setValue("");
     login.setDirty(false);
     password.setValue("");
@@ -86,24 +66,23 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
     setChecked(false);
     setAlert("");
   };
-  const handle = id === "reg" ? handleSubmitReg : handleSubmitAutho;
 
   return (
-    <form className={"formLogin "} id={idForm} onSubmit={handle}>
-      <Link to={`/${link}`}>
+    <form className={styles.formLogin} id="login" onSubmit={handleSubmitLogin}>
+      <Link to={"/registration"}>
         <button
-          onClick={handleReset}
-          className="formLogin__autho"
+          onClick={changeForm}
+          className={styles.formLogin__autho}
           type="button"
         >
-          {btnToForm}
+          {"Зарегистрироваться"}
         </button>
       </Link>
-      <div className="formLogin__title">{nameForm}</div>
+      <div className={styles.formLogin__title}>Вход</div>
 
-      <div className="formLogin__item">
+      <div className={styles.formLogin__item}>
         <input
-          className="formLogin__input"
+          className={styles.formLogin__input}
           type="text"
           name="login"
           autoComplete="on"
@@ -114,19 +93,18 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
         />
 
         {login.isDirty && login.isEmpty && (
-          <p className="formLogin__error">Поле не должно быть пустым</p>
+          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {login.isDirty && login.minLengthError && (
-          <p className="formLogin__error">
+          <p className={styles.formLogin__error}>
             Логин должен содержать не менее 4-х символов
           </p>
         )}
       </div>
-      {/* <p className="formLogin__alert"></p> */}
 
-      <div className="formLogin__item">
+      <div className={styles.formLogin__item}>
         <input
-          className="formLogin__input"
+          className={styles.formLogin__input}
           placeholder="Пароль"
           type="password"
           name="password"
@@ -136,40 +114,39 @@ function Form({ id, nameForm, nameButton, btnToForm, idForm, idCheckbox }) {
           value={password.value}
         />
         {password.isDirty && password.isEmpty && (
-          <p className="formLogin__error">Поле не должно быть пустым</p>
+          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {password.isDirty && password.minLengthError && (
-          <p className="formLogin__error">
+          <p className={styles.formLogin__error}>
             Пароль должен содержать не менее 4-х символов
           </p>
         )}
       </div>
-      {/* <p className="formLogin__alert"></p> */}
 
-      <div className="checkbox form__check">
+      <div className={styles.checkbox}>
         <input
           type="checkbox"
-          className="checkbox__mark"
-          id={idCheckbox}
+          className={styles.checkbox__mark}
+          id="checkboxReg"
           name="notice"
           checked={checked}
           onChange={(e) => handleChecked(e)}
         />
 
-        <label className="checkbox__label" htmlFor={idCheckbox}>
+        <label className={styles.checkbox__label} htmlFor="checkboxReg">
           Я согласен получать обновления на почту
         </label>
       </div>
 
-      <p className="formLogin__alert">{alert}</p>
+      <p className={styles.formLogin__alert}>{alert}</p>
 
-      <ButtonForOrder
-        name={nameButton}
-        classNames={"formLogin__btn"}
-        form={idForm}
+      <ButtonOrder
         type={"submit"}
+        view={"order"}
+        name={"Войти"}
+        form="login"
+        classNames={styles.formLogin__btn}
       />
     </form>
   );
 }
-export default Form;

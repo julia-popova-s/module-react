@@ -1,17 +1,19 @@
-import { CardBasketWrap } from "./CardBasketWrap.styled.js";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace.js";
-import cutPartOfLine from "../../../utils/cutPartOfLine.js";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { CardBasketWrap } from "./CardBasketWrap.styled.js";
+import { getFormatNumber } from "../../../utils/getFormatNumber.js";
+import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
 import {
   removeProduct,
   minusProduct,
   plusProduct,
 } from "../../../store/reducers/basket";
-import { Link } from "react-router-dom";
-import ButtonCircle from "../../ui/buttonCircle";
-function CardBasket({ id, img, name, price, quantity }) {
-  const newPrice = getPriceWithSpace(price * quantity);
+import { ButtonCircle } from "../../ui/buttonCircle";
+
+export function CardBasket({ id, img, name, price, quantity }) {
+  const newPrice = getFormatNumber(price * quantity);
   const title = cutPartOfLine(name, 47);
 
   const dispatch = useDispatch();
@@ -32,11 +34,7 @@ function CardBasket({ id, img, name, price, quantity }) {
     <CardBasketWrap>
       <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
-          <img
-            className="card__img"
-            src={`/images/basket/${img}`}
-            alt="Фотография блюда"
-          />
+          <img className="card__img" src={`/images/basket/${img}`} alt={name} />
         </div>
       </Link>
 
@@ -44,6 +42,7 @@ function CardBasket({ id, img, name, price, quantity }) {
         <Link to={`/${id}/${name}`} className="card__link">
           {title}
         </Link>
+
         <div className="card__block-price">
           <ButtonCircle
             handle={handlePlusProduct}
@@ -56,7 +55,7 @@ function CardBasket({ id, img, name, price, quantity }) {
             view={"minus"}
             classNames={"card__btn_color"}
           />
-          <span className="card__price">{`${newPrice} ₽`}</span>
+          <span className="card__price">{newPrice}</span>
           <ButtonCircle
             handle={handleDeleteProduct}
             view={"delete"}
@@ -73,5 +72,3 @@ CardBasket.propTypes = {
   name: PropTypes.string,
   price: PropTypes.string,
 };
-
-export default CardBasket;

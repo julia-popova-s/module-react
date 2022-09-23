@@ -1,18 +1,22 @@
-import ButtonForOrder from "../../ui/buttonForOrder";
+import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+
+import { ButtonOrder } from "../../ui/buttonOrder";
 import { ProductWrap } from "./ProductWrap.styled";
 import { addProduct } from "../../../store/reducers/basket";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
+import { getFormatNumber } from "../../../utils/getFormatNumber";
 
-function Product({ id, img, name, description, price, weight }) {
-  const newPrice = getPriceWithSpace(price);
+export function Product({ id, img, name, description, price, weight }) {
   const dispatch = useDispatch();
+
+  const newPrice = getFormatNumber(price);
+
   let item;
   const handleAddProduct = () => {
     item = { id: id, img: img, name: name, price: price, weight: weight };
     dispatch(addProduct(item));
   };
+
   return (
     <ProductWrap>
       <div className="container">
@@ -21,7 +25,7 @@ function Product({ id, img, name, description, price, weight }) {
             <img
               className="product__img"
               src={`/images/products/${img}`}
-              alt="Фотография блюда"
+              alt={name}
             />
           </div>
           <div className="product__text">
@@ -29,14 +33,15 @@ function Product({ id, img, name, description, price, weight }) {
             <div className="product__description">{description}</div>
             <div className="product__block-price">
               <div className="product__price">
-                {`${newPrice} ₽`} {"/ "}
+                {newPrice} {"/ "}
                 <span className="product__weight">{`${weight}.`}</span>
               </div>
               <Link to={"/basket"}>
-                <ButtonForOrder
+                <ButtonOrder
                   name={"В корзину"}
                   type={"button"}
                   handle={handleAddProduct}
+                  view={"order"}
                 />
               </Link>
             </div>
@@ -46,4 +51,3 @@ function Product({ id, img, name, description, price, weight }) {
     </ProductWrap>
   );
 }
-export default Product;

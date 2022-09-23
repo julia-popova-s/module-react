@@ -1,2 +1,1 @@
-import ButtonToBack from "./ButtonToBack";
-export default ButtonToBack;
+export { ButtonToBack } from "./ButtonToBack";

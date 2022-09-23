@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const BasketMiniWrap = styled.div`
   display: flex;
   gap: 20px;
@@ -13,13 +14,17 @@ export const BasketMiniWrap = styled.div`
     line-height: 21px;
     text-align: right;
   }
+  
   .basket-mini__icon {
+
     svg {
       display: block;
     }
+
     svg circle {
       transition: fill 0.3s ease;
     }
+
     :hover svg circle {
       fill: #a75d3b;
       transition: fill 0.3s ease;

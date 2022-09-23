@@ -1,2 +1,1 @@
-import BasketMini from "./BasketMini";
-export default BasketMini;
+export { BasketMini } from "./BasketMini";

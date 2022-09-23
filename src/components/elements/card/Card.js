@@ -1,19 +1,25 @@
-import { CardItem } from "./CardItem.styled.js";
-import getPriceWithSpace from "../../../utils/getPriceWithSpace";
-import cutPartOfLine from "../../../utils/cutPartOfLine.js";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
+
+import { CardItem } from "./CardItem.styled.js";
+import { ButtonCircle } from "../../ui/buttonCircle";
+
+import { getFormatNumber } from "../../../utils/getFormatNumber";
+import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
 import { addProduct } from "../../../store/reducers/basket";
-import ButtonCircle from "../../ui/buttonCircle";
-import { Link } from "react-router-dom";
-function Card({ id, img, name, description, price, weight }) {
-  const newPrice = getPriceWithSpace(price);
+
+export function Card({ id, img, name, description, price, weight }) {
+  const dispatch = useDispatch();
+
+  const newPrice = getFormatNumber(price);
   const title = cutPartOfLine(name, 51);
   const descriptor = cutPartOfLine(description, 127);
   const margin = name.length > 24 ? true : false;
-  const dispatch = useDispatch();
+
   let item;
-  const handleAddProduct = () => {
+  const handleAddProduct = (e) => {
+    e.preventDefault();
     item = { id: id, img: img, name: name, price: price };
     dispatch(addProduct(item));
   };
@@ -25,25 +31,25 @@ function Card({ id, img, name, description, price, weight }) {
           <img
             className="card__img"
             src={`/images/products/${img}`}
-            alt="Фотография блюда"
+            alt={name}
           />
         </div>
         <div className="card__text">
           <h2 className="card__title">{title}</h2>
           <p className="card__description">{descriptor}</p>
           <div className="card__block-price">
-            <span className="card__price">
-              {`${newPrice} ₽`} {"/ "}
-            </span>
-            <span className="card__weight">{`${weight}.`}</span>
+            <div className="card__price">
+              {`${newPrice}`} {"/ "}
+              <span className="card__weight">{`${weight}.`}</span>
+            </div>
+            <ButtonCircle
+              handle={(e) => handleAddProduct(e)}
+              view={"plus"}
+              classNames="card__btn"
+            />
           </div>
         </div>
       </Link>
-      <ButtonCircle
-        handle={handleAddProduct}
-        view={"plus"}
-        classNames="card__btn"
-      />
     </CardItem>
   );
 }
@@ -55,5 +61,3 @@ Card.propTypes = {
   price: PropTypes.string,
   weight: PropTypes.string,
 };
-
-export default Card;

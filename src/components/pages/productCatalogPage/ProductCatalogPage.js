@@ -1,21 +1,26 @@
-import styles from "./index.module.scss";
-import { products } from "../../../store/menuList";
-import BasketMini from "../../elements/basketMini";
-import ProductList from "../../elements/productList";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import ButtonExit from "../../ui/buttonExit/";
+import { useSelector } from "react-redux";
 
-function ProductsPage() {
+import { products } from "../../../store/menuList";
+import { BasketMini } from "../../elements/basketMini";
+import { ProductList } from "../../elements/productList";
+import { ButtonOrder } from "../../ui/buttonOrder";
+
+import styles from "./index.module.scss";
+
+export function ProductCatalogPage() {
+  const navigate = useNavigate();
+
   const amount = useSelector((state) => state.basket.totalAmount);
   const quantity = useSelector((state) => state.basket.totalQuantity);
-  const navigate = useNavigate();
+
   const handleExit = () => {
     localStorage.setItem("userAutho", false);
     setTimeout(() => navigate("/login"), 1000);
   };
+
   return (
-    <div className={styles.productMenu}>
+    <div className={styles.productCatalog}>
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerBlock}>
@@ -25,7 +30,12 @@ function ProductsPage() {
               sum={amount}
               classNames={styles.headerBlock__basket}
             />
-            <ButtonExit handle={handleExit} name={"Выйти"} />
+            <ButtonOrder
+              view={"exit"}
+              type={"button"}
+              handle={handleExit}
+              name={"Выйти"}
+            />
           </div>
         </div>
       </header>
@@ -33,5 +43,3 @@ function ProductsPage() {
     </div>
   );
 }
-
-export default ProductsPage;
