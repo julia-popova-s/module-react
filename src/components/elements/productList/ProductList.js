@@ -1,7 +1,7 @@
-import Card from "../card";
-import ProductListWrap from "./ProductListWrap.styled.js";
+import { Card } from "../card";
+import { ProductListWrap } from "./ProductListWrap.styled.js";
 
-function ProductList({ products }) {
+export function ProductList({ products }) {
   return (
     <ProductListWrap>
       <div className="container">
@@ -25,4 +25,3 @@ function ProductList({ products }) {
     </ProductListWrap>
   );
 }
-export default ProductList;

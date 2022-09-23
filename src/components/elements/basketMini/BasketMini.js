@@ -1,19 +1,21 @@
-import { BasketMiniWrap } from "./BasketMiniWrap.styled";
-import getPriceWithSpace from "../../utils/getPriceWithSpace";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import getWordProduct from "../../utils/getWordProduct";
 
-function BasketMini({ counter, sum }) {
-  const newSum = getPriceWithSpace(sum);
+import { BasketMiniWrap } from "./BasketMiniWrap.styled";
+import { getFormatNumber } from "../../../utils/getFormatNumber";
+import { getWordProduct } from "../../../utils/getWordProduct";
+
+export function BasketMini({ counter, sum, classNames }) {
+  const newSum = getFormatNumber(sum);
   const word = getWordProduct(counter);
+
   return (
-    <BasketMiniWrap>
+    <BasketMiniWrap className={classNames}>
       <div className="basket-mini__text">
         <p className="basket-mini__text-item">{`${counter} ${word}`}</p>
-        <p className="basket-mini__text-item"> на сумму {`${newSum} ₽`}</p>
+        <p className="basket-mini__text-item"> на сумму {`${newSum}`}</p>
       </div>
-      <Link to="/shoplist" className="basket-mini__icon">
+      <Link to="/basket" className="basket-mini__icon">
         <svg
           width="50"
           height="50"
@@ -31,9 +33,9 @@ function BasketMini({ counter, sum }) {
     </BasketMiniWrap>
   );
 }
+
 BasketMini.propTypes = {
   url: PropTypes.string,
   counter: PropTypes.number,
   sum: PropTypes.number,
 };
-export default BasketMini;

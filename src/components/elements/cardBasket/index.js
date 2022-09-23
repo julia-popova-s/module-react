@@ -1,2 +1,1 @@
-import CardForBasket from "./CardBasket";
-export default CardForBasket;
+export { CardBasket } from "./CardBasket";

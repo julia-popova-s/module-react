@@ -13,9 +13,14 @@ export const CardBasketWrap = styled.div`
   padding: 15.5px 0;
   max-width: 860px;
 
-  &:hover {
+  :hover {
     color: var(--color-basic);
     transition: color 0.2s ease;
+    .card__text .card__link,
+    .card__block-price .card__quantity {
+      color: var(--color-basic);
+      transition: color 0.2s ease;
+    }
   }
 
   .card__preview {
@@ -38,13 +43,16 @@ export const CardBasketWrap = styled.div`
     justify-content: space-between;
     align-items: center;
     min-height: 30px;
+    color: var(--color-white);
 
-    .card__title {
+    .card__link {
       max-width: 310px;
       font-weight: 500;
       font-size: 17px;
       line-height: 21px;
+      color: var(--color-white);
     }
+
     .card__block-price {
       display: flex;
       flex-wrap: wrap;
@@ -65,6 +73,7 @@ export const CardBasketWrap = styled.div`
         min-width: 90px;
         text-align: center;
       }
+
       .card__btn_color {
         border: 1px solid var(--color-basic);
       }

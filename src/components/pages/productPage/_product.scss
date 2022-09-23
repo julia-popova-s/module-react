@@ -1,0 +1,30 @@
+.productDetails {
+  color: $white;
+  background-color: #131313;
+  background-image: url('../../../../public/images/product/backProduct.png');
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+
+.container {
+  max-width: 1360px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.headerBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 37px;
+  margin-bottom: 30px;
+
+  &__btn {
+    margin-right: auto;
+  }
+
+  &__basket {
+    margin-right: 22px;
+  }
+}

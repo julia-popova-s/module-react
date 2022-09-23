@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const CardItem = styled.div`
   font-family: var(--font-family);
   border: 1px solid var(--color-basic);
@@ -7,7 +8,7 @@ export const CardItem = styled.div`
   height: 552px;
   transition: color 0.2s ease;
 
-  &:hover {
+  &:hover .card__link .card__text {
     color: var(--color-basic);
     transition: color 0.2s ease;
   }
@@ -31,6 +32,7 @@ export const CardItem = styled.div`
     flex: 1 0 auto;
     height: calc(100% - 345px);
     padding: 0 27px 0 21px;
+    color: var(--color-white);
 
     .card__title {
       margin-bottom: ${({ margin }) => (margin ? "9px" : "13px")};
@@ -48,13 +50,14 @@ export const CardItem = styled.div`
     }
 
     .card__block-price {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       min-height: 30px;
       margin-top: auto;
       margin-bottom: 32px;
       padding-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
 
       .card__price {
         font-weight: 500;
@@ -66,28 +69,6 @@ export const CardItem = styled.div`
           font-size: 14px;
           line-height: 17px;
         }
-      }
-
-      .card__btn-add {
-        border-radius: 50%;
-        border: 1px solid var(--color-white);
-        width: 30px;
-        height: 30px;
-        background-color: transparent;
-        transition: all 0.2s ease;
-        position: relative;
-      }
-
-      .card__btn-add:hover {
-        background-color: var(--color-basic);
-        border: 1px solid var(--color-basic);
-        transition: all 0.2s ease;
-      }
-
-      .card__btn-plus {
-        position: absolute;
-        top: 25%;
-        right: 25%;
       }
     }
   }

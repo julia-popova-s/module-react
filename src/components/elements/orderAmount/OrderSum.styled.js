@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const OrderSum = styled.div`
   font-weight: 400;
   font-size: 21px;

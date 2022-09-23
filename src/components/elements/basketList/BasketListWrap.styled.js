@@ -1,8 +1,9 @@
 import styled from "styled-components";
-const BasketListWrap = styled.section`
+
+export const BasketListWrap = styled.section`
   .basket-list {
     width: 100%;
-    height: calc(100vh - 113.5px - 90px);
+    height: calc(100vh - 116.5px - 90px);
     overflow-x: auto;
 
     ::-webkit-scrollbar {
@@ -10,14 +11,13 @@ const BasketListWrap = styled.section`
     }
 
     ::-webkit-scrollbar-track {
-      background: var(--color-basic);
+      background-color: transparent;
       border-radius: 20px;
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: var(--color-back);
-      border-radius: 20px;
-      border: 2px solid #212121;
+      background-color: var(--color-scroll);
+      border-radius: 10px;
     }
   }
   .container {
@@ -26,4 +26,3 @@ const BasketListWrap = styled.section`
     margin: 0 auto;
   }
 `;
-export default BasketListWrap;

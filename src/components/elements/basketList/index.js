@@ -1,2 +1,1 @@
-import BasketList from "./BasketList";
-export default BasketList;
+export {BasketList} from "./BasketList";

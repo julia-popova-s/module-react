@@ -1,9 +1,9 @@
-import "./index.scss";
-function NotFound() {
+import "./index.module.scss";
+
+export function NotFound() {
   return (
-    <div className="not-found">
+    <div className="notFound">
       <div className="container">Такой страницы не существует</div>
     </div>
   );
 }
-export default NotFound;
