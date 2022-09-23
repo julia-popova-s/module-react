@@ -13,7 +13,7 @@ export function Product({ id, img, name, description, price, weight }) {
 
   let item;
   const handleAddProduct = () => {
-    item = { id: id, img: img, name: name, price: price, weight: weight };
+    item = { id, img, name, price };
     dispatch(addProduct(item));
   };
 

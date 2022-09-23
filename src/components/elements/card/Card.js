@@ -20,7 +20,7 @@ export function Card({ id, img, name, description, price, weight }) {
   let item;
   const handleAddProduct = (e) => {
     e.preventDefault();
-    item = { id: id, img: img, name: name, price: price };
+    item = { id, img, name, price };
     dispatch(addProduct(item));
   };
 

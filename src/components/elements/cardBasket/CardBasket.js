@@ -17,7 +17,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
   const title = cutPartOfLine(name, 47);
 
   const dispatch = useDispatch();
-  let item = { id: id };
+  let item = { id };
 
   const handleDeleteProduct = () => {
     dispatch(removeProduct(item));
@@ -26,7 +26,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
     dispatch(plusProduct(item));
   };
   const handleMinusProduct = () => {
-    item = { id: id, quantity: quantity };
+    item = { id, quantity: quantity };
     dispatch(minusProduct(item));
   };
 
