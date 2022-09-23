@@ -1,8 +1,10 @@
-import { ButtonOrder } from "../../ui/buttonOrder";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+
 import { useInput } from "../../../hooks/useInput";
+import { ButtonOrder } from "../../ui/buttonOrder";
+
 import styles from "./index.module.scss";
 
 export function FormRegistration() {

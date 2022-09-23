@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const BtnCircle = styled.button`
   border-radius: 50%;
   border: 1px solid var(--color-white);

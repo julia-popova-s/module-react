@@ -7,6 +7,7 @@ import { products } from "../../../store/menuList";
 import { ButtonOrder } from "../../ui/buttonOrder";
 import { ButtonToBack } from "../../ui/buttonToBack";
 import { BasketMini } from "../../elements/basketMini";
+
 import styles from "./index.module.scss";
 
 export function ProductPage() {

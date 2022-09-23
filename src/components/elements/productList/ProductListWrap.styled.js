@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 export const ProductListWrap = styled.main`
   .product-list {
     display: flex;

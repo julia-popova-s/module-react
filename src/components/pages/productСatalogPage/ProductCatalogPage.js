@@ -4,10 +4,11 @@ import { useSelector } from "react-redux";
 import { products } from "../../../store/menuList";
 import { BasketMini } from "../../elements/basketMini";
 import { ProductList } from "../../elements/productList";
-import { ButtonOrder } from "../../ui/buttonOrder/";
+import { ButtonOrder } from "../../ui/buttonOrder";
+
 import styles from "./index.module.scss";
 
-export function ProductsPage() {
+export function ProductCatalogPage() {
   const navigate = useNavigate();
 
   const amount = useSelector((state) => state.basket.totalAmount);
@@ -19,7 +20,7 @@ export function ProductsPage() {
   };
 
   return (
-    <div className={styles.productMenu}>
+    <div className={styles.productCatalog}>
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerBlock}>
