@@ -247,6 +247,7 @@ a:hover {
  */
 
 img {
+    color:#fff;
     border: 0;
     /* 1 */
     -ms-interpolation-mode: bicubic;
