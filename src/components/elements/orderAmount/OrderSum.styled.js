@@ -5,7 +5,7 @@ export const OrderSum = styled.div`
   font-size: 21px;
   line-height: 26px;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--color-white);
 
   .order-sum__price {
     margin-left: 16px;

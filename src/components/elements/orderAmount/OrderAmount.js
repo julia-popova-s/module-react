@@ -9,7 +9,7 @@ export function OrderAmount({ sum }) {
   return (
     <OrderSum>
       Заказ на сумму:
-      <span className="order-sum__price">{`${newSum} ₽`}</span>
+      <span className="order-sum__price">{newSum}</span>
     </OrderSum>
   );
 }
