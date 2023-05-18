@@ -30,7 +30,7 @@ export function Card({ id, img, name, description, price, weight }) {
         <div className="card__preview">
           <img
             className="card__img"
-            src={`./images/products/${img}`}
+            src={`/${process.env.PUBLIC_URL}/images/products/${img}`}
             alt={name}
           />
         </div>
@@ -39,19 +39,19 @@ export function Card({ id, img, name, description, price, weight }) {
           <p className="card__description">{descriptor}</p>
           <div className="card__block-price">
             <div className="card__price">
-              {`${newPrice}`} {"/ "}
+              {`${newPrice}`} {'/ '}
               <span className="card__weight">{`${weight}.`}</span>
             </div>
             <ButtonCircle
               handle={(e) => handleAddProduct(e)}
-              view={"plus"}
+              view={'plus'}
               classNames="card__btn"
             />
           </div>
         </div>
       </Link>
     </CardItem>
-  );
+  )
 }
 
 Card.propTypes = {
