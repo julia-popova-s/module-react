@@ -1,0 +1,47 @@
+.basket {
+  color: $white;
+  max-width: 100vw;
+  margin: 0 auto;
+  font-family: $font-family;
+}
+
+.container {
+  max-width: 1360px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.headerBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-top: 52px;
+  margin-bottom: 22.5px;
+  gap: 63px;
+
+  &__title {
+    @include setFontSize(700, 31px, 38px);
+    text-transform: uppercase;
+    margin-right: auto;
+  }
+}
+
+.footer {
+  box-sizing: border-box;
+  border-top: 1px solid $color-basic;
+
+  .container {
+    max-width: 920px;
+    padding: 0 30px;
+    margin: 0 auto;
+  }
+}
+
+.footerBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  margin-bottom: 27px;
+}

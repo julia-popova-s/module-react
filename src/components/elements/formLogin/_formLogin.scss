@@ -1,0 +1,168 @@
+.formLogin {
+  background-color: $white;
+  box-shadow: 0px 0px 40px 10px rgba(0, 0, 0, 0.25);
+  width: 460px;
+  height: 340px;
+  margin: 0 auto;
+  padding: 36px 20px 34px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s linear;
+  animation: showForm 1s;
+  animation-fill-mode: both;
+  position: relative;
+
+
+  @media screen and (max-width:768px) {
+    padding-top: 38px;
+  }
+
+  &__autho {
+    font-family: $font-family;
+    position: absolute;
+    top: 9px;
+    right: 20px;
+    color: $color-basic;
+    background-color: transparent;
+    align-self: flex-end;
+    @include setFontSize(400, 11px, 13px);
+    padding: 0;
+    transition: all 0.2s linear;
+    text-align: right;
+    text-decoration-line: underline;
+
+    &:hover {
+      transition: all 0.2s linear;
+      color: black;
+    }
+  }
+
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    @include setFontSize(700, 31px, 38px);
+    margin-bottom: 36px;
+    color: $color-back;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    max-width: 100%;
+    position: relative;
+  }
+
+  &__input {
+    width: 100%;
+    max-height: 39px;
+    background: $white;
+    border: 1px solid $color-basic;
+    border-radius: 61px;
+    box-sizing: border-box;
+    padding: 9px 0 10px 18px;
+    @include setFontSize(400, 16px, 20px);
+    color: $color-back;
+    transition: border 0.3s ease;
+    margin-bottom: 15px;
+
+    &:focus {
+      border: 1px solid #323131;
+      transition: border 0.3s ease;
+    }
+
+    &::placeholder {
+      @include setFontSize(400, 16px, 20px);
+      color: $color-back;
+    }
+  }
+
+
+  &__alert {
+    @include setFontSize(400, 10px, 14px);
+    color: $color-errors;
+    text-align: center;
+  }
+
+  &__error {
+    @include setFontSize(400, 10px, 14px);
+    color: $color-errors;
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+  }
+}
+
+.formLogin {
+  @media screen and (max-width:768px) {
+    max-width: 728px;
+    min-height: 697px;
+  }
+
+  &__btn {
+    margin-top: auto;
+    align-self: center;
+
+    @media screen and (max-width:768px) {
+      margin-top: auto;
+      margin-bottom: 242px;
+    }
+  }
+}
+
+.checkbox {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+
+  &__mark {
+    opacity: 0;
+  }
+
+  &__label {
+    @include setFontSize(300, 11px, 13px);
+    color: #301411;
+    text-align: left;
+    position: relative;
+    padding-left: 5px;
+    min-height: 24px;
+    padding-top: 3px;
+
+    &::after,
+    &::before {
+      position: absolute;
+      display: inline-block;
+    }
+
+    &::before {
+      content: "";
+      width: 18px;
+      height: 18px;
+      border: 1px solid $color-basic;
+      box-sizing: border-box;
+      top: 0;
+      left: -23px;
+      background-color: $white;
+      border-radius: 50%;
+    }
+  }
+
+  &__link {
+    color: #301411;
+    text-decoration: underline;
+  }
+}
+
+.checkbox .checkbox__mark+.checkbox__label::after {
+  content: none;
+}
+
+.checkbox .checkbox__mark:checked+.checkbox__label::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background-color: $color-basic;
+  border-radius: 50%;
+  left: -20px;
+  top: 3px;
+}
