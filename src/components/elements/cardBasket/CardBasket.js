@@ -34,7 +34,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
     <CardBasketWrap>
       <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
-          <img className="card__img" src={`/images/basket/${img}`} alt={name} />
+          <img className="card__img" src={`./images/basket/${img}`} alt={name} />
         </div>
       </Link>
 
