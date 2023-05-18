@@ -1,21 +1,21 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { ButtonOrder } from "../../ui/buttonOrder";
-import { ProductWrap } from "./ProductWrap.styled";
-import { addProduct } from "../../../store/reducers/basket";
-import { getFormatNumber } from "../../../utils/getFormatNumber";
+import { ButtonOrder } from '../../ui/buttonOrder'
+import { ProductWrap } from './ProductWrap.styled'
+import { addProduct } from '../../../store/reducers/basket'
+import { getFormatNumber } from '../../../utils/getFormatNumber'
 
 export function Product({ id, img, name, description, price, weight }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const newPrice = getFormatNumber(price);
+  const newPrice = getFormatNumber(price)
 
-  let item;
+  let item
   const handleAddProduct = () => {
-    item = { id, img, name, price };
-    dispatch(addProduct(item));
-  };
+    item = { id, img, name, price }
+    dispatch(addProduct(item))
+  }
 
   return (
     <ProductWrap>
@@ -24,7 +24,7 @@ export function Product({ id, img, name, description, price, weight }) {
           <div className="product__view">
             <img
               className="product__img"
-              src={`/${process.env.PUBLIC_URL}/images/products/${img}`}
+              src={`./images/products/${img}`}
               alt={name}
             />
           </div>

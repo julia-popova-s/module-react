@@ -1,34 +1,34 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { CardBasketWrap } from "./CardBasketWrap.styled.js";
-import { getFormatNumber } from "../../../utils/getFormatNumber.js";
-import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
+import { CardBasketWrap } from './CardBasketWrap.styled.js'
+import { getFormatNumber } from '../../../utils/getFormatNumber.js'
+import { cutPartOfLine } from '../../../utils/cutPartOfLine.js'
 import {
   removeProduct,
   minusProduct,
   plusProduct,
-} from "../../../store/reducers/basket";
-import { ButtonCircle } from "../../ui/buttonCircle";
+} from '../../../store/reducers/basket'
+import { ButtonCircle } from '../../ui/buttonCircle'
 
 export function CardBasket({ id, img, name, price, quantity }) {
-  const newPrice = getFormatNumber(price * quantity);
-  const title = cutPartOfLine(name, 47);
+  const newPrice = getFormatNumber(price * quantity)
+  const title = cutPartOfLine(name, 47)
 
-  const dispatch = useDispatch();
-  let item = { id };
+  const dispatch = useDispatch()
+  let item = { id }
 
   const handleDeleteProduct = () => {
-    dispatch(removeProduct(item));
-  };
+    dispatch(removeProduct(item))
+  }
   const handlePlusProduct = () => {
-    dispatch(plusProduct(item));
-  };
+    dispatch(plusProduct(item))
+  }
   const handleMinusProduct = () => {
-    item = { id, quantity };
-    dispatch(minusProduct(item));
-  };
+    item = { id, quantity }
+    dispatch(minusProduct(item))
+  }
 
   return (
     <CardBasketWrap>
@@ -36,7 +36,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
         <div className="card__preview">
           <img
             className="card__img"
-            src={`/${process.env.PUBLIC_URL}/images/basket/${img}`}
+            src={`./images/basket/${img}`}
             alt={name}
           />
         </div>
@@ -75,4 +75,4 @@ CardBasket.propTypes = {
   img: PropTypes.string,
   name: PropTypes.string,
   price: PropTypes.string,
-};
+}
