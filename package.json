@@ -1,7 +1,6 @@
 {
   "name": "module_react",
-  "homepage": "https://julia-popova-s.github.io/module_react/",
-  "version": "1.0.3",
+  "version": "1.0.8",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
