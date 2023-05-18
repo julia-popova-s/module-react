@@ -34,7 +34,11 @@ export function CardBasket({ id, img, name, price, quantity }) {
     <CardBasketWrap>
       <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
-          <img className="card__img" src={`./images/basket/${img}`} alt={name} />
+          <img
+            className="card__img"
+            src={`/${process.env.PUBLIC_URL}/images/basket/${img}`}
+            alt={name}
+          />
         </div>
       </Link>
 
@@ -46,25 +50,25 @@ export function CardBasket({ id, img, name, price, quantity }) {
         <div className="card__block-price">
           <ButtonCircle
             handle={handlePlusProduct}
-            view={"plus"}
-            classNames={"card__btn_color"}
+            view={'plus'}
+            classNames={'card__btn_color'}
           />
           <span className="card__quantity"> {`${quantity} шт.`}</span>
           <ButtonCircle
             handle={handleMinusProduct}
-            view={"minus"}
-            classNames={"card__btn_color"}
+            view={'minus'}
+            classNames={'card__btn_color'}
           />
           <span className="card__price">{newPrice}</span>
           <ButtonCircle
             handle={handleDeleteProduct}
-            view={"delete"}
-            classNames={"card__btn_color"}
+            view={'delete'}
+            classNames={'card__btn_color'}
           />
         </div>
       </div>
     </CardBasketWrap>
-  );
+  )
 }
 
 CardBasket.propTypes = {
