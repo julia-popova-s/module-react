@@ -30,7 +30,7 @@ export function Card({ id, img, name, description, price, weight }) {
         <div className="card__preview">
           <img
             className="card__img"
-            src={`./images/products/${img}`}
+            src={`${process.env.PUBLIC_URL}/images/products/${img}`}
             alt={name}
           />
         </div>

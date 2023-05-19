@@ -36,7 +36,7 @@ export function CardBasket({ id, img, name, price, quantity }) {
         <div className="card__preview">
           <img
             className="card__img"
-            src={`./images/basket/${img}`}
+            src={`${process.env.PUBLIC_URL}/images/basket/${img}`}
             alt={name}
           />
         </div>
