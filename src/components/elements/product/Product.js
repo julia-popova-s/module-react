@@ -24,7 +24,7 @@ export function Product({ id, img, name, description, price, weight }) {
           <div className="product__view">
             <img
               className="product__img"
-              src={`./images/products/${img}`}
+              src={`../images/products/${img}`}
               alt={name}
             />
           </div>
