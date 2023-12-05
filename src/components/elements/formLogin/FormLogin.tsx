@@ -1,32 +1,32 @@
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
-import { ButtonOrder } from "../../ui/buttonOrder";
-import { useInput } from "../../../hooks/useInput";
+import { ButtonOrder } from '../../ui/buttonOrder';
+import { useInput } from '../../../hooks/useInput';
 
-import styles from "./index.module.scss";
+import styles from './index.module.scss';
 
 export function FormLogin() {
   const navigate = useNavigate();
-  const [alert, setAlert] = useState("");
+  const [alert, setAlert] = useState('');
 
-  const login = useInput("", {
+  const login = useInput('', {
     isEmpty: true,
     minLength: 4,
   });
 
-  const password = useInput("", {
+  const password = useInput('', {
     isEmpty: true,
     minLength: 4,
   });
 
   const [checked, setChecked] = useState(false);
-  const handleChecked = (e) => {
+  const handleChecked = (e: Event): void => {
     setChecked(e.target.checked);
   };
 
-  const handleSubmitLogin = (e) => {
+  const handleSubmitLogin = (e: Event): void => {
     e.preventDefault();
     let userData;
     login.setDirty(true);
@@ -46,36 +46,32 @@ export function FormLogin() {
               login: login.value,
               password: password.value,
               notice: checked,
-            })
+            }),
           );
 
-        localStorage.setItem("userAuth", true);
+        localStorage.setItem('userAuth', true);
         changeForm();
-        setTimeout(navigate("/"), 1000);
+        setTimeout(navigate('/'), 1000);
       } else {
-        setAlert("Логин или пароль неверен");
+        setAlert('Логин или пароль неверен');
       }
     }
   };
 
   const changeForm = () => {
-    login.setValue("");
+    login.setValue('');
     login.setDirty(false);
-    password.setValue("");
+    password.setValue('');
     password.setDirty(false);
     setChecked(false);
-    setAlert("");
+    setAlert('');
   };
 
   return (
     <form className={styles.formLogin} id="login" onSubmit={handleSubmitLogin}>
-      <Link to={"/registration"}>
-        <button
-          onClick={changeForm}
-          className={styles.formLogin__autho}
-          type="button"
-        >
-          {"Зарегистрироваться"}
+      <Link to={'/registration'}>
+        <button onClick={changeForm} className={styles.formLogin__autho} type="button">
+          {'Зарегистрироваться'}
         </button>
       </Link>
       <div className={styles.formLogin__title}>Вход</div>
@@ -96,9 +92,7 @@ export function FormLogin() {
           <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {login.isDirty && login.minLengthError && (
-          <p className={styles.formLogin__error}>
-            Логин должен содержать не менее 4-х символов
-          </p>
+          <p className={styles.formLogin__error}>Логин должен содержать не менее 4-х символов</p>
         )}
       </div>
 
@@ -117,9 +111,7 @@ export function FormLogin() {
           <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {password.isDirty && password.minLengthError && (
-          <p className={styles.formLogin__error}>
-            Пароль должен содержать не менее 4-х символов
-          </p>
+          <p className={styles.formLogin__error}>Пароль должен содержать не менее 4-х символов</p>
         )}
       </div>
 
@@ -141,9 +133,9 @@ export function FormLogin() {
       <p className={styles.formLogin__alert}>{alert}</p>
 
       <ButtonOrder
-        type={"submit"}
-        view={"order"}
-        name={"Войти"}
+        type={'submit'}
+        view={'order'}
+        name={'Войти'}
         form="login"
         classNames={styles.formLogin__btn}
       />

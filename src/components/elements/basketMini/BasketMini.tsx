@@ -1,11 +1,16 @@
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { FC } from 'react';
+import { BasketMiniWrap } from './BasketMiniWrap.styled';
+import { getFormatNumber } from '../../../utils/getFormatNumber';
+import { getWordProduct } from '../../../utils/getWordProduct';
 
-import { BasketMiniWrap } from "./BasketMiniWrap.styled";
-import { getFormatNumber } from "../../../utils/getFormatNumber";
-import { getWordProduct } from "../../../utils/getWordProduct";
+type BasketMiniProps = {
+  counter: number;
+  sum: number;
+  classNames: string;
+};
 
-export function BasketMini({ counter, sum, classNames }) {
+export const BasketMini: FC<BasketMiniProps> = ({ counter, sum, classNames }) => {
   const newSum = getFormatNumber(sum);
   const word = getWordProduct(counter);
 
@@ -32,10 +37,4 @@ export function BasketMini({ counter, sum, classNames }) {
       </Link>
     </BasketMiniWrap>
   );
-}
-
-BasketMini.propTypes = {
-  url: PropTypes.string,
-  counter: PropTypes.number,
-  sum: PropTypes.number,
 };

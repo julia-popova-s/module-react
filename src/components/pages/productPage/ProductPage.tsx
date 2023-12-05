@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-import { Product } from "../../elements/product/";
+import { Product } from "../../elements/product";
 import { products } from "../../../store/menuList";
 import { ButtonOrder } from "../../ui/buttonOrder";
 import { ButtonToBack } from "../../ui/buttonToBack";

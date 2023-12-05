@@ -1,13 +1,13 @@
-import { Card } from "../card";
-import { ProductListWrap } from "./ProductListWrap.styled.js";
+import { Card } from '../card';
+import { ProductListWrap } from './ProductListWrap.styled.js';
 
 export function ProductList({ products }) {
   return (
     <ProductListWrap>
       <div className="container">
         <div className="product-list">
-          {products.map((key) => {
-            const { id, img, name, description, price, weight } = key;
+          {products.map((item) => {
+            const { id, img, name, description, price, weight } = item;
             return (
               <Card
                 key={id}
