@@ -1,21 +1,21 @@
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 
-import { ButtonOrder } from "../../ui/buttonOrder";
-import { ProductWrap } from "./ProductWrap.styled";
-import { addProduct } from "../../../store/reducers/basket";
-import { getFormatNumber } from "../../../utils/getFormatNumber";
+import { ButtonOrder } from '../../ui/buttonOrder'
+import { ProductWrap } from './ProductWrap.styled'
+import { addProduct } from '../../../store/reducers/basket'
+import { getFormatNumber } from '../../../utils/getFormatNumber'
 
 export function Product({ id, img, name, description, price, weight }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const newPrice = getFormatNumber(price);
+  const newPrice = getFormatNumber(price)
 
-  let item;
+  let item
   const handleAddProduct = () => {
-    item = { id, img, name, price };
-    dispatch(addProduct(item));
-  };
+    item = { id, img, name, price }
+    dispatch(addProduct(item))
+  }
 
   return (
     <ProductWrap>
@@ -24,7 +24,7 @@ export function Product({ id, img, name, description, price, weight }) {
           <div className="product__view">
             <img
               className="product__img"
-              src={`/images/products/${img}`}
+              src={`${process.env.PUBLIC_URL}/images/products/${img}`}
               alt={name}
             />
           </div>
@@ -33,15 +33,15 @@ export function Product({ id, img, name, description, price, weight }) {
             <div className="product__description">{description}</div>
             <div className="product__block-price">
               <div className="product__price">
-                {newPrice} {"/ "}
+                {newPrice} {'/ '}
                 <span className="product__weight">{`${weight}.`}</span>
               </div>
-              <Link to={"/basket"}>
+              <Link to={'/basket'}>
                 <ButtonOrder
-                  name={"В корзину"}
-                  type={"button"}
+                  name={'В корзину'}
+                  type={'button'}
                   handle={handleAddProduct}
-                  view={"order"}
+                  view={'order'}
                 />
               </Link>
             </div>
@@ -49,5 +49,5 @@ export function Product({ id, img, name, description, price, weight }) {
         </div>
       </div>
     </ProductWrap>
-  );
+  )
 }

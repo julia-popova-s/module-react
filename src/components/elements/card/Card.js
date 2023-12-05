@@ -1,28 +1,28 @@
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-import { CardItem } from "./CardItem.styled.js";
-import { ButtonCircle } from "../../ui/buttonCircle";
+import { CardItem } from './CardItem.styled.js'
+import { ButtonCircle } from '../../ui/buttonCircle'
 
-import { getFormatNumber } from "../../../utils/getFormatNumber";
-import { cutPartOfLine } from "../../../utils/cutPartOfLine.js";
-import { addProduct } from "../../../store/reducers/basket";
+import { getFormatNumber } from '../../../utils/getFormatNumber'
+import { cutPartOfLine } from '../../../utils/cutPartOfLine.js'
+import { addProduct } from '../../../store/reducers/basket'
 
 export function Card({ id, img, name, description, price, weight }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const newPrice = getFormatNumber(price);
-  const title = cutPartOfLine(name, 51);
-  const descriptor = cutPartOfLine(description, 127);
-  const margin = name.length > 24 ? true : false;
+  const newPrice = getFormatNumber(price)
+  const title = cutPartOfLine(name, 51)
+  const descriptor = cutPartOfLine(description, 127)
+  const margin = name.length > 24 ? true : false
 
-  let item;
+  let item
   const handleAddProduct = (e) => {
-    e.preventDefault();
-    item = { id, img, name, price };
-    dispatch(addProduct(item));
-  };
+    e.preventDefault()
+    item = { id, img, name, price }
+    dispatch(addProduct(item))
+  }
 
   return (
     <CardItem margin={margin}>
@@ -30,7 +30,7 @@ export function Card({ id, img, name, description, price, weight }) {
         <div className="card__preview">
           <img
             className="card__img"
-            src={`/images/products/${img}`}
+            src={`${process.env.PUBLIC_URL}/images/products/${img}`}
             alt={name}
           />
         </div>
@@ -39,19 +39,19 @@ export function Card({ id, img, name, description, price, weight }) {
           <p className="card__description">{descriptor}</p>
           <div className="card__block-price">
             <div className="card__price">
-              {`${newPrice}`} {"/ "}
+              {`${newPrice}`} {'/ '}
               <span className="card__weight">{`${weight}.`}</span>
             </div>
             <ButtonCircle
               handle={(e) => handleAddProduct(e)}
-              view={"plus"}
+              view={'plus'}
               classNames="card__btn"
             />
           </div>
         </div>
       </Link>
     </CardItem>
-  );
+  )
 }
 
 Card.propTypes = {
@@ -60,4 +60,4 @@ Card.propTypes = {
   description: PropTypes.string,
   price: PropTypes.string,
   weight: PropTypes.string,
-};
+}
