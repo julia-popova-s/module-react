@@ -1,16 +1,4 @@
-interface Product {
-  id: string;
-  img: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
-interface Basket {
-  basket: Product[];
-  totalAmount: number;
-  totalQuantity: number;
-}
+import { Basket } from '../customTypes/basket';
 
 export const updateAmount = (state: Basket) => {
   state.totalAmount = state.basket.reduce((sum, elem) => +elem.price * elem.quantity + sum, 0);
