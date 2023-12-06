@@ -1,7 +1,12 @@
-import { ButtonToBackCircle } from "./ButtonToBackCircle.styled";
+import { FC } from 'react';
+import { ButtonToBackCircle } from './ButtonToBackCircle.styled';
 
-export function ButtonToBack({ handleGoBack, classNames }) {
-  
+type ButtonProps = {
+  handleGoBack: () => void;
+  classNames?: string;
+};
+
+export const ButtonToBack: FC<ButtonProps> = ({ handleGoBack, classNames }) => {
   return (
     <ButtonToBackCircle onClick={handleGoBack} className={classNames}>
       <svg
@@ -20,15 +25,10 @@ export function ButtonToBack({ handleGoBack, classNames }) {
         </g>
         <defs>
           <clipPath id="clip0_7057_4">
-            <rect
-              width="9.6"
-              height="9.6"
-              fill="white"
-              transform="translate(0.52002 0.520004)"
-            />
+            <rect width="9.6" height="9.6" fill="white" transform="translate(0.52002 0.520004)" />
           </clipPath>
         </defs>
       </svg>
     </ButtonToBackCircle>
   );
-}
+};

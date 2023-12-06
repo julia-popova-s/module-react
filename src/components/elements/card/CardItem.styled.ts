@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const CardItem = styled.div`
+type CardItemProps = {
+  margin: boolean;
+};
+
+export const CardItem = styled.div<CardItemProps>`
   font-family: var(--font-family);
   border: 1px solid var(--color-basic);
   box-sizing: border-box;
@@ -35,7 +39,7 @@ export const CardItem = styled.div`
     color: var(--color-white);
 
     .card__title {
-      margin-bottom: ${({ margin }) => (margin ? "9px" : "13px")};
+      margin-bottom: ${({ margin }) => (margin ? '9px' : '13px')};
       font-weight: 500;
       font-size: 17px;
       line-height: 21px;

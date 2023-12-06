@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import { ButtonOrder } from '../../ui/buttonOrder';
 import { useInput } from '../../../hooks/useInput';
-
-import styles from './index.module.scss';
+import { ChangeEvent, FormEvent } from 'react';
+import style from './index.module.scss';
 
 export function FormLogin() {
   const navigate = useNavigate();
@@ -22,18 +22,19 @@ export function FormLogin() {
   });
 
   const [checked, setChecked] = useState(false);
-  const handleChecked = (e: Event): void => {
+
+  const handleChecked = (e: ChangeEvent<HTMLInputElement>): void => {
     setChecked(e.target.checked);
   };
 
-  const handleSubmitLogin = (e: Event): void => {
+  const handleSubmitLogin = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     let userData;
     login.setDirty(true);
     password.setDirty(true);
 
     if (login.inputValid && password.inputValid) {
-      userData = JSON.parse(localStorage.getItem(login.value));
+      userData = JSON.parse(localStorage.getItem(login.value) as string);
       if (
         userData !== null &&
         login.value === userData.login &&
@@ -49,9 +50,9 @@ export function FormLogin() {
             }),
           );
 
-        localStorage.setItem('userAuth', true);
+        localStorage.setItem('userAuth', 'true');
         changeForm();
-        setTimeout(navigate('/'), 1000);
+        setTimeout(() => navigate('/'), 1000);
       } else {
         setAlert('Логин или пароль неверен');
       }
@@ -68,76 +69,76 @@ export function FormLogin() {
   };
 
   return (
-    <form className={styles.formLogin} id="login" onSubmit={handleSubmitLogin}>
+    <form className={style.formLogin} id="login" onSubmit={handleSubmitLogin}>
       <Link to={'/registration'}>
-        <button onClick={changeForm} className={styles.formLogin__autho} type="button">
+        <button onClick={changeForm} className={style.formLogin__autho} type="button">
           {'Зарегистрироваться'}
         </button>
       </Link>
-      <div className={styles.formLogin__title}>Вход</div>
+      <div className={style.formLogin__title}>Вход</div>
 
-      <div className={styles.formLogin__item}>
+      <div className={style.formLogin__item}>
         <input
-          className={styles.formLogin__input}
+          className={style.formLogin__input}
           type="text"
           name="login"
           autoComplete="on"
           placeholder="Логин"
           onChange={(e) => login.onChange(e)}
-          onBlur={(e) => login.onBlur(e)}
+          onBlur={() => login.onBlur()}
           value={login.value}
         />
 
         {login.isDirty && login.isEmpty && (
-          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
+          <p className={style.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {login.isDirty && login.minLengthError && (
-          <p className={styles.formLogin__error}>Логин должен содержать не менее 4-х символов</p>
+          <p className={style.formLogin__error}>Логин должен содержать не менее 4-х символов</p>
         )}
       </div>
 
-      <div className={styles.formLogin__item}>
+      <div className={style.formLogin__item}>
         <input
-          className={styles.formLogin__input}
+          className={style.formLogin__input}
           placeholder="Пароль"
           type="password"
           name="password"
           autoComplete="current-password"
           onChange={(e) => password.onChange(e)}
-          onBlur={(e) => password.onBlur(e)}
+          onBlur={() => password.onBlur()}
           value={password.value}
         />
         {password.isDirty && password.isEmpty && (
-          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
+          <p className={style.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {password.isDirty && password.minLengthError && (
-          <p className={styles.formLogin__error}>Пароль должен содержать не менее 4-х символов</p>
+          <p className={style.formLogin__error}>Пароль должен содержать не менее 4-х символов</p>
         )}
       </div>
 
-      <div className={styles.checkbox}>
+      <div className={style.checkbox}>
         <input
           type="checkbox"
-          className={styles.checkbox__mark}
+          className={style.checkbox__mark}
           id="checkboxReg"
           name="notice"
           checked={checked}
           onChange={(e) => handleChecked(e)}
         />
 
-        <label className={styles.checkbox__label} htmlFor="checkboxReg">
+        <label className={style.checkbox__label} htmlFor="checkboxReg">
           Я согласен получать обновления на почту
         </label>
       </div>
 
-      <p className={styles.formLogin__alert}>{alert}</p>
+      <p className={style.formLogin__alert}>{alert}</p>
 
       <ButtonOrder
         type={'submit'}
         view={'order'}
         name={'Войти'}
         form="login"
-        classNames={styles.formLogin__btn}
+        classNames={style.formLogin__btn}
       />
     </form>
   );

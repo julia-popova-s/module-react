@@ -1,6 +1,10 @@
 import styled from "styled-components";
+import { FC, MouseEventHandler } from 'react';
 
-export const BtnCircle = styled.button`
+type BtnCircleProps ={
+  onClick:MouseEventHandler<HTMLButtonElement>
+}
+export const BtnCircle = styled.button<BtnCircleProps>`
   border-radius: 50%;
   border: 1px solid var(--color-white);
   width: 30px;

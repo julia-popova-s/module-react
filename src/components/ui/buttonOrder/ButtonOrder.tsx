@@ -1,20 +1,30 @@
-import PropTypes from "prop-types";
+import { BtnOrder } from './BtnOrder.styled';
+import { FC } from 'react';
 
-import { BtnOrder } from "./BtnOrder.styled";
-export function ButtonOrder({ view, name, type, classNames, handle }) {
-  const style = view === "order" ? "btn-order" : "btn-exit";
+type ButtonProps = {
+  name: string;
+  view?: string;
+  form?: string;
+  handleClick?: () => void;
+  type?: 'button' | 'submit' | 'reset' | undefined;
+  classNames?: string;
+};
+
+export const ButtonOrder: FC<ButtonProps> = ({
+  view,
+  name,
+  type,
+  classNames,
+  handleClick,
+  form,
+}) => {
+  const style = view === 'order' ? 'btn-order' : 'btn-exit';
 
   return (
     <BtnOrder className={classNames}>
-      <button onClick={handle} type={type} className={style}>
+      <button onClick={handleClick} type={type} className={style} form={form}>
         {name}
       </button>
     </BtnOrder>
   );
-}
-
-ButtonOrder.propTypes = {
-  name: PropTypes.string,
-  type: PropTypes.string,
-  classNames: PropTypes.string,
 };

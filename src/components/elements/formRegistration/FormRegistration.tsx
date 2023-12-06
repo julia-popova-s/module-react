@@ -1,33 +1,33 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { FormEvent, ChangeEvent } from 'react';
+import { useInput } from '../../../hooks/useInput';
+import { ButtonOrder } from '../../ui/buttonOrder';
 
-import { useInput } from "../../../hooks/useInput";
-import { ButtonOrder } from "../../ui/buttonOrder";
-
-import styles from "./index.module.scss";
+import style from './index.module.scss';
 
 export function FormRegistration() {
   const navigate = useNavigate();
-  const [alert, setAlert] = useState("");
+  const [alert, setAlert] = useState('');
 
-  const login = useInput("", {
+  const login = useInput('', {
     isEmpty: true,
     minLength: 4,
   });
 
-  const password = useInput("", {
+  const password = useInput('', {
     isEmpty: true,
     minLength: 4,
   });
 
   const [checked, setChecked] = useState(false);
 
-  const handleChecked = (e) => {
+  const handleChecked = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
 
-  const handleSubmitReg = (e) => {
+  const handleSubmitReg = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     login.setDirty(true);
     password.setDirty(true);
@@ -40,109 +40,101 @@ export function FormRegistration() {
               login: login.value,
               password: password.value,
               notice: checked,
-            })
+            }),
           )
         : localStorage.setItem(
             login.value,
             JSON.stringify({
               login: login.value,
               password: password.value,
-            })
+            }),
           );
-      localStorage.setItem("userAuth", true);
+      localStorage.setItem('userAuth', 'true');
       changeForm();
-      setTimeout(navigate("/"), 1000);
+      setTimeout(() => navigate('/'), 1000);
     }
   };
 
   const changeForm = () => {
-    login.setValue("");
+    login.setValue('');
     login.setDirty(false);
-    password.setValue("");
+    password.setValue('');
     password.setDirty(false);
     setChecked(false);
-    setAlert("");
+    setAlert('');
   };
 
   return (
-    <form className={styles.formLogin} id="reg" onSubmit={handleSubmitReg}>
-      <Link to={"/login"}>
-        <button
-          onClick={changeForm}
-          className={styles.formLogin__autho}
-          type="button"
-        >
+    <form className={style.formLogin} id="reg" onSubmit={handleSubmitReg}>
+      <Link to={'/login'}>
+        <button onClick={changeForm} className={style.formLogin__autho} type="button">
           Авторизоваться
         </button>
       </Link>
-      <div className={styles.formLogin__title}>Регистрация</div>
+      <div className={style.formLogin__title}>Регистрация</div>
 
-      <div className={styles.formLogin__item}>
+      <div className={style.formLogin__item}>
         <input
-          className={styles.formLogin__input}
+          className={style.formLogin__input}
           type="text"
           name="login"
           autoComplete="on"
           placeholder="Логин"
           onChange={(e) => login.onChange(e)}
-          onBlur={(e) => login.onBlur(e)}
+          onBlur={() => login.onBlur()}
           value={login.value}
         />
 
         {login.isDirty && login.isEmpty && (
-          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
+          <p className={style.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {login.isDirty && login.minLengthError && (
-          <p className={styles.formLogin__error}>
-            Логин должен содержать не менее 4-х символов
-          </p>
+          <p className={style.formLogin__error}>Логин должен содержать не менее 4-х символов</p>
         )}
       </div>
 
-      <div className={styles.formLogin__item}>
+      <div className={style.formLogin__item}>
         <input
-          className={styles.formLogin__input}
+          className={style.formLogin__input}
           placeholder="Пароль"
           type="password"
           name="password"
           autoComplete="current-password"
           onChange={(e) => password.onChange(e)}
-          onBlur={(e) => password.onBlur(e)}
+          onBlur={() => password.onBlur()}
           value={password.value}
         />
         {password.isDirty && password.isEmpty && (
-          <p className={styles.formLogin__error}>Поле не должно быть пустым</p>
+          <p className={style.formLogin__error}>Поле не должно быть пустым</p>
         )}
         {password.isDirty && password.minLengthError && (
-          <p className={styles.formLogin__error}>
-            Пароль должен содержать не менее 4-х символов
-          </p>
+          <p className={style.formLogin__error}>Пароль должен содержать не менее 4-х символов</p>
         )}
       </div>
 
-      <div className={styles.checkbox}>
+      <div className={style.checkbox}>
         <input
           type="checkbox"
-          className={styles.checkbox__mark}
+          className={style.checkbox__mark}
           id="checkboxReg"
           name="notice"
           checked={checked}
           onChange={(e) => handleChecked(e)}
         />
 
-        <label className={styles.checkbox__label} htmlFor="checkboxReg">
+        <label className={style.checkbox__label} htmlFor="checkboxReg">
           Я согласен получать обновления на почту
         </label>
       </div>
 
-      <p className={styles.formLogin__alert}>{alert}</p>
+      <p className={style.formLogin__alert}>{alert}</p>
 
       <ButtonOrder
-        type={"submit"}
-        name={"Зарегистрироваться"}
+        type={'submit'}
+        name={'Зарегистрироваться'}
         form="reg"
-        view={"order"}
-        classNames={styles.formLogin__btn}
+        view={'order'}
+        classNames={style.formLogin__btn}
       />
     </form>
   );

@@ -1,25 +1,16 @@
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 
-import { CardItem } from './CardItem.styled.js';
-import { ButtonCircle } from '../../ui/buttonCircle/index.js';
+import { CardItem } from './CardItem.styled';
+import { ButtonCircle } from '../../ui/buttonCircle/index';
 
-import { getFormatNumber } from '../../../utils/getFormatNumber.js';
-import { cutPartOfLine } from '../../../utils/cutPartOfLine.js';
-import { addProduct } from '../../../store/reducers/basket.js';
+import { getFormatNumber } from '../../../utils/getFormatNumber';
+import { cutPartOfLine } from '../../../utils/cutPartOfLine';
+import { addProduct } from '../../../store/reducers/basket';
 import { FC } from 'react';
+import { Product } from '../../../customTypes/product';
 
-type CardProps = {
-  id: string;
-  img: string;
-  name: string;
-  description: string;
-  price: string;
-  weight: string;
-};
-
-export const Card: FC<CardProps> = ({ id, img, name, description, price, weight }) => {
+export const Card: FC<Product> = ({ id, img, name, description, price, weight, units }) => {
   const dispatch = useDispatch();
 
   const newPrice = getFormatNumber(price);
@@ -28,16 +19,14 @@ export const Card: FC<CardProps> = ({ id, img, name, description, price, weight 
   const margin = name.length > 24 ? true : false;
 
   let item;
-  const handleAddProduct = (e: Event): void => {
+  const handleAddProduct = (e: any) => {
     e.preventDefault();
     item = { id, img, name, price };
     dispatch(addProduct(item));
   };
 
   return (
-    <CardItem 
-    // margin={margin}
-    >
+    <CardItem margin={margin}>
       <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
           <img
@@ -52,13 +41,9 @@ export const Card: FC<CardProps> = ({ id, img, name, description, price, weight 
           <div className="card__block-price">
             <div className="card__price">
               {`${newPrice}`} {'/ '}
-              <span className="card__weight">{`${weight}.`}</span>
+              <span className="card__weight">{`${weight} ${units}.`}</span>
             </div>
-            <ButtonCircle
-              handle={(e: Event) => handleAddProduct(e)}
-              view={'plus'}
-              classNames="card__btn"
-            />
+            <ButtonCircle handleСlick={handleAddProduct} view={'plus'} classNames="card__btn" />
           </div>
         </div>
       </Link>

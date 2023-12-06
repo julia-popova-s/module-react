@@ -1,44 +1,36 @@
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-import { products } from "../../../store/menuList";
-import { BasketMini } from "../../elements/basketMini";
-import { ProductList } from "../../elements/productList";
-import { ButtonOrder } from "../../ui/buttonOrder";
+import { products } from '../../../store/menuList';
+import { BasketMini } from '../../elements/basketMini';
+import { ProductList } from '../../elements/productList';
+import { ButtonOrder } from '../../ui/buttonOrder';
 
-import styles from "./index.module.scss";
+import style from './index.module.scss';
+import { State } from '../../../customTypes/state';
 
 export function ProductCatalogPage() {
   const navigate = useNavigate();
 
-  const amount = useSelector((state) => state.basket.totalAmount);
-  const quantity = useSelector((state) => state.basket.totalQuantity);
+  const amount = useSelector((state: State) => state.basket.totalAmount);
+  const quantity = useSelector((state: State) => state.basket.totalQuantity);
 
   const handleExit = () => {
-    localStorage.setItem("userAuth", false);
-    setTimeout(() => navigate("/login"), 1000);
+    localStorage.setItem('userAuth', 'false');
+    setTimeout(() => navigate('/login'), 1000);
   };
 
-  const userAuth = JSON.parse(localStorage.getItem("userAuth"));
-  const nameBtn = userAuth ? "Выйти" : "Войти";
+  const userAuth = JSON.parse(localStorage.getItem('userAuth') as string);
+  const nameBtn = userAuth ? 'Выйти' : 'Войти';
 
   return (
-    <div className={styles.productCatalog}>
-      <header className={styles.header}>
-        <div className={styles.container}>
-          <div className={styles.headerBlock}>
-            <h1 className={styles.headerBlock__title}>наша продукция</h1>
-            <BasketMini
-              counter={quantity}
-              sum={amount}
-              classNames={styles.headerBlock__basket}
-            />
-            <ButtonOrder
-              view={"exit"}
-              type={"button"}
-              handle={handleExit}
-              name={nameBtn}
-            />
+    <div className={style.productCatalog}>
+      <header className={style.header}>
+        <div className={style.container}>
+          <div className={style.headerBlock}>
+            <h1 className={style.headerBlock__title}>наша продукция</h1>
+            <BasketMini counter={quantity} sum={amount} classNames={style.headerBlock__basket} />
+            <ButtonOrder view={'exit'} type={'button'} handleClick={handleExit} name={nameBtn} />
           </div>
         </div>
       </header>

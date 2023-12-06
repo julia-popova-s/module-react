@@ -1,21 +1,30 @@
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { ButtonOrder } from '../../ui/buttonOrder'
-import { ProductWrap } from './ProductWrap.styled'
-import { addProduct } from '../../../store/reducers/basket'
-import { getFormatNumber } from '../../../utils/getFormatNumber'
+import { ButtonOrder } from '../../ui/buttonOrder';
+import { ProductWrap } from './ProductWrap.styled';
+import { addProduct } from '../../../store/reducers/basket';
+import { getFormatNumber } from '../../../utils/getFormatNumber';
+import { FC } from 'react';
 
-export function Product({ id, img, name, description, price, weight }) {
-  const dispatch = useDispatch()
+import { Product as ProductProps } from '../../../customTypes/product';
 
-  const newPrice = getFormatNumber(price)
+export const Product: FC<ProductProps> = ({ id, img, name, description, price, weight, units }) => {
+  const dispatch = useDispatch();
 
-  let item
+  const newPrice = getFormatNumber(price);
+
+  let item: {
+    id: string;
+    img: string;
+    name: string;
+    price: number;
+  };
+  
   const handleAddProduct = () => {
-    item = { id, img, name, price }
-    dispatch(addProduct(item))
-  }
+    item = { id, img, name, price };
+    dispatch(addProduct(item));
+  };
 
   return (
     <ProductWrap>
@@ -34,13 +43,13 @@ export function Product({ id, img, name, description, price, weight }) {
             <div className="product__block-price">
               <div className="product__price">
                 {newPrice} {'/ '}
-                <span className="product__weight">{`${weight}.`}</span>
+                <span className="product__weight">{`${weight} ${units}.`}</span>
               </div>
               <Link to={'/basket'}>
                 <ButtonOrder
                   name={'В корзину'}
                   type={'button'}
-                  handle={handleAddProduct}
+                  handleClick={handleAddProduct}
                   view={'order'}
                 />
               </Link>
@@ -49,5 +58,5 @@ export function Product({ id, img, name, description, price, weight }) {
         </div>
       </div>
     </ProductWrap>
-  )
-}
+  );
+};

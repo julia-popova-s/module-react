@@ -1,9 +1,12 @@
-import PropTypes from "prop-types";
+import { FC } from 'react';
+import { OrderSum } from './OrderSum.styled';
+import { getFormatNumber } from '../../../utils/getFormatNumber';
 
-import { OrderSum } from "./OrderSum.styled";
-import { getFormatNumber } from "../../../utils/getFormatNumber";
+type OrderAmountProps = {
+  sum: number;
+};
 
-export function OrderAmount({ sum }) {
+export const OrderAmount: FC<OrderAmountProps> = ({ sum }) => {
   const newSum = getFormatNumber(sum);
 
   return (
@@ -12,8 +15,4 @@ export function OrderAmount({ sum }) {
       <span className="order-sum__price">{newSum}</span>
     </OrderSum>
   );
-}
-
-OrderAmount.propTypes = {
-  sum: PropTypes.number,
 };

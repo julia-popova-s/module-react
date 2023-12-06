@@ -1,9 +1,35 @@
-import { BtnCircle } from "./BtnCircle.styled";
+import { BtnCircle } from './BtnCircle.styled';
+import { FC } from 'react';
 
-export function ButtonCircle({ view, handle, classNames }) {
+type ButtonCircleProps = {
+  view: string;
+  handleСlick: (e:any) => void;
+  classNames: string;
+};
+
+export const ButtonCircle: FC<ButtonCircleProps> = ({ view, handleСlick, classNames }) => {
   let svg;
 
-  if (view === "plus") {
+  if (view === 'plus') {
+    svg = (
+      <svg
+        className={view}
+        width="14"
+        height="14"
+        viewBox="0 0 14 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M7 1.28564V12.3571" stroke="white" strokeWidth="2" strokeLinecap="round" />
+        <path
+          d="M12.3569 6.82135L1.28551 6.82135"
+          stroke="white"
+          strokeWidth="2"
+          strokeLinecap="round"
+        />
+      </svg>
+    );
+  } else if (view === 'minus') {
     svg = (
       <svg
         className={view}
@@ -14,12 +40,6 @@ export function ButtonCircle({ view, handle, classNames }) {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M7 1.28564V12.3571"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-        <path
           d="M12.3569 6.82135L1.28551 6.82135"
           stroke="white"
           strokeWidth="2"
@@ -27,27 +47,7 @@ export function ButtonCircle({ view, handle, classNames }) {
         />
       </svg>
     );
-
-  } else if (view === "minus") {
-    svg = (
-      <svg
-        className={view}
-        width="14"
-        height="14"
-        viewBox="0 0 14 14"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M12.3569 6.82135L1.28551 6.82135"
-          stroke="white"
-          strokeWidth="2"
-          strokeLinecap="round"
-        />
-      </svg>
-    );
-    
-  } else if (view === "delete") {
+  } else if (view === 'delete') {
     svg = (
       <svg
         className={view}
@@ -78,8 +78,8 @@ export function ButtonCircle({ view, handle, classNames }) {
   }
 
   return (
-    <BtnCircle onClick={handle} className={classNames} type="button">
+    <BtnCircle onClick={handleСlick} className={classNames} type="button">
       {svg}
     </BtnCircle>
   );
-}
+};
