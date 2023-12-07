@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-export const BasketListWrap = styled.section`
-  .basket-list {
+export const CartListWrap = styled.section`
+  .cart-list {
     width: 100%;
     height: calc(100vh - 116.5px - 90px);
     overflow-x: auto;
@@ -21,13 +21,13 @@ export const BasketListWrap = styled.section`
     }
   }
 
-  .basket-list__alert {
+  .cart-list__alert {
     padding: 60px 0;
     text-align: center;
     color: var(--color-white);
     font-size: 24px;
 
-    .basket-list__link {
+    .cart-list__link {
       color: var(--color-basic);
     }
   }

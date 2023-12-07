@@ -2,18 +2,18 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import { products } from '../../../store/menuList';
-import { BasketMini } from '../../elements/basketMini';
+import { CartMini } from '../../elements/cartMini';
 import { ProductList } from '../../elements/productList';
 import { ButtonOrder } from '../../ui/buttonOrder';
 
 import style from './index.module.scss';
-import { State } from '../../../customTypes/state';
+import { RootState } from '../../../store/index';
 
 export function ProductCatalogPage() {
   const navigate = useNavigate();
 
-  const amount = useSelector((state: State) => state.basket.totalAmount);
-  const quantity = useSelector((state: State) => state.basket.totalQuantity);
+  const amount = useSelector((state: RootState) => state.cart.totalAmount);
+  const quantity = useSelector((state: RootState) => state.cart.totalQuantity);
 
   const handleExit = () => {
     localStorage.setItem('userAuth', 'false');
@@ -29,7 +29,7 @@ export function ProductCatalogPage() {
         <div className={style.container}>
           <div className={style.headerBlock}>
             <h1 className={style.headerBlock__title}>наша продукция</h1>
-            <BasketMini counter={quantity} sum={amount} classNames={style.headerBlock__basket} />
+            <CartMini counter={quantity} sum={amount} classNames={style.headerBlock__cart} />
             <ButtonOrder view={'exit'} type={'button'} handleClick={handleExit} name={nameBtn} />
           </div>
         </div>

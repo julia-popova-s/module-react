@@ -1,17 +1,16 @@
-import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { CardBasketWrap } from './CardBasketWrap.styled';
+import { CartItemWrap } from './CartItemWrap.styled';
 import { getFormatNumber } from '../../../utils/getFormatNumber';
 import { cutPartOfLine } from '../../../utils/cutPartOfLine';
-import { removeProduct, minusProduct, plusProduct } from '../../../store/reducers/basket';
+import { removeProduct, minusProduct, plusProduct } from '../../../store/reducers/cart';
 import { ButtonCircle } from '../../ui/buttonCircle';
 import { FC } from 'react';
 
-import { BasketItem } from '../../../customTypes/basketItem';
+import { CartItem as CartItemProps } from '../../../customTypes/cartItem';
 
-export const CardBasket: FC<BasketItem> = ({ id, img, name, price, quantity }) => {
+export const CartItem: FC<CartItemProps> = ({ id, img, name, price, quantity }) => {
   const newPrice = getFormatNumber(price * quantity);
   const title = cutPartOfLine(name, 47);
 
@@ -29,12 +28,12 @@ export const CardBasket: FC<BasketItem> = ({ id, img, name, price, quantity }) =
   };
 
   return (
-    <CardBasketWrap>
+    <CartItemWrap>
       <Link to={`/${id}/${name}`} className="card__link">
         <div className="card__preview">
           <img
             className="card__img"
-            src={`${process.env.PUBLIC_URL}/images/basket/${img}`}
+            src={`${process.env.PUBLIC_URL}/images/cart/${img}`}
             alt={name}
           />
         </div>
@@ -65,6 +64,6 @@ export const CardBasket: FC<BasketItem> = ({ id, img, name, price, quantity }) =
           />
         </div>
       </div>
-    </CardBasketWrap>
+    </CartItemWrap>
   );
 };

@@ -1,26 +1,26 @@
 import { Link } from 'react-router-dom';
 import { FC } from 'react';
-import { BasketMiniWrap } from './BasketMiniWrap.styled';
+import { CartMiniWrap } from './cartMiniWrap.styled';
 import { getFormatNumber } from '../../../utils/getFormatNumber';
 import { getWordProduct } from '../../../utils/getWordProduct';
 
-type BasketMiniProps = {
+type CartMiniProps = {
   counter: number;
   sum: number;
   classNames: string;
 };
 
-export const BasketMini: FC<BasketMiniProps> = ({ counter, sum, classNames }) => {
+export const CartMini: FC<CartMiniProps> = ({ counter, sum, classNames }) => {
   const newSum = getFormatNumber(sum);
   const word = getWordProduct(counter);
 
   return (
-    <BasketMiniWrap className={classNames}>
-      <div className="basket-mini__text">
-        <p className="basket-mini__text-item">{`${counter} ${word}`}</p>
-        <p className="basket-mini__text-item"> на сумму {`${newSum}`}</p>
+    <CartMiniWrap className={classNames}>
+      <div className="cart-mini__text">
+        <p className="cart-mini__text-item">{`${counter} ${word}`}</p>
+        <p className="cart-mini__text-item"> на сумму {`${newSum}`}</p>
       </div>
-      <Link to="/basket" className="basket-mini__icon">
+      <Link to="/cart" className="cart-mini__icon">
         <svg
           width="50"
           height="50"
@@ -35,6 +35,6 @@ export const BasketMini: FC<BasketMiniProps> = ({ counter, sum, classNames }) =>
           />
         </svg>
       </Link>
-    </BasketMiniWrap>
+    </CartMiniWrap>
   );
 };

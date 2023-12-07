@@ -37,10 +37,11 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@reduxjs/toolkit": "^1.8.5",
+    "@types/styled-components": "^5.1.32",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "@typescript-eslint/parser": "^6.13.2",
-    "@types/styled-components": "^5.1.32",
     "eslint": "^8.55.0",
     "gh-pages": "^5.0.0",
     "react-redux": "^8.0.2",

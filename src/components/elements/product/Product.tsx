@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { ButtonOrder } from '../../ui/buttonOrder';
 import { ProductWrap } from './ProductWrap.styled';
-import { addProduct } from '../../../store/reducers/basket';
+import { addProduct } from '../../../store/reducers/cart';
 import { getFormatNumber } from '../../../utils/getFormatNumber';
 import { FC } from 'react';
 
@@ -20,7 +20,7 @@ export const Product: FC<ProductProps> = ({ id, img, name, description, price, w
     name: string;
     price: number;
   };
-  
+
   const handleAddProduct = () => {
     item = { id, img, name, price };
     dispatch(addProduct(item));
@@ -45,7 +45,7 @@ export const Product: FC<ProductProps> = ({ id, img, name, description, price, w
                 {newPrice} {'/ '}
                 <span className="product__weight">{`${weight} ${units}.`}</span>
               </div>
-              <Link to={'/basket'}>
+              <Link to={'/cart'}>
                 <ButtonOrder
                   name={'В корзину'}
                   type={'button'}

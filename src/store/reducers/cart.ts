@@ -5,26 +5,26 @@ import {
   getIndex,
   updateCounterUp,
   updateCounterDown,
-} from '../../utils/helperForBasket';
+} from '../../utils/helperForCart';
 
-import { Basket } from '../../customTypes/basket';
+import { Cart } from '../../customTypes/cart';
 
-const initialState: Basket = {
-  basket: [],
+const cartSliceState: Cart = {
+  items: [],
   totalAmount: 0,
   totalQuantity: 0,
 };
 
-const basketSlice = createSlice({
-  name: 'basket',
-  initialState,
+const cartSlice = createSlice({
+  name: 'cart',
+  initialState: cartSliceState,
   reducers: {
     addProduct(state, action) {
       const index = getIndex(state, action);
       if (index !== -1) {
         updateCounterUp(state, index);
       } else {
-        state.basket.push(Object.assign(action.payload, { quantity: 1 }));
+        state.items.push(Object.assign(action.payload, { quantity: 1 }));
       }
       updateAmount(state);
       updateQuantity(state);
@@ -33,7 +33,7 @@ const basketSlice = createSlice({
     removeProduct(state, action) {
       const index = getIndex(state, action);
       if (index !== -1) {
-        state.basket = state.basket.filter((item) => item.id !== action.payload.id);
+        state.items = state.items.filter((item) => item.id !== action.payload.id);
       }
       updateAmount(state);
       updateQuantity(state);
@@ -53,7 +53,7 @@ const basketSlice = createSlice({
       if (action.payload.quantity > 1) {
         updateCounterDown(state, index);
       } else {
-        state.basket = state.basket.filter((item) => item.id !== action.payload.id);
+        state.items = state.items.filter((item) => item.id !== action.payload.id);
       }
       updateAmount(state);
       updateQuantity(state);
@@ -61,5 +61,5 @@ const basketSlice = createSlice({
   },
 });
 
-export const { addProduct, removeProduct, plusProduct, minusProduct } = basketSlice.actions;
-export default basketSlice.reducer;
+export const { addProduct, removeProduct, plusProduct, minusProduct } = cartSlice.actions;
+export default cartSlice.reducer;

@@ -3,15 +3,15 @@ import { useSelector } from 'react-redux';
 
 import { OrderAmount } from '../../elements/orderAmount';
 import { ButtonOrder } from '../../ui/buttonOrder';
-import { BasketList } from '../../elements/basketList';
+import { CartList } from '../../elements/cartList';
 import { ButtonToBack } from '../../ui/buttonToBack';
 
 import styles from './index.module.scss';
-import { State } from '../../../customTypes/state';
+import { RootState } from '../../../store';
 
-export function BasketPage() {
-  const basket = useSelector((state: State) => state.basket.basket);
-  const amount = useSelector((state: State) => state.basket.totalAmount);
+export function CartPage() {
+  const items = useSelector((state: RootState) => state.cart.items);
+  const amount = useSelector((state: RootState) => state.cart.totalAmount);
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -25,7 +25,7 @@ export function BasketPage() {
   const nameBtn = userAuth ? 'Выйти' : 'Войти';
 
   return (
-    <div className={styles.basket}>
+    <div className={styles.cart}>
       <header className={styles.header}>
         <div className={styles.container}>
           <div className={styles.headerBlock}>
@@ -40,7 +40,7 @@ export function BasketPage() {
           </div>
         </div>
       </header>
-      <BasketList products={basket} />
+      <CartList products={items} />
       <footer className={styles.footer}>
         <div className={styles.container}>
           <div className={styles.footerBlock}>

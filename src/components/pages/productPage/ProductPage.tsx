@@ -6,14 +6,14 @@ import { Product } from '../../elements/product';
 import { products } from '../../../store/menuList';
 import { ButtonOrder } from '../../ui/buttonOrder';
 import { ButtonToBack } from '../../ui/buttonToBack';
-import { BasketMini } from '../../elements/basketMini';
+import { CartMini } from '../../elements/cartMini';
 
 import styles from './index.module.scss';
-import { State } from '../../../customTypes/state';
+import { RootState } from '../../../store/index';
 
 export function ProductPage() {
-  const amount = useSelector((state: State) => state.basket.totalAmount);
-  const quantity = useSelector((state: State) => state.basket.totalQuantity);
+  const amount = useSelector((state: RootState) => state.cart.totalAmount);
+  const quantity = useSelector((state: RootState) => state.cart.totalQuantity);
 
   const navigate = useNavigate();
   const goBack = () => navigate(-1);
@@ -37,7 +37,7 @@ export function ProductPage() {
         <div className={styles.container}>
           <div className={styles.headerBlock}>
             <ButtonToBack handleGoBack={goBack} classNames={styles.headerBlock__btn} />
-            <BasketMini counter={quantity} sum={amount} classNames={styles.headerBlock__basket} />
+            <CartMini counter={quantity} sum={amount} classNames={styles.headerBlock__cart} />
             <ButtonOrder view={'exit'} type={'button'} handleClick={handleExit} name={nameBtn} />
           </div>
         </div>

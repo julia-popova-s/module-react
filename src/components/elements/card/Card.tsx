@@ -6,7 +6,7 @@ import { ButtonCircle } from '../../ui/buttonCircle/index';
 
 import { getFormatNumber } from '../../../utils/getFormatNumber';
 import { cutPartOfLine } from '../../../utils/cutPartOfLine';
-import { addProduct } from '../../../store/reducers/basket';
+import { addProduct } from '../../../store/reducers/cart';
 import { FC } from 'react';
 import { Product } from '../../../customTypes/product';
 

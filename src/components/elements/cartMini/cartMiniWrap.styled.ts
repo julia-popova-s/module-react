@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BasketMiniWrap = styled.div`
+export const CartMiniWrap = styled.div`
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -8,14 +8,14 @@ export const BasketMiniWrap = styled.div`
   justify-content: right;
   color: var(--color-white);
 
-  .basket-mini__text {
+  .cart-mini__text {
     font-weight: 500;
     font-size: 17px;
     line-height: 21px;
     text-align: right;
   }
   
-  .basket-mini__icon {
+  .cart-mini__icon {
 
     svg {
       display: block;
